@@ -1,0 +1,65 @@
+* {
+    border: 1px solid red;
+}
+
+.w-btn-outline {
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-gray-outline {
+    border: 3px solid #a3a1a1;
+    color: #6e6e6e;
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 2px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-gray-outline:hover {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.search_box {
+    margin-top: 100px;
+    width: 90%;
+    height: 300px;
+}
+
+.explanation {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr 1fr 1fr
+}
+
+.articles {
+    height: 90px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr 1fr 1fr
+}
+
+.contents {
+    align-self: center;
+    text-align: center;
+}
