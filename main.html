@@ -19,17 +19,17 @@
 </head>
 
 <body>
-    <header>
+    <header style="z-index: 1000;">
         <nav id="navigationBar">
             <ul>
                 <li>
                     <a href="/home" class="link">소개</a>
                 </li>
                 <li>
-                    <a href="/gallery1" class="link">알바 / 체험 찾기</a>
+                    <a href="#" class="link">알바 / 체험 찾기</a>
                 </li>
                 <li>
-                    <a href="/gallery2" class="link">공고 등록</a>
+                    <a href="#" class="link">공고 등록</a>
                 </li>
                 <li>
                     <a id="a_logout" style="float:right; margin-right:15px;" onclick="">
@@ -55,7 +55,28 @@
         </nav>
     </header>
     <div class="main">
+        <nav style="margin-top: 100px;z-index: 1000;">
+            <ul class=" nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" type="button">전체</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" type="button">일자리</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" type="button">체험</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-bs-toggle="tab" type="button">추천</button>
+                </li>
+            </ul>
+        </nav>
+        <script>
+            const firstTabEl = document.querySelector('#myTab li:last-child button')
+            const firstTab = new bootstrap.Tab(firstTabEl)
 
+            firstTab.show()
+        </script>
         <div class="search_box">
             <button class="w-btn-outline w-btn-gray-outline" type="button" name='서울' onclick="get_article('서울')">
                 서울
@@ -184,7 +205,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </div>
 </body>
 
