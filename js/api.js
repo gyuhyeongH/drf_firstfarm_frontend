@@ -5,9 +5,6 @@ var yy = document.querySelector("#yy");
 var mm = document.querySelector("#mm");
 var dd = document.querySelector("#dd");
 
-console.log(yy);
-console.log(mm);
-console.log(dd);
 
 async function handle_signup() {
   const signupData = {
@@ -42,18 +39,19 @@ async function handle_signup() {
 
   if (response.status == 200) {
     window.location.replace(`${frontend_base_url}/signin.html`);
-    alert("정상 회원가입 되었습니다.")
+    alert("회원가입이 정상적으로 완료되었습니다.")
   } else {
     alert(response.status);
   }
 }
 
-async function handle_signin() {
-  console.log("handle login");
 
-  const loginData = {
-    username: document.getElementById("nameinput").value,
-    password: document.getElementById("pwinput").value,
+async function handle_signin() {
+  console.log("handle_signin()");
+
+  const signinData = {
+    username: document.getElementById("id").value,
+    password: document.getElementById("pswd1").value,
   };
 
   const response = await fetch(`${backend_base_url}/user/api/token/`, {
@@ -62,7 +60,7 @@ async function handle_signin() {
       "Content-type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify(loginData),
+    body: JSON.stringify(signinData),
   });
 
   response_json = await response.json();
@@ -84,32 +82,19 @@ async function handle_signin() {
         })
         .join("")
     );
-
-    // #jwt사이트에서 바꿔주는 것처럼 우리가 토큰값을 알기 쉽게 꺼내올 수 있도록 하는 로직
-
     localStorage.setItem("payload", jsonPayload);
-    // #위에서 받아온 payload를 다시 로컬스토리지에 payload라는 이름으로 저장한다.
-    window.location.replace(`${frontend_base_url}/index.html`);
+    window.location.replace(`${frontend_base_url}/home.html`);
   } else {
-    alert(response.status);
+    // alert(response.status);
+    alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
   }
 }
 
-async function handleLogout() {
+
+async function handle_logout() {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
   localStorage.removeItem("payload");
-  alert("로그아웃되었습니다.");
-  window.location.replace(`${frontend_base_url}/login.html`);
-}
-
-async function gomypage() {
-  window.location.replace(`${frontend_base_url}/mypage.html`);
-}
-
-async function run() {
-  document.getElementById("srt").value =
-    document.getElementById("drop-down").value;
-  // const test = document.getElementById("srt").value
-  // console.log(test)
+  alert("로그아웃 되었습니다.");
+  window.location.replace(`${frontend_base_url}/signin.html`);
 }
