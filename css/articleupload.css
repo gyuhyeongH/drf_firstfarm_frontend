@@ -1,0 +1,405 @@
+/* * {
+   border: 1px solid red;
+} */
+
+
+/*컨셉 색상*/
+
+/*
+UI BASE1
+#C7D36F
+
+UI BASE2
+#FCF9C6
+
+UI BASE3
+#E0DECA
+*/
+
+/*메인*/
+.main_container{
+    width: 85%;
+    margin: auto;
+}
+
+.top_box{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    margin-top: 100px;
+    height: 1200px
+}
+
+/*왼쪽*/
+.top_left{
+    width: 50%;
+    height: 1200px;
+}
+
+.category_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;}
+
+.category_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.category_button{
+    font-size: 20px;
+    width: 100px;
+    margin-right: 20px;
+}
+
+
+.clicked {
+    background-color: #C7D36F;
+    color: orangered;
+}
+
+.category_input{
+    display: none;
+}
+
+.name_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.name_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.title_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.title_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+
+.requirement_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.requirement_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.requirement_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.requirement_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.cost_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.cost_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cost_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cost_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.period_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.period_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.period_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.period_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.desc_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.desc_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desc_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.location_box{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.location_title{
+    width: 20%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.location_input_box{
+    width: 80%;
+    height: 100px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.location_input{
+    width: 99%;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.location_find{
+    border: none;
+    background-color: #FCF9C6;
+    font-size: 15px;
+    width: 80px;
+    height: 25px;
+}
+
+.location_road{
+    border: none;
+    width: 800px;
+    height: 20px;
+}
+
+
+
+/*오른쪽*/
+.top_right{
+    width: 40%;
+    margin-left: 10%;
+    margin-top: 120px;
+    height: 500px;
+}
+
+.file_upload_container{
+    display: flex;
+    width: 400px;
+    overflow: auto;
+}
+
+.file_upload{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: flex;
+    margin-right: 30px;
+}
+
+.img_read{
+    width: 400px;
+    height: 400px;
+    /* top: 0;
+    left: 0; */
+}
+
+.file_choice{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    /* top: 0;
+    left: 0; */
+    opacity: 0;
+}
+
+.file_choice:hover{
+    cursor: pointer;
+}
+
+.img_read1{
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+}
+
+.file_choice1{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.file_choice1:hover{
+    cursor: pointer;
+}
+
+.img_read2{
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+}
+
+.file_choice2{
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.file_choice2:hover{
+    cursor: pointer;
+}
+
+
+/* 요청 */
+.submit_box{
+    margin-top: 180px;
+}
+
+.submit_button{
+    border: none;
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #C7D36F;
+}
+
+.submit_button:hover{
+    cursor: pointer;
+}
