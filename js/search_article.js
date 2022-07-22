@@ -18,6 +18,11 @@ let menu_list = ['', '', '', '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '1
 
 function get_article(choice) {
     category = document.getElementsByClassName('nav-link active')[0].value
+    if (category == 3) {
+        $('.search_box').hide()
+    } else {
+        $('.search_box').show()
+    }
     $.ajax({
         headers: { "choice": choice, "category": category },
         type: "GET",
