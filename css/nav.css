@@ -1,0 +1,32 @@
+#navigationBar {
+    background: #fff;
+    box-shadow: 0px 1px 10px 10px #ddd;
+    height: 60px;
+    text-align: left;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#navigationBar>ul>li {
+    display: inline;
+}
+
+#navigationBar>ul>li>a {
+    color: black;
+    /* font-weight: bold; */
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin: 0px;
+    padding: 0px 15px;
+    text-decoration: none;
+    transition: color 0.3s ease-in;
+    cursor: pointer;
+}
+
+#navigationBar>ul>li>a:hover {
+    color: darkgray;
+    font-weight: bold;
+}
