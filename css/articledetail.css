@@ -1,0 +1,408 @@
+/* * {
+ border: 1px solid red;
+} */
+
+
+  
+/*컨셉 색상*/
+
+/*UI BASE1
+#C7D36F
+
+UI BASE2
+#FCF9C6
+
+UI BASE3
+#E0DECA*/
+
+
+/*메인*/
+.main_container{
+    width: 85%;
+    margin: auto;
+}
+
+.title_box{
+    width: 90%;
+    margin: auto;
+    height: 50px;
+    font-family: 'Noto Serif KR', serif;
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 30px;
+
+    border: none;
+    background-color: #C7D36F;
+}
+
+.main_box{
+    width: 90%;
+    margin: auto;
+    height: 650px;
+
+    display: flex;
+}
+
+.left_box{
+    width: 35%;
+    height: 600px;
+}
+
+.left_img_box{
+    width: 400px;
+    height: 400px;
+    border: solid 2px #E0DECA;
+}
+
+.left_name_box{
+    margin-top: 5px;
+    width: 400px;
+    height: 50px;
+    text-align: center;
+}
+
+.left_name_button{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    border-radius: 3px;
+    border: none;
+    background-color: #E0DECA;
+    color: black;
+    text-align: center;
+
+}
+
+.left_rate_box{
+    width: 400px;
+    height: 50px;
+    text-align: center;
+}
+
+.left_rate_button{
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    background-color: #FCF9C6;
+    color: black;
+    border: none;
+}
+
+.left_userinfo_box{
+    width: 400px;
+    height: 60px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/*버튼*/
+.user_button_box{
+    width: 400px;
+    display: flex;
+}
+
+.roadmap_btn{
+    font-size: 17px;
+    width: 80px;
+    height: 20;
+}
+
+.apply_btn{
+    font-size: 17px;
+    width: 80px;
+    height: 20;
+    margin-left: 10px;
+}
+
+.farm_button_box{
+    margin-left: 20px;
+}
+
+.edit_btn{
+    font-size: 17px;
+    width: 80px;
+    height: 20;
+}
+
+.end_btn{
+    font-size: 17px;
+    width: 80px;
+    height: 20;
+    margin-left: 5px;
+}
+
+
+/*오른쪽 메인*/
+.right_box{
+    margin-left: 10%;
+    width: 55%;
+    height: 600px;
+}
+
+.right_rank-intro_box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.right_rank-intro_title{
+    width: 10%;
+}
+
+.right_rank-intro_title_button{
+    font-size: 15px;
+}
+
+.right_rank-intro_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+.right_period_box{
+    width: 100%;
+    height: 50px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.right_period_title{
+    width: 10%;
+}
+
+.right_period_title_button{
+    font-size: 15px;
+}
+
+.right_period_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+.right_location_box{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.right_location_title{
+    width: 10%;
+}
+
+.right_location_title_button{
+    font-size: 15px;
+}
+
+.right_location_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+.right_requirement_box{
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.right_requirement_title{
+    width: 10%;
+}
+
+.right_requirement_title_button{
+    font-size: 15px;
+}
+
+.right_requirement_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+.right_cost_box{
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.right_cost_title{
+    width: 10%;
+}
+
+.right_cost_title_button{
+    font-size: 15px;
+}
+
+.right_cost_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+.right_desc_box{
+    width: 100%;
+    height: 290px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.right_desc_title{
+    width: 10%;
+}
+
+.right_desc_title_button{
+    font-size: 15px;
+}
+
+.right_desc_content{
+    width: 87%;
+    margin-left: 3%;
+    font-size: 20px;
+}
+
+
+
+/*리뷰*/
+
+.review_image_container{
+    width: 90%;
+    margin: auto;
+    height: 400px;
+}
+
+.review_image_box{
+    width: 90%;
+    margin: auto;
+}
+
+
+.review_container{
+    width: 90%;
+    height: 500px;
+    margin: auto;
+}
+
+.review_box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin-top: 8px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: solid 2px #C7D36F;
+}
+
+.review_rate{
+    margin-left: 1%;
+    width: 7%;
+}
+
+.review_user{
+    margin-left: 3%;
+    width: 8%;
+}
+
+.review_user_button{
+    font-size: 18px;
+}
+
+.review_content{
+    width: 77%;
+    font-size: 18px;
+    margin-left: 3%;
+}
+
+
+/* 리뷰 이미지 */
+li{
+    list-style-type: none;
+  }
+  
+  /* 보여줄 구간의 높이와 넓이 설정 */
+  #slideShow{
+    width: 100%;
+    height: 300px;
+    position: relative;
+    /* margin: 50px auto; */
+    overflow: hidden;   
+    /*리스트 형식으로 이미지를 일렬로 
+    정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
+    hidden으로 숨겨줘야됨*/
+  }
+  
+  
+  .slides{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
+    transition: left 0.5s ease-out; 
+    /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  }
+  
+  /* 첫 번째 슬라이드 가운데에 정렬하기위해
+  첫번째 슬라이드만 margin-left조정 */
+  .slides li:first-child{
+    margin-left: 0px;
+  }
+  
+  /* 슬라이드들 옆으로 정렬 */
+  .slides li:not(:last-child){
+    float: left;
+    margin: 0 100px 0 100px;
+  }
+  
+  .slides li{
+    float: left;
+  }
+  
+  .controller span{
+    position:absolute;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+    border-radius: 50%;
+    padding: 10px 20px;
+    top: 50%;
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+  
+  /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+  .controller span:hover{
+    background-color: rgba(128, 128, 128, 0.11);
+  }
+  
+  .prev{
+    left: 10px;
+  }
+  
+  /* 이전 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+  .prev:hover{
+    transform: translateX(-10px);
+  }
+  
+  .next{
+    right: 10px;
+  }
+  
+  /* 다음 화살표에 마우스 커서가 올라가 있을때 
+  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+  .next:hover{
+    transform: translateX(10px);
+  }
