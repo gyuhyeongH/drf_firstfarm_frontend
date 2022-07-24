@@ -23,7 +23,7 @@
         <!-- content-->
         <div id="content">
             <!-- CATEGORY-->
-            <div class="category">
+            <!-- <div class="category">
                 <input class="hidden radio-label" id="yes-button" type="radio" name="accept-offers" checked="checked" />
                 <label class="button-label" for="yes-button">
                     <h1>농장주</h1>
@@ -32,6 +32,21 @@
                 <label class="button-label" for="maybe-button">
                     <h1>여름지기</h1>
                 </label>
+            </div> -->
+            <h3 class="join_title" style="text-align:center;">
+                <label for="">해당하는 본인의 구분을 선택하세요.</label><br>
+            </h3>
+            <div class="category">
+                <div>
+                <button class="category_btn" id="category_value" value="1">농장주
+                </button>
+                <!-- <span for="">농장주 : </span> -->
+                </div>
+                <div>
+                <button class="category_btn" id="category_value" value="2">여름지기
+                </button>
+                <!-- <label for="">여름지기 : </label> -->
+                </div>
             </div>
             <!-- ID -->
             <div>
@@ -155,7 +170,7 @@
                 <span class="error_next_box"></span>
             </div>
             <!-- LOCATION -->
-            <div>
+            <!-- <div>
                 <h3 class="join_title"><label for="locations">* 희망지역</label></h3>
                 <span class="box introduction_code">
                     <select id="locations" class="sel">
@@ -180,13 +195,12 @@
                     </select>
                 </span>
                 <span class="error_next_box">필수 정보입니다.</span>
-            </div>
-            <div class="" style="margin-top: 30px;">
-                <button class="location_find" id="btnJoin" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기"><span>주소 찾기</span></button><br>
+            </div> -->
+            <h3 class="join_title"><label for="locations">* 지역</label></h3>
+            <div class="">
+                <button class="location_find" id="btnJoin_location" type="button" onclick="serch_loaction()" value="주소 찾기"><span>주소 찾기</span></button><br>
                 <span class="box" style="margin: auto;">
-                    <span type="text" id="sample4_roadAddress" class="int" maxlength="2" value="sample4_roadAddress" placeholder="주소"
-                        style="display: flex; align-items: center;">
-                    </span>
+                    <span class="int" type="text" id="locations" placeholder="주소" style="display: flex; align-items: center;"></span>
                 </span>
             </div>
 
@@ -231,7 +245,7 @@
     </div>
     <!-- wrapper -->
     <script src="./js/style_sign_in_up_js/style_sign_up.js"></script>
-    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>

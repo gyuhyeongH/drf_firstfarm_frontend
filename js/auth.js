@@ -1,18 +1,37 @@
 const backend_base_url = "http://127.0.0.1:8000";
 const frontend_base_url = "http://127.0.0.1:5500";
 
+// 변수 정의
 var yy = document.querySelector("#yy");
 var mm = document.querySelector("#mm");
 var dd = document.querySelector("#dd");
 
+var category_category = document.querySelector("#category_value");
+var user_category_value = 0
 
+// 카테고리 선택
+function handleClickValue(event) {
+  user_category_value = event.target.value;
+}
+
+function init_2() {
+  for (var i = 0; i < category_btn.length; i++) {
+    category_value[i].addEventListener("click", handleClickValue);
+  }
+}
+
+init_2();
+
+
+// 회원가입
 async function handle_signup() {
   const signupData = {
     // 필수 사항
     username: document.getElementById("id").value,
     password: document.getElementById("pswd1").value,
     email: document.getElementById("email").value,
-    user_category: 2,
+    // user_category: 2,
+    user_category: user_category_value,
     // 세부 사항
     userprofile: {
       fullname: document.getElementById("fullname").value,
@@ -20,11 +39,14 @@ async function handle_signup() {
       birthday: (yy.value + "-" + mm.value + "-" + dd.value),
       age: document.getElementById("age").innerText,
       phone_number: document.getElementById("phone_number").value,
-      location: document.getElementById("locations").value,
+      // location: document.getElementById("locations").value,
+      location: document.getElementById("locations").innerText,
       introduction: document.getElementById("introduction").value,
       prefer: document.getElementById("prefer").value,
     }
   };
+
+  console.log(user_category_value);
 
   const response = await fetch(`${backend_base_url}/user/`, {
     headers: {
@@ -40,12 +62,18 @@ async function handle_signup() {
   if (response.status == 200) {
     window.location.replace(`${frontend_base_url}/signin.html`);
     alert("회원가입이 정상적으로 완료되었습니다.")
+  } else if (response.status ==){
+  } else {
+    alert(response.status);
+  } else {
+    alert(response.status);
   } else {
     alert(response.status);
   }
 }
 
 
+// 로그인
 async function handle_signin() {
   console.log("handle_signin()");
 
@@ -91,6 +119,7 @@ async function handle_signin() {
 }
 
 
+// 로그아웃
 async function handle_logout() {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
@@ -100,7 +129,8 @@ async function handle_logout() {
 }
 
 
-function sample4_execDaumPostcode() {
+// 지역 주소 지정
+function serch_loaction() {
   new daum.Postcode({
     oncomplete: function (data) {
       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -122,8 +152,10 @@ function sample4_execDaumPostcode() {
         extraRoadAddr = ' (' + extraRoadAddr + ')';
       }
       // 도로명 주소 정보를 해당 필드에 넣는다.
-      document.getElementById("sample4_roadAddress").value = roadAddr;
-      roadAddr.innerHTML = document.querySelector("#sample4_roadAddress");;
+      // document.getElementById("locations").value = roadAddr;
+
+      var location_result = document.querySelector("#locations");
+      location_result.innerHTML = roadAddr;
     }
   }).open();
 }
