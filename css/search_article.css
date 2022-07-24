@@ -1,0 +1,84 @@
+/* * {
+    border: 1px solid red;
+} */
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.search_box {
+    width: 90%;
+    height: 170px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.w-btn-outline {
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+
+
+}
+
+.w-btn-gray-outline {
+    border: 3px solid #a3a1a1;
+    color: #6e6e6e;
+    height: 30px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+}
+
+.w-btn-outline:hover {
+    letter-spacing: 1px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.w-btn-gray-outline:hover {
+    background-color: #a3a1a1;
+    color: #e3dede;
+}
+
+.w-btn-outline:active {
+    transform: scale(1.5);
+}
+
+.explanation {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr 1fr 1fr
+}
+
+.articles {
+    height: 90px;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr 1fr 1fr;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.contents {
+    align-self: center;
+    text-align: center;
+    margin: green;
+}

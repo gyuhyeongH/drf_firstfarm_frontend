@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lnag="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>첫농 | 회원가입</title>
+    <link rel="stylesheet" href="./css/sign_in_up_css/sign_up.css">
+
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+
+<body>
+    <!-- wrapper -->
+    <div id="wrapper">
+        <!-- title -->
+        <div id="header">
+            <h1 target="_blank" title="필수 사항">LOGO</h1>
+        </div>
+        <!-- header_1 -->
+        <div id="header">
+            <h1 target="_blank" title="필수 사항">필수 사항</h1>
+        </div>
+        <!-- content-->
+        <div id="content">
+            <!-- CATEGORY-->
+            <div class="category">
+                <input class="hidden radio-label" id="yes-button" type="radio" name="accept-offers" checked="checked" />
+                <label class="button-label" for="yes-button">
+                    <h1>농장주</h1>
+                </label>
+                <input class="hidden radio-label" id="maybe-button" type="radio" name="accept-offers" />
+                <label class="button-label" for="maybe-button">
+                    <h1>여름지기</h1>
+                </label>
+            </div>
+            <!-- ID -->
+            <div>
+                <h3 class="join_title">
+                    <label for="id">아이디</label>
+                </h3>
+                <span class="box int_id">
+                    <input type="text" id="id" class="int" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- EMAIL -->
+            <div>
+                <h3 class="join_title">
+                    <label for="email">본인확인 이메일</label>
+                </h3>
+                <span class="box int_email">
+                    <input type="text" id="email" class="int" maxlength="100" placeholder="필수입력">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- PW1 -->
+            <div>
+                <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                <span class="box int_pass">
+                    <input type="password" id="pswd1" class="int" maxlength="20">
+                    <span id="alertTxt">사용불가</span>
+                    <img src="./img/style_sign_in_up_images/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- PW2 -->
+            <div>
+                <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                <span class="box int_pass_check">
+                    <input type="password" id="pswd2" class="int" maxlength="20">
+                    <img src="./img/style_sign_in_up_images/m_icon_check_disable.png" id="pswd2_img1"
+                        class="pswdImg">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- header_2 -->
+            <div id="header">
+                <h1 target="_blank" title="세부 사항">세부 사항</h1>
+                <h3 style="color: red">* 은 필수 사항입니다.</h3>
+            </div>
+            <!-- NAME -->
+            <div>
+                <h3 class="join_title"><label for="fullname">* 이름</label></h3>
+                <span class="box int_name">
+                    <input type="text" id="fullname" class="int" maxlength="20">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- GENDER -->
+            <div>
+                <h3 class="join_title"><label for="gender">* 성별</label></h3>
+                <span class="box gender_code">
+                    <select id="gender" class="sel">
+                        <option>성별</option>
+                        <option value="M">남자</option>
+                        <option value="W">여자</option>
+                    </select>
+                </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+            </div>
+            <!-- BIRTH -->
+            <div>
+                <h3 class="join_title"><label for="yy">* 생년월일</label></h3>
+                <div id="bir_wrap">
+                    <!-- BIRTH_YY -->
+                    <div id="bir_yy">
+                        <span class="box">
+                            <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            </input>
+                    </div>
+                    <!-- BIRTH_MM -->
+                    <div id="bir_mm">
+                        <span class="box">
+                            <select id="mm" class="sel">
+                                <option>월</option>
+                                <option value="01">1</option>
+                                <option value="02">2</option>
+                                <option value="03">3</option>
+                                <option value="04">4</option>
+                                <option value="05">5</option>
+                                <option value="06">6</option>
+                                <option value="07">7</option>
+                                <option value="08">8</option>
+                                <option value="09">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </span>
+                    </div>
+                    <!-- BIRTH_DD -->
+                    <div id="bir_dd">
+                        <span class="box">
+                            <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                        </span>
+                    </div>
+                </div>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- AGE -->
+            <div>
+                <h3 class="join_title"><label for="age">나이(자동 입력)</label></h3>
+                <span class="box">
+                    <span type="text" id="age" class="int" maxlength="2" value="age"
+                        style="display: flex; align-items: center; background-color: #ececec;">
+                    </span>
+                </span>
+            </div>
+            <!-- MOBILE -->
+            <div>
+                <h3 class="join_title"><label for="phone_number">* 휴대전화</label></h3>
+                <span class="box int_mobile">
+                    <input type="tel" id="phone_number" class="int" maxlength="16" placeholder="전화번호 입력">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- LOCATION -->
+            <div>
+                <h3 class="join_title"><label for="locations">* 희망지역</label></h3>
+                <span class="box introduction_code">
+                    <select id="locations" class="sel">
+                        <option>지역 선택</option>
+                        <option value="서울특별시">서울특별시</option>
+                        <option value="경기도">경기도</option>
+                        <option value="인천광역시">인천광역시</option>
+                        <option value="대전광역시">대전광역시</option>
+                        <option value="대구광역시">대구광역시</option>
+                        <option value="울산광역시">울산광역시</option>
+                        <option value="광주광역시">광주광역시</option>
+                        <option value="부산광역시">부산광역시</option>
+                        <option value="세종특별자치시">세종특별자치시</option>
+                        <option value="강원도">강원도</option>
+                        <option value="전라남도">전라남도</option>
+                        <option value="전라북도">전라북도</option>
+                        <option value="충청남도">충청남도</option>
+                        <option value="충청북도">충청북도</option>
+                        <option value="경상남도">경상남도</option>
+                        <option value="경상북도">경상북도</option>
+                        <option value="제주특별자치도">제주특별자치도</option>
+                    </select>
+                </span>
+                <span class="error_next_box">필수 정보입니다.</span>
+            </div>
+            <div class="" style="margin-top: 30px;">
+                <button class="location_find" id="btnJoin" type="button" onclick="sample4_execDaumPostcode()" value="주소 찾기"><span>주소 찾기</span></button><br>
+                <span class="box" style="margin: auto;">
+                    <span type="text" id="sample4_roadAddress" class="int" maxlength="2" value="sample4_roadAddress" placeholder="주소"
+                        style="display: flex; align-items: center;">
+                    </span>
+                </span>
+            </div>
+
+            <!-- INTRODUCTION -->
+            <div>
+                <h3 class="join_title"><label for="introduction">자기소개</label> <span
+                        style="font-size: 11px; color:rgb(119, 119, 119)">(최대 400자 제한)</span></h3>
+                <span class="box int_name" style="height: 200px;">
+                    <textarea type="textarea" id="introduction" class="int" maxlength=400"
+                        style="height: 170px; padding-top: 2px; word-break:break-all; resize: none;"
+                        placeholder="간단하게 자신을 소개해 주세요."></textarea>
+                </span>
+            </div>
+            <!-- PREFER -->
+            <div>
+                <h3 class="join_title"><label for="prefer">* 선호</label></h3>
+                <span class="box int_name">
+                    <input type="text" id="prefer" class="int" maxlength="20" placeholder="예) 사과 제배, 고구마 제배 등">
+                </span>
+                <span class="error_next_box"></span>
+            </div>
+            <!-- JOIN BTN-->
+            <div class="btn_area">
+                <button type="button" id="btnJoin" onclick="handle_signup()">
+                    <span>가입하기</span>
+                </button>
+            </div>
+        </div>
+        <!-- content-->
+        <!-- footer-->
+        <!-- <footer>
+            <nav>
+                <a href='https://cocoder.tistory.com' target='_blank'>Blog</a> |
+                <a href='https://github.com/cocoder16' target='_blank'>Github</a>
+            </nav>
+            <p>
+                <span>저자 : SPARTA-CAMP-5TEAM</span><br />
+                <span>이메일 : cocoder16@gmail.com</span><br />
+                <span>Copyright 2020. cocoder. All Rights Reserved.</span>
+            </p>
+        </footer> -->
+    </div>
+    <!-- wrapper -->
+    <script src="./js/style_sign_in_up_js/style_sign_up.js"></script>
+    <script src="./js/api.js"></script>
+</body>
+
+</html>
