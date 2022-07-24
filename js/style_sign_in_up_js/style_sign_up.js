@@ -50,13 +50,13 @@ gender.addEventListener("focusout", function () {
         error[5].style.display = "none";
     }
 });
-locations.addEventListener("focusout", function () {
-    if (locations.value === "지역 선택") {
-        error[8].style.display = "block";
-    } else {
-        error[8].style.display = "none";
-    }
-});
+// locations.addEventListener("focusout", function () {
+//     if (locations.value === "지역 선택") {
+//         error[8].style.display = "block";
+//     } else {
+//         error[8].style.display = "none";
+//     }
+// });
 mobile.addEventListener("focusout", checkPhoneNum);
 prefer.addEventListener("focusout", checkPrefer);
 
@@ -72,7 +72,7 @@ function checkId() {
       "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
     error[0].style.display = "block";
   } else {
-    error[0].innerHTML = "멋진 아이디네요!";
+    error[0].innerHTML = "";
     error[0].style.color = "#08A600";
     error[0].style.display = "block";
   }
@@ -226,3 +226,32 @@ function checkPrefer() {
     error[9].style.display = "block";
   }
 }
+
+// 카테고리 토글
+var category_btn = document.getElementsByClassName("category_btn");
+
+function handleClick(event) {
+  console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+  console.log(event.target.classList);
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < category_btn.length; i++) {
+      category_btn[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < category_btn.length; i++) {
+    category_btn[i].addEventListener("click", handleClick);
+  }
+}
+
+init();

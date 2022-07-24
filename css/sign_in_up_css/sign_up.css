@@ -212,6 +212,18 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
+#btnJoin_location {
+    width: 100%;
+    padding: 15px 0 11px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9EB23B;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
 .footer {
     text-align: center;
 
@@ -225,7 +237,7 @@ select {
 
 
 /* 라디오 버튼 스타일 */
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
+/* @import url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
 .category {
     display: flex;
     flex-direction: row;
@@ -308,4 +320,63 @@ select {
 
 .hidden {
   display: none;
+} */
+
+/* .category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.category_value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 200px;
+  height: 50px;
+
+  margin: 0 10px 0 10px;
+  
+  border: 1px solid;
+} */
+
+.clicked{
+  /* background-color: rgba(128, 128, 0, 0.7 ); */
+  background-color: #FCF9C6;
+  /* color: white; */
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.category button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 160px;
+  height: 50px;
+
+  margin: 0 10px 0 10px;
+
+  border-radius: 5px;
+  border: 2px solid #9EB23B;
+  /* background-color: rgba(0,0,0,0); */
+  color: #9EB23B;
+  
+  padding: 5px;
+
+  font-weight: bold;
+}
+
+.category button:hover{
+  color:white;
+  font-weight: bold;
+  background-color: #9EB23B;
 }
