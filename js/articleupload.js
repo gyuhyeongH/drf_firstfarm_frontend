@@ -1,9 +1,7 @@
 
 
 function post_articledetail() {
-    const payload = JSON.parse(localStorage.getItem("payload"));
-    // let user = payload.user;
-    let user = 1
+    var token = localStorage.getItem("access");
 
     let article_category = $('#article_category').val()
     let farm_name = $('#farm_name').val()
@@ -36,6 +34,10 @@ function post_articledetail() {
         type: "POST",
         url: "http://127.0.0.1:8000/article/detail/",
         data: form_data,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.setRequestHeader("Authorization", "JWT " + token);
+        },
         cache: false,
         contentType: false,
         processData: false,
