@@ -23,16 +23,6 @@
         <!-- content-->
         <div id="content">
             <!-- CATEGORY-->
-            <!-- <div class="category">
-                <input class="hidden radio-label" id="yes-button" type="radio" name="accept-offers" checked="checked" />
-                <label class="button-label" for="yes-button">
-                    <h1>농장주</h1>
-                </label>
-                <input class="hidden radio-label" id="maybe-button" type="radio" name="accept-offers" />
-                <label class="button-label" for="maybe-button">
-                    <h1>여름지기</h1>
-                </label>
-            </div> -->
             <h3 class="join_title" style="text-align:center;">
                 <label for="">해당하는 본인의 구분을 선택하세요.</label><br>
             </h3>
@@ -92,6 +82,18 @@
             <div id="header">
                 <h1 target="_blank" title="세부 사항">세부 사항</h1>
                 <h3 style="color: red">* 은 필수 사항입니다.</h3>
+            </div>
+            <!-- PICTURE -->
+            <h3 class="join_title"><label for="">프로필 사진</label></h3>
+            <div class="box_container">
+                <div class="box_img">
+                    <img id="default_img" class="int_img" src="./img/style_sign_in_up_images/form_profile_img.png" type="file">
+                </div>
+                <div class="img_btn_container">
+                    <input style="display: none;" id="input_img" class="img_find" type="file" accept="image/jpeg, image/jpg, image/png" required multiple onclick="">
+                    <div id="btnJoin_img" class="upload">사진 넣기</div>
+                    <span style="font-weight: bold; font-size: 11px; color:rgb(119, 119, 119)">(150px * 150px)</span>
+                </div>
             </div>
             <!-- NAME -->
             <div>
@@ -170,32 +172,6 @@
                 <span class="error_next_box"></span>
             </div>
             <!-- LOCATION -->
-            <!-- <div>
-                <h3 class="join_title"><label for="locations">* 희망지역</label></h3>
-                <span class="box introduction_code">
-                    <select id="locations" class="sel">
-                        <option>지역 선택</option>
-                        <option value="서울특별시">서울특별시</option>
-                        <option value="경기도">경기도</option>
-                        <option value="인천광역시">인천광역시</option>
-                        <option value="대전광역시">대전광역시</option>
-                        <option value="대구광역시">대구광역시</option>
-                        <option value="울산광역시">울산광역시</option>
-                        <option value="광주광역시">광주광역시</option>
-                        <option value="부산광역시">부산광역시</option>
-                        <option value="세종특별자치시">세종특별자치시</option>
-                        <option value="강원도">강원도</option>
-                        <option value="전라남도">전라남도</option>
-                        <option value="전라북도">전라북도</option>
-                        <option value="충청남도">충청남도</option>
-                        <option value="충청북도">충청북도</option>
-                        <option value="경상남도">경상남도</option>
-                        <option value="경상북도">경상북도</option>
-                        <option value="제주특별자치도">제주특별자치도</option>
-                    </select>
-                </span>
-                <span class="error_next_box">필수 정보입니다.</span>
-            </div> -->
             <h3 class="join_title"><label for="locations">* 지역</label></h3>
             <div class="">
                 <button class="location_find" id="btnJoin_location" type="button" onclick="serch_loaction()" value="주소 찾기"><span>주소 찾기</span></button><br>
@@ -227,6 +203,10 @@
                 <button type="button" id="btnJoin" onclick="handle_signup()">
                     <span>가입하기</span>
                 </button>
+            </div>
+            <!-- service BTN -->
+            <div class="service_btn">
+                <a href="#" onclick="location.href='signin.html'" target='_blank'>로그인</a>
             </div>
         </div>
         <!-- content-->
