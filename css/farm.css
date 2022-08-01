@@ -1,0 +1,316 @@
+#profilebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;height: 50%;
+}
+#profilebox > img{
+	width: 100%;
+	height: 100%;
+	border-radius: 30%;
+    margin-bottom: 20px;
+}
+#profilebox > p{
+	margin: 0 auto;
+}
+#intro {
+    display: flex;
+    width: 100%;height: 50%;
+}
+#desc{
+    width: 100%;
+    margin-left: 30px;
+}
+#percentbar{
+    display: flex;
+    width: 100%;
+    height: 10%;
+    display: flex;
+}
+#percentbar > div{
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 3px solid;
+    margin-right: 20px;
+}
+#info_put{
+    float: right;
+    margin-top: 20px;
+}
+
+/* Main_get */
+
+#main_get {
+    display: block;
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 auto;
+    width: calc(100% - 4rem);
+    max-width: 72rem;
+    /* z-index: 2; */
+}
+    #main_get > ul {
+        list-style: none;
+    }
+    #main_get > a {
+        text-decoration: none;
+    }
+
+
+    #main_get > * {
+        padding: 4rem 4rem 2rem 4rem ;
+        border-top: solid 2px #eeeeee;
+        margin: 0;
+        text-decoration-style: none;
+        
+    }
+
+        #main_get > *:first-child {
+            border-top: 0;
+        }
+
+    #main_get > footer {
+        text-align: center;
+    }
+
+    #main_get > .post {
+        padding: 8rem 8rem 6rem 8rem ;
+    }
+
+        #main_get > .post header.major > .date {
+            margin-top: -2rem;
+        }
+
+        #main_get > .post header.major > h1, #main_get > .post header.major h2 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin: 0 0 2rem 0;
+        }
+
+        #main_get > .post.featured {
+            text-align: center;
+        }
+
+        @media screen and (max-width: 1280px) {
+
+            #main_get > .post {
+                padding: 6rem 4rem 4rem 4rem ;
+            }
+
+        }
+
+        @media screen and (max-width: 736px) {
+
+            #main_get > .post {
+                padding: 4rem 2rem 2rem 2rem ;
+            }
+
+                #main_get > .post header.major > .date {
+                    margin-top: -1rem;
+                    margin-bottom: 2rem;
+                }
+
+                #main_get > .post header.major > h1, #main_get > .post header.major h2 {
+                    font-size: 2.5rem;
+                    line-height: 1.2;
+                    margin: 0 0 1.5rem 0;
+                }
+
+        }
+    #main_get > .posts {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -moz-align-items: -moz-stretch;
+        -webkit-align-items: -webkit-stretch;
+        -ms-align-items: -ms-stretch;
+        align-items: stretch;
+        text-align: center;
+        width: 100%;
+        padding: 0;
+    }
+
+        #main_get > .posts > * {
+            -moz-flex-shrink: 1;
+            -webkit-flex-shrink: 1;
+            -ms-flex-shrink: 1;
+            flex-shrink: 1;
+            -moz-flex-grow: 0;
+            -webkit-flex-grow: 0;
+            -ms-flex-grow: 0;
+            flex-grow: 0;
+        }
+
+        #main_get > .posts > * {
+            width: 50%;
+        }
+
+        #main_get > .posts > * {
+            padding: 4rem;
+            width: 50%;
+        }
+
+        #main_get > .posts > article {
+            border-color: #eeeeee;
+            border-left-width: 2px;
+            border-style: solid;
+            border-top-width: 2px;
+            text-align: center;
+        }
+
+            #main_get > .posts > article > :last-child {
+                margin-bottom: 0;
+            }
+
+            #main_get > .posts > article:nth-child(2n - 1) {
+                border-left-width: 0;
+            }
+
+            #main_get > .posts > article:nth-child(-n + 2) {
+                border-top-width: 0;
+            }
+
+        @media screen and (max-width: 980px) {
+
+            #main_get > .posts > * {
+                width: 50%;
+            }
+
+            #main_get > .posts > * {
+                padding: 2.5rem;
+                width: 50%;
+            }
+
+        }
+
+        @media screen and (max-width: 736px) {
+
+            #main_get > .posts > * {
+                width: 100%;
+            }
+
+            #main_get > .posts > * {
+                padding: 2rem;
+                width: 100%;
+            }
+
+            #main_get > .posts > article:nth-child(2n - 1) {
+                border-left-width: 2px;
+            }
+
+            #main_get > .posts > article:nth-child(-n + 2) {
+                border-top-width: 2px;
+            }
+
+            #main_get > .posts > article:nth-child(n) {
+                border-left-width: 0;
+            }
+
+            #main_get > .posts > article:nth-child(-n + 1) {
+                border-top-width: 0;
+            }
+
+            #main_get > .posts > article .image {
+                max-width: 25rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        }
+
+    @media screen and (max-width: 736px) {
+
+        #main_get > * {
+            padding: 2rem 2rem 0.1rem 2rem ;
+        }
+
+    }
+
+    @media screen and (max-width: 480px) {
+
+        #main_get {
+            width: 100%;
+        }
+
+    }
+
+.hide{
+    display: none ;
+}
+
+#apply_info > h3{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.apply_box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: solid 2px #C7D36F;
+}
+.apply_box > div{
+    width: 9%;
+}
+.apply_box > h3{
+    margin: 0 auto;
+}
+.contents {
+    width: 100%;
+    display: flex;
+    margin-left: 5px;
+    margin-right: 65px;
+}
+.a_slides{
+    display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
+    transition: left 0.5s ease-out; 
+    /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+  }
+  
+  /* 첫 번째 슬라이드 가운데에 정렬하기위해
+  첫번째 슬라이드만 margin-left조정 */
+  .a_slides li:first-child{
+    margin-left: 0px;
+  }
+  
+  /* 슬라이드들 옆으로 정렬 */
+  .a_slides li:not(:last-child){
+    float: left;
+    margin: 0 100px 0 100px;
+  }
+  
+  .a_slides li{
+    float: left;
+  }
+  .mb-3{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .fonrm-label{
+    font-size: 30px;
+  }
+  .form-select{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+#review_uproad{
+    width: 50%;
+    height: 10%;
+    margin-left: 50%;
+    margin-bottom: 30px;
+}
+.put_b{
+    padding: 0;
+}
