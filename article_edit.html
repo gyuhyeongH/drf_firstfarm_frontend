@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/articleupload.css" rel="stylesheet" type="text/css" />
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <title>게시글 수정</title>
+</head>
+
+<body>
+    <div class="main_container">
+        <!-- 타이틀 -->
+        <div class="title_container" id="title_container">
+            <div class="title">
+                🍠 게시글 수정 🥔
+            </div>
+        </div>
+        <!-- 이미지  -->
+        <div class="file_upload_container">
+            <div class="file_upload">
+                <input class="file_choice" type="file" id="img" name="imageSelector"
+                    accept="image/jpeg, image/jpg, image/png" multiple>
+                <img class="img_read" src="img/upload.png" id="img_section">
+            </div>
+            <div class="file_upload">
+                <input class="file_choice" type="file" id="img2" name="imageSelector"
+                    accept="image/jpeg, image/jpg, image/png" multiple>
+                <img class="img_read" src="img/upload.png" id="img_section2">
+            </div>
+            <div class="file_upload">
+                <input class="file_choice" type="file" id="img3" name="imageSelector"
+                    accept="image/jpeg, image/jpg, image/png" multiple>
+                <img class="img_read" src="img/upload.png" id="img_section3">
+            </div>
+        </div>
+        <div class="top_box">
+            <!-- 왼쪽 화면 -->
+            <div class="top_left">
+
+                <!-- 메인박스 -->
+                <div class="category_box">
+                    <div class="category_title">카테고리 선택</div>
+                    <div class="category_input_box">
+                        <button class="category_button" id="category1">체험</button>
+                        <button class="category_button" id="category2">근무</button>
+                        <input class="category_input" type="text" id="article_category" name="article_category"
+                            placeholder="선택">
+                    </div>
+                </div>
+                <div class="name_box">
+                    <div class="name_title">농장 이름</div>
+                    <div class="name_input_box">
+                        <input class="name_input" type="text" id="farm_name" placeholder="">
+                    </div>
+                </div>
+                <div class="title_box">
+                    <div class="title_title">게시글 제목</div>
+                    <div class="title_input_box">
+                        <input class="title_input" type="text" id="title" placeholder="">
+                    </div>
+                </div>
+                <div class="requirement_box">
+                    <div class="requirement_title">모집 요건</div>
+                    <div class="requirement_input_box">
+                        <input class="requirement_input" type="text" id="requirement" placeholder="">
+                    </div>
+                </div>
+                <div class="cost_box">
+                    <div class="cost_title">금액</div>
+                    <div class="cost_input_box">
+                        <input class="cost_input" type="text" id="cost" placeholder="">
+                    </div>
+                </div>
+                <div class="period_box">
+                    <div class="period_title">활동 기간</div>
+                    <div class="period_input_box">
+                        <input class="period_input" type="text" id="period" placeholder="">
+                    </div>
+                </div>
+                <div class="desc_box">
+                    <div class="desc_title">세부 내용</div>
+                    <div class="desc_input_box">
+                        <input class="desc_input" type="text" id="desc" placeholder="">
+                    </div>
+                </div>
+                <div class="location_box">
+                    <div class="location_title">위치</div>
+                    <div class="location_input_box">
+                        <input class="location_find" type="button" onclick="sample4_execDaumPostcode()"
+                            value="주소 찾기"><br>
+                        <input class="location_road" type="text" id="sample4_roadAddress" placeholder="주소">
+                        <!-- <input class="location_detail" type="text" id="sample4_detailAddress" placeholder="상세주소"> -->
+                    </div>
+                </div>
+
+                <!-- 제출 -->
+                <div class="submit_box" id="submit_button">
+                    <!-- <button type="button" class="submit_button" onclick="put_articledetail(1)">수정하기</button>
+                    <button type="button" class="cancel_button">취소</button> -->
+                </div>
+            </div>
+        </div>
+
+
+        <script src="js/article_edit.js"></script>
+</body>
+
+</html>
