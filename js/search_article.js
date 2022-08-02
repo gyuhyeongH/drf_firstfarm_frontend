@@ -11,9 +11,9 @@ const firstTab = new bootstrap.Tab(firstTabEl)
 firstTab.show()
 
 let get_article_button = document.querySelectorAll('.onclick')
-let menu_list = ['', '', '', '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+let menu_list = ['', '', '', '', '', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16']
 
-
+let go_article_detail = document.querySelectorAll('.article')
 
 
 function get_article(choice) {
@@ -23,21 +23,29 @@ function get_article(choice) {
     } else {
         $('.search_box').show()
     }
+    var token = localStorage.getItem("access");
+    console.log(token)
     $.ajax({
         headers: { "choice": choice, "category": category },
         type: "GET",
         url: "http://127.0.0.1:8000/article/",
+        // beforeSend: function (xhr) {
+        //     xhr.setRequestHeader("Content-type", "application/json");
+        //     xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
         data: {},
         success: function (response) {
             $('#get_article').empty();
             for (let i = 0; i < response.length; i++) {
                 console.log(i)
+                let id = response[i]['id']
                 let title = response[i]['title']
                 let location = response[i]['location']
                 let cost = response[i]['cost']
                 let exposure_end_date = response[i]['exposure_end_date'].substr(0, 10)
                 let updated_at = response[i]['updated_at'].substr(0, 10)
-                let temp_article = `<div class="articles">
+                let temp_article = `<a href="/detail/${id}" class="article_link">
+                <div class="articles">
                 <div class="contents">
                     ${location}
                 </div>
@@ -53,7 +61,7 @@ function get_article(choice) {
                 <div class="contents">
                 ${updated_at}
                 </div>
-            </div>`
+            </div></a>`
                 $('#get_article').append(temp_article);
 
             }
