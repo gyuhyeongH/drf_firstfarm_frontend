@@ -15,6 +15,13 @@ UI BASE2
 UI BASE3
 #E0DECA*/
 
+/* 폰트 링크(주아체, 감자꽃체) */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
+*{
+    font-family: 'Gamja Flower', cursive;
+    font-size: 26px;
+}
 
 /*메인*/
 .main_container{
@@ -23,8 +30,8 @@ UI BASE3
 }
 
 .title_box{
-    width: 90%;
-    margin: auto;
+    width: 70%;
+    margin: 90px auto 0 auto;
     height: 50px;
     font-family: 'Noto Serif KR', serif;
     text-align: center;
