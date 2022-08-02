@@ -1,3 +1,96 @@
+$(document).ready(function () {
+  get_articledetail(35);
+});
+
+function get_articledetail(article_id) {
+  // if (localStorage.getItem("payload") != null) {
+  //   const payload = JSON.parse(localStorage.getItem("payload"));
+  // user = payload.user;
+  $.ajax({
+    type: "GET",
+    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    data: {},
+    success: function (response) {
+      let farm_name = response["farm_name"];
+      let title = response["title"];
+      let location = response["location"];
+      let cost = response["cost"];
+      let period = response["period"];
+      let requirement = response["requirement"];
+      let desc = response["desc"];
+      let img1 = response["img1"];
+      let img2 = response["img2"];
+      let img3 = response["img3"];
+      let article_category = response["article_category"];
+
+      let temp_detail_put;
+      let temp_detail_value;
+
+      temp_detail_put = `
+        <button type="button" class="submit_button" onclick="put_articledetail(${article_id})">수정하기</button>
+        <button type="button" class="cancel_button" onclick="history.back()">취소</button>
+        `;
+      $("#submit_button").append(temp_detail_put);
+
+      temp_detail_value = `
+        <div class="category_box">
+          <div class="category_title">카테고리 선택</div>
+          <div class="category_input_box">
+              <button class="category_button" id="category1">체험</button>
+              <button class="category_button" id="category2">근무</button>
+              <input class="category_input" type="text" id="article_category" name="article_category" value="${article_category}">
+          </div>
+        </div>
+        <div class="name_box" id="name">
+            <div class="name_title">농장 이름</div>
+            <div class="name_input_box">
+                <input class="name_input" type="text" id="farm_name" value="${farm_name}">
+            </div>
+        </div>
+        <div class="title_box">
+            <div class="title_title">게시글 제목</div>
+            <div class="title_input_box">
+                <input class="title_input" type="text" id="title" value="${title}">
+            </div>
+        </div>
+        <div class="requirement_box">
+            <div class="requirement_title">모집 요건</div>
+            <div class="requirement_input_box">
+                <input class="requirement_input" type="text" id="requirement" value="${requirement}">
+            </div>
+        </div>
+        <div class="cost_box">
+            <div class="cost_title">금액</div>
+            <div class="cost_input_box">
+                <input class="cost_input" type="text" id="cost" value="${cost}">
+            </div>
+        </div>
+        <div class="period_box">
+            <div class="period_title">활동 기간</div>
+            <div class="period_input_box">
+                <input class="period_input" type="text" id="period" value="${period}">
+            </div>
+        </div>
+        <div class="desc_box">
+            <div class="desc_title">세부 내용</div>
+            <div class="desc_input_box">
+                <input class="desc_input" type="text" id="desc" value="${desc}">
+            </div>
+        </div>
+        <div class="location_box">
+            <div class="location_title">위치</div>
+            <div class="location_input_box">
+                <input class="location_find" type="button" onclick="sample4_execDaumPostcode()"
+                    value="주소 찾기"><br>
+                <input class="location_road" type="text" id="sample4_roadAddress" value="${location}">
+            </div>
+        </div>
+        `;
+      $("#value").append(temp_detail_value);
+    },
+  });
+}
+
 function put_articledetail(article_id, i) {
   let title = $("#edit_title" + i).val();
   let farm_name = $("#edit_farm_name" + i).val();
@@ -29,14 +122,6 @@ function put_articledetail(article_id, i) {
     },
 
     success: function (response) {
-      let temp_detail_put;
-
-      temp_detail_put = `
-            <button type="button" class="submit_button" onclick="put_articledetail()">수정하기</button>
-            <button type="button" class="cancel_button">취소</button>
-            `;
-      $("#submit_button").append(temp_detail_put);
-
       alert("업데이트 완료");
       window.location.reload();
     },
