@@ -16,25 +16,39 @@ UI BASE3
 #E0DECA
 */
 
+
 /*메인*/
 .main_container{
     width: 85%;
     margin: auto;
 }
 
+.title_container{
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 30px;
+    border: none;
+    background-color: #C7D36F;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .top_box{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     width: 100%;
     margin: auto;
-    margin-top: 100px;
-    height: 1200px
+    margin-top: 30px;
 }
 
-/*왼쪽*/
 .top_left{
     width: 50%;
-    height: 1200px;
 }
 
 .category_box{
@@ -60,9 +74,12 @@ UI BASE3
 }
 
 .category_button{
-    font-size: 20px;
-    width: 100px;
+    font-size: 15px;
+    width: 50px;
+    height: 50px;
     margin-right: 20px;
+    border-radius: 50%;
+    border: 0;
 }
 
 
@@ -91,7 +108,7 @@ UI BASE3
 }
 
 .name_input_box{
-    width: 80%;
+    width: 20%;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -99,10 +116,15 @@ UI BASE3
 }
 
 .name_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .title_box{
@@ -129,10 +151,15 @@ UI BASE3
 }
 
 .title_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 
@@ -160,10 +187,15 @@ UI BASE3
 }
 
 .requirement_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .cost_box{
@@ -182,7 +214,7 @@ UI BASE3
 }
 
 .cost_input_box{
-    width: 80%;
+    width: 20%;
     height: 100px;
     display: flex;
     justify-content: center;
@@ -190,10 +222,15 @@ UI BASE3
 }
 
 .cost_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .period_box{
@@ -220,10 +257,15 @@ UI BASE3
 }
 
 .period_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .desc_box{
@@ -250,10 +292,15 @@ UI BASE3
 }
 
 .desc_input{
-    width: 99%;
+    width: 100%;
     height: 30px;
-    font-size: 20px;
-    border-radius: 3px;
+    font-size: 15px;
+
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
 }
 
 .location_box{
@@ -287,32 +334,27 @@ UI BASE3
 }
 
 .location_find{
-    border: none;
+    width: 100px;
+    height: 30px;
     background-color: #FCF9C6;
     font-size: 15px;
-    width: 80px;
-    height: 25px;
+    border: 0;
+    border-radius: 15px;
 }
 
 .location_road{
     border: none;
     width: 800px;
-    height: 20px;
+    height: 30px;
+    font-size: 15px;
 }
 
-
-
-/*오른쪽*/
-.top_right{
-    width: 40%;
-    margin-left: 10%;
-    margin-top: 120px;
-    height: 500px;
-}
-
+/* 이미지 */
 .file_upload_container{
     display: flex;
-    width: 400px;
+    justify-content: center;
+    margin: auto;
+    width: 1300px;
     overflow: auto;
 }
 
@@ -321,7 +363,7 @@ UI BASE3
     width: 400px;
     height: 400px;
     display: flex;
-    margin-right: 30px;
+    margin: 10px    ;
 }
 
 .img_read{
@@ -387,7 +429,10 @@ UI BASE3
 
 /* 요청 */
 .submit_box{
-    margin-top: 180px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .submit_button{
@@ -399,7 +444,20 @@ UI BASE3
     color: white;
     background-color: #C7D36F;
 }
-
 .submit_button:hover{
+    cursor: pointer;
+}
+
+.cancel_button{
+    border: none;
+    border-radius: 3px;
+    width: 60px;
+    height: 30px;
+    font-size: 20px;
+    color: black;
+    background-color: rgb(233, 233, 233);
+    margin-left: 10px;
+}
+.cancel_button:hover{
     cursor: pointer;
 }

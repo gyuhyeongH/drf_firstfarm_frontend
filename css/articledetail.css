@@ -31,7 +31,6 @@ UI BASE3
     font-size: 28px;
     color: white;
     margin-bottom: 30px;
-
     border: none;
     background-color: #C7D36F;
 }
@@ -39,14 +38,16 @@ UI BASE3
 .main_box{
     width: 90%;
     margin: auto;
-    height: 650px;
-
     display: flex;
-}
+    flex-direction: column;
+}   
 
 .left_box{
-    width: 35%;
-    height: 600px;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .left_img_box{
@@ -56,7 +57,7 @@ UI BASE3
 }
 
 .left_name_box{
-    margin-top: 5px;
+    margin-top: 20px;
     width: 400px;
     height: 50px;
     text-align: center;
@@ -94,61 +95,30 @@ UI BASE3
     font-size: 18px;
 }
 
-/*버튼*/
-.user_button_box{
-    width: 400px;
-    display: flex;
-}
-
-.roadmap_btn{
-    font-size: 17px;
-    width: 80px;
-    height: 20;
-}
-
-.apply_btn{
-    font-size: 17px;
-    width: 80px;
-    height: 20;
-    margin-left: 10px;
-}
-
-.farm_button_box{
-    margin-left: 20px;
-}
-
-.edit_btn{
-    font-size: 17px;
-    width: 80px;
-    height: 20;
-}
-
-.end_btn{
-    font-size: 17px;
-    width: 80px;
-    height: 20;
-    margin-left: 5px;
-}
 
 
 /*오른쪽 메인*/
 .right_box{
-    margin-left: 10%;
-    width: 55%;
-    height: 600px;
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .right_rank-intro_box{
     display: flex;
+    flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 50px;
+    width: 500px;
+    height: 100px;
     font-size: 20px;
     text-align: left;
 }
 
 .right_rank-intro_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_rank-intro_title_button{
@@ -156,22 +126,23 @@ UI BASE3
 }
 
 .right_rank-intro_content{
-    width: 87%;
-    margin-left: 3%;
+    width: 90%;
     font-size: 20px;
+    text-align: center;
 }
 
 .right_period_box{
-    width: 100%;
-    height: 50px;
-    margin-top: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .right_period_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_period_title_button{
@@ -179,21 +150,23 @@ UI BASE3
 }
 
 .right_period_content{
-    width: 87%;
+    width: 90%;
     margin-left: 3%;
     font-size: 20px;
 }
 
 .right_location_box{
-    width: 100%;
-    height: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    text-align: left;
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .right_location_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_location_title_button{
@@ -201,21 +174,23 @@ UI BASE3
 }
 
 .right_location_content{
-    width: 87%;
+    width: 90%;
     margin-left: 3%;
     font-size: 20px;
 }
 
 .right_requirement_box{
-    width: 100%;
-    height: 50px;
-    text-align: left;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .right_requirement_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_requirement_title_button{
@@ -223,21 +198,23 @@ UI BASE3
 }
 
 .right_requirement_content{
-    width: 87%;
+    width: 90%;
     margin-left: 3%;
     font-size: 20px;
 }
 
 .right_cost_box{
-    width: 100%;
-    height: 50px;
-    text-align: left;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 500px;
+    height: 100px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .right_cost_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_cost_title_button{
@@ -245,21 +222,23 @@ UI BASE3
 }
 
 .right_cost_content{
-    width: 87%;
+    width: 90%;
     margin-left: 3%;
     font-size: 20px;
 }
 
 .right_desc_box{
-    width: 100%;
-    height: 290px;
-    text-align: left;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    width: 500px;
+    height: 300px;
+    font-size: 20px;
+    text-align: center;
 }
 
 .right_desc_title{
-    width: 10%;
+    margin-bottom: 10px;
 }
 
 .right_desc_title_button{
@@ -267,31 +246,121 @@ UI BASE3
 }
 
 .right_desc_content{
-    width: 87%;
+    width: 90%;
+    height: 250px;
     margin-left: 3%;
-    font-size: 20px;
+    font-size: 15px;
+    border: 2px solid #C7D36F;
 }
 
+/*버튼*/
+.user_button_box{
+    width: 90%;
+    padding: 20px 0 20px 0;
+    margin: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.roadmap_btn{
+    width: 70px;
+    margin-bottom: 10px;
+}
+.roadmap_btn:hover{
+    cursor: pointer;
+}
+
+.apply_btn{
+    width: 70px;
+    margin-bottom: 10px;
+}
+.apply_btn:hover{
+    cursor: pointer;
+}
+
+.farm_button_box{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.edit_btn{
+    margin-right: 10px;
+}
+
+.edit_btn_word{
+    text-decoration-line: none;
+    color: inherit;
+}
+
+.edit_btn:hover{
+    cursor: pointer;
+}
+
+.end_btn{
+
+}
+.end_btn:hover{
+    cursor: pointer;
+}
+
+/* 지도 */
+.map{
+    margin: auto;
+}
 
 /*리뷰*/
 
 .review_image_container{
-    width: 90%;
+    margin-top: 30px;
+    position: relative;
+    width: 990px;
     margin: auto;
-    height: 400px;
+    height: 300px;
+    overflow: hidden;
+    
 }
 
-.review_image_box{
-    width: 90%;
-    margin: auto;
+.reviewslides{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: left 0.5s ease-out;
+    height: 300px;
 }
 
+.reviewslides li:not(:last-child){
+    float: left;
+    margin-right: 30px;
+
+}
+
+.controls{
+    text-align: center;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back{
+    margin-right: 10px;
+}
+
+.go{
+    margin-right: 10px;
+}
 
 .review_container{
     width: 90%;
-    height: 500px;
     margin: auto;
+    margin-top: 30px;
 }
 
 .review_box{
@@ -299,7 +368,7 @@ UI BASE3
     align-items: center;
     width: 100%;
     height: 50px;
-    margin-top: 8px;
+    margin-bottom: 20px;
     font-size: 18px;
     border-radius: 5px;
     border: solid 2px #C7D36F;
@@ -326,83 +395,84 @@ UI BASE3
 }
 
 
-/* 리뷰 이미지 */
+/* 슬라이드 이미지 */
 li{
     list-style-type: none;
-  }
+}
   
-  /* 보여줄 구간의 높이와 넓이 설정 */
-  #slideShow{
-    width: 100%;
-    height: 300px;
-    position: relative;
-    /* margin: 50px auto; */
-    overflow: hidden;   
-    /*리스트 형식으로 이미지를 일렬로 
-    정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
-    hidden으로 숨겨줘야됨*/
-  }
-  
-  
-  .slides{
-    display: flex;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2500px; /* 슬라이드할 사진과 마진 총 넓이 */
-    transition: left 0.5s ease-out; 
-    /*ease-out: 처음에는 느렸다가 점점 빨라짐*/
-  }
-  
-  /* 첫 번째 슬라이드 가운데에 정렬하기위해
-  첫번째 슬라이드만 margin-left조정 */
-  .slides li:first-child{
-    margin-left: 0px;
-  }
-  
-  /* 슬라이드들 옆으로 정렬 */
-  .slides li:not(:last-child){
-    float: left;
-    margin: 0 100px 0 100px;
-  }
-  
-  .slides li{
-    float: left;
-  }
-  
-  .controller span{
-    position:absolute;
-    background-color: transparent;
-    color: black;
-    text-align: center;
-    border-radius: 50%;
-    padding: 10px 20px;
-    top: 50%;
-    font-size: 1.3em;
-    cursor: pointer;
-  }
-  
-  /* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
-  .controller span:hover{
-    background-color: rgba(128, 128, 128, 0.11);
-  }
-  
-  .prev{
-    left: 10px;
-  }
-  
-  /* 이전 화살표에 마우스 커서가 올라가 있을때 
-  이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
-  .prev:hover{
-    transform: translateX(-10px);
-  }
-  
-  .next{
-    right: 10px;
-  }
-  
-  /* 다음 화살표에 마우스 커서가 올라가 있을때 
-  이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
-  .next:hover{
-    transform: translateX(10px);
-  }
+/* 보여줄 구간의 높이와 넓이 설정 */
+#slideShow{
+width: 400px;
+height: 330px;
+position: relative;
+margin-top: 30px;
+overflow: hidden;   
+/*리스트 형식으로 이미지를 일렬로 
+정렬할 것이기 때문에, 500px 밖으로 튀어 나간 이미지들은
+hidden으로 숨겨줘야됨*/
+}
+
+
+.slides{
+display: flex;
+position: absolute;
+left: 0;
+top: 0;
+/* width: 100px; */
+/* 슬라이드할 사진과 마진 총 넓이 */
+transition: left 0.5s ease-out; 
+/*ease-out: 처음에는 느렸다가 점점 빨라짐*/
+}
+
+/* 첫 번째 슬라이드 가운데에 정렬하기위해
+첫번째 슬라이드만 margin-left조정 */
+.slides li:first-child{
+margin-left: 10px;
+}
+
+/* 슬라이드들 옆으로 정렬 */
+.slides li:not(:last-child){
+float: left;
+margin-right: 90px;
+}
+
+.slides li{
+float: left;
+}
+
+.controller span{
+position:absolute;
+background-color: transparent;
+color: black;
+text-align: center;
+border-radius: 50%;
+padding: 10px 20px;
+top: 50%;
+font-size: 1.3em;
+cursor: pointer;
+}
+
+/* 이전, 다음 화살표에 마우스 커서가 올라가 있을때 */
+.controller span:hover{
+background-color: rgba(128, 128, 128, 0.11);
+}
+
+.prev{
+left: 10px;
+}
+
+/* 이전 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 왼쪽으로 이동하는 효과*/
+.prev:hover{
+transform: translateX(-10px);
+}
+
+.next{
+right: 10px;
+}
+
+/* 다음 화살표에 마우스 커서가 올라가 있을때 
+이전 화살표가 살짝 오른쪽으로 이동하는 효과*/
+.next:hover{
+transform: translateX(10px);
+}

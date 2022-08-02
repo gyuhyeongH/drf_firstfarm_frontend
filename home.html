@@ -9,11 +9,17 @@
 </head>
 
 <body>
+    <div>
+        <label>환영합니다.<span id="username"></span>님</label>
+    </div>
     <button type="button" id="loginout" onclick="handle_logout()">
         Logout
     </button>
+    <button type="button" id="profile_put" onclick="handle_profile_put()">
+        개인정보 수정
+    </button>
 
-    <script src="./js/api.js"></script>
+    <script src="./js/auth.js"></script>
 </body>
 
 </html>
