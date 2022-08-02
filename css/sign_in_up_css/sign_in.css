@@ -1,15 +1,19 @@
+/* 폰트 링크(주아체, 감자꽃체) */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
 /* 레이아웃 틀 */
 html {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #FCF8E8;
 }
 
 body {
     margin: 0;
     height: 100%;
     background: #f5f6f7;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    font-family: 'Gamja Flower', cursive;
 }
 #logo {
     width: 240px;
@@ -19,7 +23,7 @@ body {
 
 #header {
     position: relative;
-    padding-top: 100px;
+    padding-top: 130px;
     padding-bottom: 20px;
     text-align: center;
 }
@@ -27,14 +31,20 @@ body {
     position: relative;
     min-height: 100vh;
     width: 100%;
+    /* margin: 0px auto 0 auto; */
+    margin: auto;
+    background-color: #FCF8E8;
+    font-family: 'Gamja Flower', cursive;
 }
+
 
 #content {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
     width: 460px;
-    padding-bottom: 100px; /* footer의 height값과 동일 */
+    /* padding-bottom: 100px; */
+     /* footer의 height값과 동일 */
 }
 
 footer {
@@ -106,7 +116,8 @@ h3 {
     height: 29px;
     border: none;
     background: #fff;
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 24px;
 }
 
 input {
@@ -206,17 +217,28 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 30px 0 20px 0;
 }
 
 #btnJoin {
     width: 100%;
-    padding: 21px 0 17px;
+    height: 60px;
+    /* padding: 21px 0 17px; */
     border: 0;
     cursor: pointer;
     color: #fff;
     background-color: #9EB23B;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: bold;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+    border-radius: 15px;
+}
+
+.service_btn {
+    text-align: center;
+}
+
+.service_btn a {
+    font-weight: bold;
+    color: #808080;
 }
