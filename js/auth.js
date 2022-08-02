@@ -1,38 +1,55 @@
 const backend_base_url = "http://127.0.0.1:8000";
 const frontend_base_url = "http://127.0.0.1:5500";
 
-var yy = document.querySelector("#yy");
-var mm = document.querySelector("#mm");
-var dd = document.querySelector("#dd");
 
+// 카테고리 토글
+var category_btn = document.getElementsByClassName("category_btn");
+var user_category_value = document.getElementById("category_value")
 
+// 회원가입
 async function handle_signup() {
-  const signupData = {
-    // 필수 사항
-    username: document.getElementById("id").value,
-    password: document.getElementById("pswd1").value,
-    email: document.getElementById("email").value,
-    user_category: 2,
-    // 세부 사항
-    userprofile: {
-      fullname: document.getElementById("fullname").value,
-      gender: document.getElementById("gender").value,
-      birthday: (yy.value + "-" + mm.value + "-" + dd.value),
-      age: document.getElementById("age").innerText,
-      phone_number: document.getElementById("phone_number").value,
-      location: document.getElementById("locations").value,
-      introduction: document.getElementById("introduction").value,
-      prefer: document.getElementById("prefer").value,
-    }
-  };
+  const username = document.getElementById("id").value
+  const password = document.getElementById("pswd1").value
+  const email = document.getElementById("email").value
+  // const user_category_value = document.getElementById("category_value").value
+
+  const yy = document.querySelector("#yy");
+  const mm = document.querySelector("#mm");
+  const dd = document.querySelector("#dd");
+  
+  const input_img = document.getElementById("input_img").files[0]
+  
+  const signupData = new FormData();
+
+  if (input_img !== undefined) {
+    console.log(input_img)
+    signupData.append('img', input_img);
+  }
+  
+  const userprofile = JSON.stringify({
+      'fullname': document.getElementById("fullname").value,
+      'gender': document.getElementById("gender").value,
+      'birthday': (yy.value + "-" + mm.value + "-" + dd.value),
+      'age': document.getElementById("age").innerText,
+      'phone_number': document.getElementById("phone_number").value,
+      'location': document.getElementById("locations").innerText,
+      'introduction': document.getElementById("introduction").value,
+      'prefer': document.getElementById("prefer").value,
+  })
+  
+  signupData.append('username', username);
+  signupData.append('password', password);
+  signupData.append('email', email);
+  signupData.append('user_category', user_category_value);
+  signupData.append('userprofile', userprofile);
+  signupData.append('img', input_img);
 
   const response = await fetch(`${backend_base_url}/user/`, {
     headers: {
       Accept: "application/json",
-      "Content-type": "application/json",
     },
     method: "POST",
-    body: JSON.stringify(signupData),
+    body: signupData,
   });
 
   response_json = await response.json();
@@ -40,12 +57,24 @@ async function handle_signup() {
   if (response.status == 200) {
     window.location.replace(`${frontend_base_url}/signin.html`);
     alert("회원가입이 정상적으로 완료되었습니다.")
-  } else {
-    alert(response.status);
+  }
+  else if (response_json['username']) {
+    alert("사용중인 아이디 입니다.\n 다시 확인해주세요.")
+  }
+  else if (response_json['email']) {
+    alert("사용중인 이메일이거나 이메일 형식이 맞지 않습니다.\n 다시 확인해주세요.")
+  }
+  else if (response_json['userprofile']) {
+    alert("사용중인 전화번호 입니다.\n 다시 확인해주세요.")
+  }
+  else if (response.status == 400){
+    alert("필수 항목을 입력해주세요.");
+    console.log(response_json)
   }
 }
 
 
+// 로그인
 async function handle_signin() {
   console.log("handle_signin()");
 
@@ -86,21 +115,46 @@ async function handle_signin() {
     window.location.replace(`${frontend_base_url}/home.html`);
   } else {
     // alert(response.status);
-    alert("아이디 또는 비밀번호를 잘못 입력했습니다.");
+    alert("아이디 또는 비밀번호를 확인해주세요.");
   }
 }
 
 
+// nav 로그아웃 활성화/비활성화
+window.onload = async function checkLogin() {
+  var payload = localStorage.getItem("payload")
+  var parsed_payload = await JSON.parse(payload)
+
+  const username = document.getElementById("username")
+  const loginoutButton = document.getElementById("loginout")
+
+  if (parsed_payload) {
+    username.innerText = parsed_payload.fullname
+    loginoutButton.innerText = "로그아웃"
+    loginoutButton.setAttribute("onclick", "handle_logout()")
+  }
+  else {
+    console.log(loginoutButton)
+    username.innerText = "로그인해주세요"
+    loginoutButton.innerText = "로그인"
+    loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
+  }
+}
+
+
+// 로그아웃
 async function handle_logout() {
   localStorage.removeItem("access");
   localStorage.removeItem("refresh");
   localStorage.removeItem("payload");
   alert("로그아웃 되었습니다.");
-  window.location.replace(`${frontend_base_url}/signin.html`);
+  // window.location.replace(`${frontend_base_url}/signin.html`);
+  location.reload()
 }
 
 
-function sample4_execDaumPostcode() {
+// 지역 주소 지정
+function serch_loaction() {
   new daum.Postcode({
     oncomplete: function (data) {
       // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -122,8 +176,90 @@ function sample4_execDaumPostcode() {
         extraRoadAddr = ' (' + extraRoadAddr + ')';
       }
       // 도로명 주소 정보를 해당 필드에 넣는다.
-      document.getElementById("sample4_roadAddress").value = roadAddr;
-      roadAddr.innerHTML = document.querySelector("#sample4_roadAddress");;
+      // document.getElementById("locations").value = roadAddr;
+
+      var location_result = document.querySelector("#locations");
+      location_result.innerHTML = roadAddr;
     }
   }).open();
 }
+
+// 프로필 이미지 업로드
+function getImageFiles(e) {
+  const uploadFiles = [];
+  const files = e.currentTarget.files;
+  const imagePreview = document.querySelector('.box_img');
+  const docFrag = new DocumentFragment();
+
+  // console.log(files)
+
+  if ([...files].length >= 2) {
+    alert('이미지는 1개만 업로드가 가능합니다.');
+    return;
+  }
+
+  // 파일 타입 검사
+  [...files].forEach(file => {
+    if (!file.type.match("image/.*")) {
+      alert('이미지 파일만 업로드가 가능합니다.');
+      return
+    }
+
+    // 파일 갯수 검사
+    if ([...files].length < 2) {
+      uploadFiles.push(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const preview = createElement(e, file);
+        imagePreview.appendChild(preview);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+}
+
+function createElement(e, file) {
+  var new_img = document.querySelector('#default_img');
+  new_img.setAttribute('src', e.target.result);
+  new_img.setAttribute('data-file', file.name);
+
+  // console.log(new_img)
+  
+  return new_img;
+}
+
+const realUpload = document.querySelector('.img_find');
+const upload = document.querySelector('.upload');
+
+upload.addEventListener('click', () => realUpload.click());
+realUpload.addEventListener('change', getImageFiles);
+
+
+// 카테고리 토글
+function handleClick(event) {
+  user_category_value = event.target.value;
+
+  console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+
+  // console.log(event.target.classList);
+
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < category_btn.length; i++) {
+      category_btn[i].classList.remove("clicked");
+    }
+
+    event.target.classList.add("clicked");
+  }
+}
+
+function init() {
+  for (var i = 0; i < category_btn.length; i++) {
+    category_btn[i].addEventListener("click", handleClick);
+  }
+}
+
+init();

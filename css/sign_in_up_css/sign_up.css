@@ -197,7 +197,7 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 30px 0 20px;
 }
 
 #btnJoin {
@@ -208,6 +208,66 @@ select {
     color: #fff;
     background-color: #9EB23B;
     font-size: 20px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+#btnJoin_location {
+    width: 100%;
+    padding: 15px 0 11px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9EB23B;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+.box_container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 240px;
+}
+
+.box_img {
+    width: 150px;
+    height: 150px;
+
+    display: block;
+    position: relative;
+    
+    /* border-radius: 70%; */
+    overflow: hidden;
+}
+
+.int_img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.img_btn_container {
+    width: 20%;
+    height: 30px;
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+#btnJoin_img {
+  width: 100%;
+  height: 85%;
+    /* padding: 15px 0 11px; */
+    padding: 10px 0 0 0;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9EB23B;
+    font-size: 14px;
     font-weight: bold;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
@@ -223,89 +283,51 @@ select {
     color: rgb(121, 121, 121);
 }
 
+.clicked{
+  /* background-color: rgba(128, 128, 0, 0.7 ); */
+  background-color: #FCF9C6;
+  /* color: white; */
+  font-weight: bold;
+  font-size: 15px;
+}
 
-/* 라디오 버튼 스타일 */
-@import url(https://fonts.googleapis.com/css?family=Lato:300,400,900);
 .category {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.button-wrap {
-  position: relative;
-  text-align: center;
-  top: 50%;
-  margin-top: -2.5em;
-}
-@media (max-width: 40em) {
-  .button-wrap {
-    margin-top: -1.5em;
-  }
+.category button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 160px;
+  height: 50px;
+
+  margin: 0 10px 0 10px;
+
+  border-radius: 5px;
+  border: 2px solid #9EB23B;
+  /* background-color: rgba(0,0,0,0); */
+  color: #9EB23B;
+  
+  padding: 5px;
+
+  font-weight: bold;
 }
 
-.button-label {
-  display: inline-block;
-  padding: 1em 2em;
-  margin: 0.5em;
-  cursor: pointer;
-  color: #292929;
-  border-radius: 0.25em;
-  background: #efefef;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
-  transition: 0.3s;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.button-label h1 {
-  font-size: 1em;
-  font-family: "Lato", sans-serif;
-}
-.button-label:hover {
-  background: #d6d6d6;
-  color: #101010;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.32);
-}
-.button-label:active {
-  transform: translateY(2px);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0px -1px 0 rgba(0, 0, 0, 0.22);
-}
-@media (max-width: 40em) {
-  .button-label {
-    padding: 0em 1em 3px;
-    margin: 0.25em;
-  }
+.category button:hover{
+  color:white;
+  font-weight: bold;
+  background-color: #9EB23B;
 }
 
-#yes-button:checked + .button-label {
-  background: #2ECC71;
-  color: #efefef;
-}
-#yes-button:checked + .button-label:hover {
-  background: #29b765;
-  color: #e2e2e2;
+.service_btn {
+    text-align: center;
 }
 
-#no-button:checked + .button-label {
-  background: #D91E18;
-  color: #efefef;
-}
-#no-button:checked + .button-label:hover {
-  background: #c21b15;
-  color: #e2e2e2;
-}
-
-#maybe-button:checked + .button-label {
-  background: #4183D7;
-  color: #efefef;
-}
-#maybe-button:checked + .button-label:hover {
-  background: #2c75d2;
-  color: #e2e2e2;
-}
-
-.hidden {
-  display: none;
+.service_btn a {
+    font-weight: bold;
+    color: #808080;
 }
