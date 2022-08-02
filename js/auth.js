@@ -17,8 +17,6 @@ async function handle_signup() {
   const mm = document.querySelector("#mm");
   const dd = document.querySelector("#dd");
   
-  console.log(user_category_value)
-
   const input_img = document.getElementById("input_img").files[0]
   
   const signupData = new FormData();
