@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  get_articledetail(36);
+  get_articledetail(35);
 });
 
 function get_articledetail(article_id) {
@@ -38,6 +38,7 @@ function get_articledetail(article_id) {
       let temp_detail_reviewbox;
       let temp_detail_userbutton;
       let temp_detail_farmbutton;
+      let temp_detail_reviewimg;
 
       // if (localStorage.getItem("payload") != null) { }
       //   if ((user_id == user)) { }
@@ -51,7 +52,7 @@ function get_articledetail(article_id) {
 
       temp_detail_img = `
         <ul class="slides">
-            <li><img src="${img1}" width="300" height="300" alt=""></li>
+            <li><img src="img/test.jpeg" width="300" height="300" alt=""></li>
             <li><img src="${img2}" width="300" height="300" alt=""></li>
             <li><img src="${img3}" width="300" height="300" alt=""></li>
         </ul>
@@ -61,6 +62,42 @@ function get_articledetail(article_id) {
         </p>
         `;
       $("#slideShow").append(temp_detail_img);
+
+      // 게시글 이미지 슬라이드
+      const slides = document.querySelector(".slides"); //전체 슬라이드 컨테이너
+      const slideImg = document.querySelectorAll(".slides li"); //모든 슬라이드들
+      let currentIdx = 0; //현재 슬라이드 index
+      const slideCount = slideImg.length; // 슬라이드 개수
+      const prev = document.querySelector(".prev"); //이전 버튼
+      const next = document.querySelector(".next"); //다음 버튼
+      const slideWidth = 300; //한개의 슬라이드 넓이
+      const slideMargin = 100; //슬라이드간의 margin 값
+
+      //전체 슬라이드 컨테이너 넓이 설정
+      slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
+
+      function moveSlide(num) {
+        slides.style.left = -num * 390 + "px";
+        currentIdx = num;
+      }
+
+      prev.addEventListener("click", function () {
+        /*첫 번째 슬라이드로 표시 됐을때는 
+        이전 버튼 눌러도 아무런 반응 없게 하기 위해 
+        currentIdx !==0일때만 moveSlide 함수 불러옴 */
+
+        if (currentIdx !== 0) moveSlide(currentIdx - 1);
+      });
+
+      next.addEventListener("click", function () {
+        /* 마지막 슬라이드로 표시 됐을때는 
+        다음 버튼 눌러도 아무런 반응 없게 하기 위해
+        currentIdx !==slideCount - 1 일때만 
+        moveSlide 함수 불러옴 */
+        if (currentIdx !== slideCount - 1) {
+          moveSlide(currentIdx + 1);
+        }
+      });
 
       temp_detail_topbox = `
       <div class="left_name_box">
@@ -132,10 +169,56 @@ function get_articledetail(article_id) {
       $("#user_button").append(temp_detail_userbutton);
 
       temp_detail_farmbutton = `
-        <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html/${article_id}">수정하기</a></button>
+        <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html">수정하기</a></button>
         <button class="end_btn" onclick="delete_articledetail(${article_id})"> 모집마감</button>
       `;
       $("#farm_button").append(temp_detail_farmbutton);
+
+      temp_detail_reviewimg = `
+        <ul class="reviewslides">
+            <li><img src="img/test1.jpeg" width="300px" height="300px" alt=""></li>
+            <li><img src="img/test.jpeg" width="300px" height="300px" alt=""></li>
+            <li><img src="img/test2.jpeg" width="300px" height="300px" alt=""></li>
+            <li><img src="img/test3.jpeg" width="300px" height="300px" alt=""></li>
+        </ul>
+      `;
+      $("#reviewimg").append(temp_detail_reviewimg);
+
+      //리뷰 이미지 슬라이드
+      var reviewslides = document.querySelector(".reviewslides"),
+        reviewslide = document.querySelectorAll(".reviewslides li"),
+        reviewcurrentIdx = 0,
+        reviewslideCount = reviewslide.length,
+        backBtn = document.querySelector(".back"),
+        reviewslideWidth = 300,
+        reviewslideMargin = 30,
+        goBtn = document.querySelector(".go");
+
+      reviewslides.style.width =
+        (reviewslideWidth + reviewslideMargin) * reviewslideCount -
+        reviewslideMargin +
+        "px";
+
+      function reviewmoveSlide(num) {
+        reviewslides.style.left = -num * 330 + "px";
+        reviewcurrentIdx = num;
+      }
+
+      backBtn.addEventListener("click", function () {
+        if (reviewcurrentIdx > 0) {
+          reviewmoveSlide(reviewcurrentIdx - 1);
+        } else {
+          reviewmoveSlide(reviewslideCount - 3);
+        }
+      });
+
+      goBtn.addEventListener("click", function () {
+        if (reviewcurrentIdx < reviewslideCount - 3) {
+          reviewmoveSlide(reviewcurrentIdx + 1);
+        } else {
+          reviewmoveSlide(0);
+        }
+      });
     },
   });
 }
@@ -152,7 +235,7 @@ function post_article_apply(article_id) {
 
   $.ajax({
     type: "POST",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    url: "http://127.0.0.1:8000/article/detail/apply/" + article_id,
     data: form_data,
     cache: false,
     contentType: false,
@@ -185,41 +268,3 @@ function delete_articledetail(article_id) {
     },
   });
 }
-
-// 이미지 슬라이드
-const slides = document.querySelector(".slides"); //전체 슬라이드 컨테이너
-const slideImg = document.querySelectorAll(".slides li"); //모든 슬라이드들
-let currentIdx = 0; //현재 슬라이드 index
-const slideCount = slideImg.length; // 슬라이드 개수
-const prev = document.querySelector(".prev"); //이전 버튼
-const next = document.querySelector(".next"); //다음 버튼
-const slideWidth = 300; //한개의 슬라이드 넓이
-const slideMargin = 100; //슬라이드간의 margin 값
-
-//전체 슬라이드 컨테이너 넓이 설정
-slides.style.width = (slideWidth + slideMargin) * slideCount + "px";
-
-function moveSlide(num) {
-  slides.style.left = -num * 390 + "px";
-  currentIdx = num;
-}
-
-prev.addEventListener("click", function () {
-  /*첫 번째 슬라이드로 표시 됐을때는 
-  이전 버튼 눌러도 아무런 반응 없게 하기 위해 
-  currentIdx !==0일때만 moveSlide 함수 불러옴 */
-
-  if (currentIdx !== 0) moveSlide(currentIdx - 1);
-});
-
-next.addEventListener("click", function () {
-  /* 마지막 슬라이드로 표시 됐을때는 
-  다음 버튼 눌러도 아무런 반응 없게 하기 위해
-  currentIdx !==slideCount - 1 일때만 
-  moveSlide 함수 불러옴 */
-  if (currentIdx !== slideCount - 1) {
-    moveSlide(currentIdx + 1);
-  }
-});
-
-//길찾기

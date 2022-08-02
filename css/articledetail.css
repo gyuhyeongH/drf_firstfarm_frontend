@@ -315,15 +315,46 @@ UI BASE3
 /*리뷰*/
 
 .review_image_container{
-    width: 100%;
-    margin: auto;
     margin-top: 30px;
+    position: relative;
+    width: 990px;
+    margin: auto;
+    height: 300px;
+    overflow: hidden;
+    
 }
 
-.review_image_box{
-    width: 90%;
-    margin: auto;
-    /* margin-top: 30px; */
+.reviewslides{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: left 0.5s ease-out;
+    height: 300px;
+}
+
+.reviewslides li:not(:last-child){
+    float: left;
+    margin-right: 30px;
+
+}
+
+.controls{
+    text-align: center;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back{
+    margin-right: 10px;
+}
+
+.go{
+    margin-right: 10px;
 }
 
 .review_container{
