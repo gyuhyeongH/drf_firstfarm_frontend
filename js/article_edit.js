@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  get_articledetail(35);
+  get_articledetail(43);
 });
 
 function get_articledetail(article_id) {
@@ -23,14 +23,7 @@ function get_articledetail(article_id) {
       let img3 = response["img3"];
       let article_category = response["article_category"];
 
-      let temp_detail_put;
       let temp_detail_value;
-
-      temp_detail_put = `
-        <button type="button" class="submit_button" onclick="put_articledetail(${article_id})">수정하기</button>
-        <button type="button" class="cancel_button" onclick="history.back()">취소</button>
-        `;
-      $("#submit_button").append(temp_detail_put);
 
       temp_detail_value = `
         <div class="category_box">
@@ -44,37 +37,37 @@ function get_articledetail(article_id) {
         <div class="name_box" id="name">
             <div class="name_title">농장 이름</div>
             <div class="name_input_box">
-                <input class="name_input" type="text" id="farm_name" value="${farm_name}">
+                <input class="name_input" type="text" id="edit_farm_name" value="${farm_name}">
             </div>
         </div>
         <div class="title_box">
             <div class="title_title">게시글 제목</div>
             <div class="title_input_box">
-                <input class="title_input" type="text" id="title" value="${title}">
+                <input class="title_input" type="text" id="edit_title" value="${title}">
             </div>
         </div>
         <div class="requirement_box">
             <div class="requirement_title">모집 요건</div>
             <div class="requirement_input_box">
-                <input class="requirement_input" type="text" id="requirement" value="${requirement}">
+                <input class="requirement_input" type="text" id="edit_requirement" value="${requirement}">
             </div>
         </div>
         <div class="cost_box">
             <div class="cost_title">금액</div>
             <div class="cost_input_box">
-                <input class="cost_input" type="text" id="cost" value="${cost}">
+                <input class="cost_input" type="text" id="edit_cost" value="${cost}">
             </div>
         </div>
         <div class="period_box">
             <div class="period_title">활동 기간</div>
             <div class="period_input_box">
-                <input class="period_input" type="text" id="period" value="${period}">
+                <input class="period_input" type="text" id="edit_period" value="${period}">
             </div>
         </div>
         <div class="desc_box">
             <div class="desc_title">세부 내용</div>
             <div class="desc_input_box">
-                <input class="desc_input" type="text" id="desc" value="${desc}">
+                <input class="desc_input" type="text" id="edit_desc" value="${desc}">
             </div>
         </div>
         <div class="location_box">
@@ -85,25 +78,36 @@ function get_articledetail(article_id) {
                 <input class="location_road" type="text" id="sample4_roadAddress" value="${location}">
             </div>
         </div>
+        <div class="submit_box" id="submit_button">
+            <button type="button" class="submit_button" onclick="put_articledetail(${article_id})">수정하기</button>
+            <button type="button" class="cancel_button" onclick="history.back()">취소</button>
+        </div>
         `;
       $("#value").append(temp_detail_value);
+
     },
   });
 }
 
-function put_articledetail(article_id, i) {
-  let title = $("#edit_title" + i).val();
-  let farm_name = $("#edit_farm_name" + i).val();
-  let location = $("#edit_location" + i).val();
-  let cost = $("#edit_cost" + i).val();
-  let period = $("#edit_period" + i).val();
-  let requirement = $("#edit_requirement" + i).val();
-  let desc = $("#edit_desc" + i).val();
-  let img1 = $("#edit_img1" + i).val();
-  let img2 = $("#edit_img2" + i).val();
-  let img3 = $("#edit_img3" + i).val();
-  let article_category = $("#edit_" + i).val();
+function put_articledetail(article_id) {
+  let title = $("#edit_title").val();
+  let farm_name = $("#edit_farm_name").val();
+  let location = $("#sample4_roadAddress").val();
+  let cost = $("#edit_cost").val();
+  let period = $("#edit_period").val();
+  let requirement = $("#edit_requirement").val();
+  let desc = $("#edit_desc").val();
+  let img1 = $("#img")[0].files[0];
+  let img2 = $("#img2")[0].files[0];
+  let img3 = $("#img3 ")[0].files[0];
+  let article_category = $("#articlecategory").val();
 
+  let form_data = new FormData();
+
+  form_data.append("img1", img1);
+  form_data.append("img2", img2);
+  form_data.append("img3", img3);
+  
   $.ajax({
     type: "PUT",
     url: "http://127.0.0.1:8000/article/detail/" + article_id,
@@ -115,9 +119,9 @@ function put_articledetail(article_id, i) {
       period: period,
       requirement: requirement,
       desc: desc,
-      img1: img1,
-      img2: img2,
-      img3: img3,
+      // img1: img1,
+      // img2: img2,
+      // img3: img3,
       article_category: article_category,
     },
 

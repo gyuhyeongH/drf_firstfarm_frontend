@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  get_articledetail(35);
+  get_articledetail(1);
 });
 
 function get_articledetail(article_id) {
