@@ -444,6 +444,9 @@ UI BASE3
     color: white;
     background-color: #C7D36F;
 }
+.submit_button:hover{
+    cursor: pointer;
+}
 
 .cancel_button{
     border: none;
@@ -455,7 +458,6 @@ UI BASE3
     background-color: rgb(233, 233, 233);
     margin-left: 10px;
 }
-
-.submit_button:hover{
+.cancel_button:hover{
     cursor: pointer;
 }
