@@ -13,8 +13,10 @@ body {
     margin: 0;
     height: 100%;
     background: #f5f6f7;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
     font-family: 'Gamja Flower', cursive;
 }
+
 #logo {
     width: 240px;
     height: 44px;
@@ -27,24 +29,28 @@ body {
     padding-bottom: 50px;
     text-align: center;
 }
+
+#header_2 {
+    position: relative;
+    /* padding-top: 30px; */
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+#header_3 {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
 #wrapper {
     position: relative;
     min-height: 100vh;
     width: 100%;
-    /* margin: 0px auto 0 auto; */
     margin: auto;
     background-color: #FCF8E8;
     font-family: 'Gamja Flower', cursive;
-}
-
-
-#content {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 460px;
-    /* padding-bottom: 100px; */
-     /* footer의 height값과 동일 */
 }
 
 #content {
@@ -52,13 +58,14 @@ body {
     left: 50%;
     transform: translate(-50%);
     width: 600px;
-    height: 480px;
+    height: 1700px;
+    min-height: 100%;
     /* footer의 height값과 동일 */
     /* vertical-align: top; */
     background-color: #fff;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
 
-    padding: 30px 0 20px 0;
+    padding: 50px 0 0 0;
 }
 
 #content_box {
@@ -102,16 +109,7 @@ footer p span {
   margin-left: 20px;
 }
 
-/* .footer {
-    text-align: center;
 
-    margin-top: 70px;
-
-    position: relative;
-    transform: translateY(-100%);
-
-    color: rgb(121, 121, 121);
-} */
 
 /* 입력폼 */
 
@@ -222,8 +220,9 @@ select {
 }
 
 .input_form {
-    padding: 15px 0 5px 0;
+    padding: 15px 0 20px 0;
 }
+
 
 /* 에러메세지 */
 
@@ -270,6 +269,125 @@ select {
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
+#btnJoin_location {
+    width: 100%;
+    height: 50px;
+    /* padding: 15px 0 11px; */
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9EB23B;
+    font-size: 24px;
+    font-weight: bold;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+    border-radius: 15px 15px 0 0;
+}
+
+.box_container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 240px;
+}
+
+.box_img {
+    width: 150px;
+    height: 150px;
+
+    display: block;
+    position: relative;
+    
+    /* border-radius: 70%; */
+    overflow: hidden;
+}
+
+.int_img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.img_btn_container {
+    width: 20%;
+    height: 30px;
+    margin-top: 20px;
+
+    text-align: center;
+}
+
+#btnJoin_img {
+  width: 100%;
+  height: 100%;
+    /* padding: 15px 0 11px; */
+    padding: 2px 0 0 0;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #9EB23B;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+}
+
+#btnJoin_img:hover {
+    background-color: #b1c743;
+}
+
+.footer {
+    text-align: center;
+
+    margin-top: 70px;
+
+    position: relative;
+    transform: translateY(-100%);
+
+    color: rgb(121, 121, 121);
+}
+
+.clicked{
+  /* background-color: rgba(128, 128, 0, 0.7 ); */
+  background-color: #FCF9C6;
+  /* color: white; */
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.category button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  width: 160px;
+  height: 50px;
+
+  margin: 0 10px 0 10px;
+
+  border-radius: 5px;
+  border: 2px solid #9EB23B;
+  /* background-color: rgba(0,0,0,0); */
+  color: #9EB23B;
+  
+  padding: 5px;
+
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.category button:hover{
+  color:white;
+  font-weight: bold;
+  background-color: #9EB23B;
+}
+
 .service_btn {
     text-align: center;
     font-size: 20px;
@@ -278,4 +396,56 @@ select {
 .service_btn a {
     font-weight: bold;
     color: #808080;
+}
+
+/* Card, Dialog */
+.card, .dialog {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 240px;
+    vertical-align: top;
+    background-color: #fff;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.dialog {
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.dialog > .content {
+    height: 170px;
+    font-size: 0.9em;
+}
+
+.dialog > .content > .title {
+    font-size: 1.3em;
+}
+
+.dialog > .button {
+    width: 90px;
+    float: right;
+}
+
+.card.image {
+    background: url(http://lorempixel.com/300/240/nature/);
+    color: #fff;
+}
+
+/* Misc */
+.center {
+    text-align: center;
+}
+
+.label {
+    padding: 0 16px;
+}
+
+.label-blue {
+    color: #4285f4; 
+}
+
+.label-red {
+    color: #d23f31; 
 }

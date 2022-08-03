@@ -1,17 +1,19 @@
 $(document).ready(function () {
-  get_articledetail(2);
+  get_articledetail(1);
 });
 
 function get_articledetail(article_id) {
-  // let user;
-  // console.log(user);
-  // if (localStorage.getItem("payload") != null) {
-  //   const payload = JSON.parse(localStorage.getItem("payload"));
-  // user = payload.user;
-  // }
+  var token = localStorage.getItem("access");
+  console.log(token);
+
   $.ajax({
     type: "GET",
     url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    beforeSend: function (xhr) {
+      // xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function (response) {
       let farm_name = response["farm_name"];
@@ -25,11 +27,11 @@ function get_articledetail(article_id) {
       let img2 = response["img2"];
       let img3 = response["img3"];
       let article_category = response["article_category"];
-      let rate = response["rate"];
-      let phone_number = response["phone_number"];
-      let rank = response["rank"];
-      let review_user = response["review_user"];
-      let content = response["content"];
+      let rate = response["article_review"]["rate"][0];
+      let content = response["article_review"]["content"][0];
+      let review_user = response["article_review"]["review_user"][0];
+      let phone_number = response["phone_number"]["phone_number"];
+      let rank = response["rank"]["rank"];
 
       let temp_detail_titlebox;
       let temp_detail_img;
@@ -162,7 +164,7 @@ function get_articledetail(article_id) {
       $("#review_box").append(temp_detail_reviewbox);
 
       temp_detail_userbutton = `
-        <button class="roadmap_btn"><a class="edit_btn_word"
+        <button class="roadmap_btn"><a class="roadmap_btn_word"
                 href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
         <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
       `;
@@ -224,18 +226,17 @@ function get_articledetail(article_id) {
 }
 
 function post_article_apply(article_id) {
-  const payload = JSON.parse(localStorage.getItem("payload"));
-  // let user = payload.user;
-  let user = 1;
-  let article = article_id;
+  var token = localStorage.getItem("access");
+  console.log(token);
   let form_data = new FormData();
-
-  form_data.append("user", user);
-  form_data.append("article", article);
 
   $.ajax({
     type: "POST",
     url: "http://127.0.0.1:8000/article/detail/apply/" + article_id,
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: form_data,
     cache: false,
     contentType: false,

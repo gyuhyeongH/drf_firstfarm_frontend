@@ -11,6 +11,7 @@ function get_farmer() {
     $.ajax({
     type: "GET",
     url: "http://127.0.0.1:8000/article/farmer/",
+        // url: "http://3.35.37.28:8000/article/farmer/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -29,8 +30,11 @@ function get_farmer() {
         let phone_number = response['phone_number']
         let points = response['points']
         // let prof_img = response['img']
+        let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
+        $('.title_b').append(temp_title);
+
         let temp_profile = `
-        <img src="#" alt="default이미지" srcset="">
+        <img src="https://www.urbanbrush.net/web/wp-content/uploads/edd/2020/01/urbanbrush-20200107213951786095.jpg" alt="default이미지" srcset="">
                 <p> ✔️ 이름 : ${fullname} <br />
                     ✔️ 성별 : ${gender} <br />
                     ✔️ phone_number : ${phone_number} <br />
@@ -74,14 +78,15 @@ function get_farmer() {
         $('#profilebox').append(temp_put_profile);
         let temp_intro =`
             <div id="desc">
-                <div class="title_box" style="width:100%;align:center;"> ${user} 농부 페이지 😎</div>
                 <p> 소개글 : ${introduction} 입니다  <br /></p>
                 <p> ${fullname}님은 ${rank} 중 입니다 🌱 <br /></p>
-                <div id="percentbar">
-                    <div></div>
-                    <p>${points}%</p>
+            </div>    
+            <div id="percentbar">
+                <div>
+                    <div id="pointbar"></div>
                 </div>
             </div>
+            
         `
         $('#intro').append(temp_intro);
         $('#review_post_box').empty();
@@ -96,26 +101,35 @@ function get_farmer() {
             let period = response[i]['period']
 
             let temp_li = `
-            <li style="float: left; margin: 0 20px 0 40px;">
+            <li>
+            <div>
             <!-- Posts -->
-                <section class="posts">
-                    <article>
-                        <header>
-                            <span class="date">${period}</span>
-                            <h2><a href="articledetail.html">${title}</a></h2>
-                        </header>
-                        <p> ✔️ 농장 : ${farmname}} <br />
-                            ✔️ 위치 : ${location} <br />
-                            ✔️ 설명 : ${desc} <br />
-                            ✔️ 비용 : ${cost}} <br />
-                        </p>
-                        <button onclick="document.getElementById('review_post_box').classList.remove('hide');">후기 작성</button>
-                        <button onclick="document.getElementById('review_post_box').classList.add('hide');">작성 취소</button>
-                    </article>
-                </section>
+            <div class="posts" style="position: relative;
+            background-image: url(https://cdn.pixabay.com/photo/2018/07/27/23/55/apple-3566998_960_720.jpg);                                             
+            height: 100vh; background-size: cover;">
+                <div class="content" style="top:40%">
+                    <h3>${period}</span>
+                    <h2><a href="articledetail.html">${title}</a></h2>
+                </div>
+                <div class="img-cover" style="padding-top:30px">
+                    <p> ✔️ 농장 : ${farmname}} <br />
+                    ✔️ 위치 : ${location} <br />
+                    ✔️ 설명 : ${desc} <br />
+                    ✔️ 비용 : ${cost}} <br />
+                    </p>
+                    <div>
+                        <a onclick="document.getElementById('review_post_box').classList.remove('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">후기 작성</a>
+                        <a onclick="document.getElementById('review_post_box').classList.add('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">작성 취소</a>
+
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
             </li>
             `;
-            $('.a_slides').append(temp_li);
+            $('.slides').append(temp_li);
 
             let temp_post_box = `
             <div class="apply_box">
@@ -348,6 +362,49 @@ function delete_review(review_id) {
           } else {
               window.location.reload();
           }
+    }
+
+    })
+}
+
+function put_profile(user) {
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
+    let img = $('#inputGroupFile04')[0];
+    if(img.files.length === 0){
+        alert("사진을 업로드 해주세요");
+        return;
+    }
+    let phone_number = $('#inputGroup-phone_number').val()
+    let email = $('#inputGroup-email').val()
+    let location = $('#inputGroup-location').val()
+
+    const formData = new FormData();
+    formData.append("userprofile[img]",img.files[0]);
+    formData.append("userprofile[phone_number]",phone_number);
+    formData.append("email",email);
+    formData.append("userprofile[location]",location);
+    $.ajax({
+    type: "PUT",
+    url: "http://127.0.0.1:8000/user/",
+    // beforeSend: function (xhr) {
+    //   xhr.setRequestHeader("Content-type", "application/json");
+    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+    // },
+    data: formData,
+    contentType: false,
+    processData:false,
+    beforeSend: function (x) {
+        if (x && x.overrideMimeType) {
+            x.overrideMimeType("multipart/form-data");
+        }
+    },
+    success: function(response){
+        alert("업데이트 완료")
+        window.location.reload();
     }
 
     })

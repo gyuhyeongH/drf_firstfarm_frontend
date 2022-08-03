@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 const backend_base_url = "https://rbgud.shop";
 const frontend_base_url = "https://62e88616164efc5fdf7fac8d--polite-paprenjak-e2afb5.netlify.app/";
+=======
+const backend_base_url = "http://127.0.0.1:8000";
+// const backend_base_url = "http://3.35.37.28:8000";
+const frontend_base_url = "http://127.0.0.1:5500";
+>>>>>>> 7fdb76b95f36c9eb66c80e27536f096a8fbbdbc4
 
 
 // 카테고리 토글
@@ -112,7 +118,7 @@ async function handle_signin() {
         .join("")
     );
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace(`${frontend_base_url}/home.html`);
+    window.location.replace(`${frontend_base_url}/search_article.html`);
   } else {
     // alert(response.status);
     alert("아이디 또는 비밀번호를 확인해주세요.");
