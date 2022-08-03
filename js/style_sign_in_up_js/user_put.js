@@ -1,5 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000";
-// const backend_base_url = "http://3.35.37.28:8000";
+const backend_base_url = "http://3.35.37.28:8000";
 const frontend_base_url = "http://127.0.0.1:5500";
 
 // 사용자 정보 가져오기

@@ -14,6 +14,7 @@ function get_articledetail(article_id) {
 
   const payload = JSON.parse(localStorage.getItem("payload"));
   user = payload.user_id;
+  console.log(user)
 
   $.ajax({
     type: "GET",
