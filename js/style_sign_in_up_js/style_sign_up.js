@@ -45,7 +45,9 @@ mm.addEventListener("focusout", isBirthCompleted);
 dd.addEventListener("focusout", isBirthCompleted);
 gender.addEventListener("focusout", function () {
     if (gender.value === "성별") {
-        error[5].style.display = "block";
+      error[5].style.display = "block";
+      error[5].style.position = "fixed";
+        
     } else {
         error[5].style.display = "none";
     }
@@ -67,10 +69,12 @@ function checkId() {
   if (id.value === "") {
     error[0].innerHTML = "필수 정보입니다.";
     error[0].style.display = "block";
+    error[0].style.position = "fixed";
   } else if (!idPattern.test(id.value)) {
     error[0].innerHTML =
       "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
     error[0].style.display = "block";
+    error[0].style.position = "fixed";
   } else {
     error[0].innerHTML = "";
     error[0].style.color = "#08A600";
@@ -84,9 +88,11 @@ function isEmailCorrect() {
   if (email.value === "") {
     error[1].innerHTML = "필수 정보입니다.";
     error[1].style.display = "block";
+    error[1].style.position = "fixed";
   } else if (!emailPattern.test(email.value)) {
     error[1].innerHTML = "형식에 맞지 않는 이메일입니다.";
     error[1].style.display = "block";
+    error[1].style.position = "fixed";
   } else {
     error[1].style.display = "none";
   }
@@ -97,12 +103,14 @@ function checkPw() {
   if (pw1.value === "") {
     error[2].innerHTML = "필수 정보입니다.";
     error[2].style.display = "block";
+    error[2].style.position = "fixed";
   } else if (!pwPattern.test(pw1.value)) {
     error[2].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
     pwMsg.innerHTML = "사용불가";
     pwMsgArea.style.paddingRight = "93px";
     pwMsgArea.style.color = "#C19287";
     error[2].style.display = "block";
+    error[2].style.position = "fixed";
 
     pwMsg.style.display = "block";
     pwImg1.src = "./img/style_sign_in_up_images/m_icon_not_use.png";
@@ -123,11 +131,13 @@ function comparePw() {
     pwImg2.src = "./img/style_sign_in_up_images/m_icon_check_disable.png";
     error[3].innerHTML = "비밀번호가 일치하지 않습니다.";
     error[3].style.display = "block";
+    error[3].style.position = "fixed";
   }
 
   if (pw2.value === "") {
     error[3].innerHTML = "필수 정보입니다.";
     error[3].style.display = "block";
+    error[3].style.position = "fixed";
   }
 }
 
@@ -136,6 +146,7 @@ function checkName() {
   if (userName.value === "") {
     error[4].innerHTML = "필수 정보입니다.";
     error[4].style.display = "block";
+    error[4].style.position = "fixed";
   } else if (
     !namePattern.test(userName.value) ||
     userName.value.indexOf(" ") > -1
@@ -143,6 +154,7 @@ function checkName() {
     error[4].innerHTML =
       "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
     error[4].style.display = "block";
+    error[4].style.position = "fixed";
   } else {
     error[4].style.display = "none";
   }
@@ -154,6 +166,7 @@ function isBirthCompleted() {
   if (!yearPattern.test(yy.value)) {
     error[6].innerHTML = "태어난 년도 4자리를 정확하게 입력하세요.";
     error[6].style.display = "block";
+    error[6].style.position = "fixed";
   } else {
     isMonthSelected();
   }
@@ -192,14 +205,17 @@ function checkAge() {
     let today = new Date();  
     let year = today.getFullYear();
   if (Number(yy.value) < 1920) {
-    error[6].innerHTML = "정말이세요?";
+    error[6].innerHTML = "생년월일을 다시 확인해주세요.";
     error[6].style.display = "block";
+    error[6].style.position = "fixed";
   } else if (Number(yy.value) > 2020) {
-    error[6].innerHTML = "미래에서 오셨군요. ^^";
+    error[6].innerHTML = "셍년월일을 다시 확인해주세요.";
     error[6].style.display = "block";
+    error[6].style.position = "fixed";
   } else if (Number(yy.value) > 2005) {
     error[6].innerHTML = "만 14세 미만의 어린이는 보호자 동의가 필요합니다.";
     error[6].style.display = "block";
+    error[6].style.position = "fixed";
   } else {
       age.innerHTML = (year - yy.value + 1);
     error[6].style.display = "none";
@@ -212,9 +228,11 @@ function checkPhoneNum() {
   if (mobile.value === "") {
     error[7].innerHTML = "필수 정보입니다.";
     error[7].style.display = "block";
+    error[7].style.position = "fixed";
   } else if (!isPhoneNum.test(mobile.value)) {
     error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
     error[7].style.display = "block";
+    error[7].style.position = "fixed";
   } else {
     error[7].style.display = "none";
   }
@@ -222,8 +240,9 @@ function checkPhoneNum() {
 
 function checkPrefer() {
   if (id.value === "") {
-    error[9].innerHTML = "필수 정보입니다.";
-    error[9].style.display = "block";
+    error[8].innerHTML = "필수 정보입니다.";
+    error[8].style.display = "block";
+    error[8].style.position = "fixed";
   }
 }
 
