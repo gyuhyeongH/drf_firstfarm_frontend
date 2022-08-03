@@ -9,6 +9,44 @@
 </head>
 
 <body>
+    <header style="z-index: 1000;">
+        <nav class="navbar fixed-top navbar-light bg-light"
+            style="background-color: #C7D36F; padding-top: 0; padding-bottom: 0;" id="navigationBar">
+            <ul>
+                <li>
+                    <a href="home.html" class="link">소개</a>
+                </li>
+                <li>
+                    <a href="search_article.html" class="link">알바 / 체험 찾기</a>
+                </li>
+                <li>
+                    <a href="articleupload.html" class="link">공고 등록</a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a id="a_logout" style="float:right; margin-right:15px;" onclick="handle_logout()">
+                        로그아웃
+                    </a>
+                </li>
+                <li>
+                    <a id="a_mypage" style="float:right;" onclick="handle_enter_mypage()" class="link">
+                        마이페이지
+                    </a>
+                </li>
+                <li>
+                    <a id="a_signup" style="float:right; margin-right: 15px;" class="nav-signup">
+                        회원가입
+                    </a>
+                </li>
+                <li>
+                    <a id="a_login" style="float:right" class="nav-signin" href="signin.html">
+                        로그인
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <div>
         <label>환영합니다.<span id="username"></span>님</label>
     </div>
