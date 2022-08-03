@@ -6,7 +6,8 @@
     <title>첫농 | 정보수정</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/sign_in_up_css/sign_up.css">
+    <link rel="stylesheet" href="./css/sign_in_up_css/style_text.css">
+    <link rel="stylesheet" href="./css/sign_in_up_css/sign_put.css">
     <link rel="stylesheet" href="./css/nav.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -57,9 +58,10 @@
     </header>
     <!-- wrapper -->
     <div id="wrapper">
-        <!-- title -->
-        <div id="header">
-            <h1 target="_blank">LOGO</h1>
+        <!-- header_1 -->
+        <div id="header" style="display: flex; flex-direction: column; align-items: center; ">
+            <!-- <h1 target="_blank">LOGO</h1> -->
+            <img style="width: 150px; height: 150px;" src="./img/first_farm_logo.png">
         </div>
         <!-- username -->
         <!-- <div>
@@ -67,16 +69,23 @@
         </div> -->
         <!-- content-->
         <!-- header_1 -->
-        <div id="header">
-            <h1 target="_blank" title="정보 수정">정보 수정</h1>
-        </div>
         <div id="content">
+            <div id="content_box">
+                <div id="header_2">
+                    <!-- <h1 target="_blank" title="필수 사항">필수 사항</h1> -->
+                    <div class="waviy">
+                        <span style="--i:1">정</span>
+                        <span style="--i:2">보</span>
+                        <span style="--i:3">수</span>
+                        <span style="--i:4">정</span>
+                    </div>
+                </div>
             <!-- CATEGORY-->
             <!-- <h3 class="join_title" style="text-align:center;">
                 <label for="">해당하는 본인의 구분을 선택하세요.</label><br>
             </h3> -->
             <!-- EMAIL -->
-            <div>
+            <div class="input_form">
                 <h3 class="join_title">
                     <label for="email">이메일</label>
                 </h3>
@@ -86,7 +95,7 @@
                 <span class="error_next_box"></span>
             </div>
             <!-- PW1 -->
-            <div>
+            <div class="input_form">
                 <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                 <span class="box int_pass">
                     <input type="password" id="pswd1" class="int" maxlength="20">
@@ -96,7 +105,7 @@
                 <span class="error_next_box"></span>
             </div>
             <!-- PW2 -->
-            <div>
+            <div class="input_form">
                 <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                 <span class="box int_pass_check">
                     <input type="password" id="pswd2" class="int" maxlength="20">
@@ -106,8 +115,13 @@
                 <span class="error_next_box"></span>
             </div>
             <!-- header_2 -->
-            <div id="header">
-                <h1 target="_blank" title="세부 사항">세부 사항</h1>
+                        <div id="header_3">
+                            <div class="waviy">
+                                <span style="--i:1">세</span>
+                                <span style="--i:2">부</span>
+                                <span style="--i:3">사</span>
+                                <span style="--i:4">항</span>
+                            </div>
                 <!-- <h3 style="color: red">* 은 필수 사항입니다.</h3> -->
             </div>
             <!-- PICTURE -->
@@ -124,15 +138,15 @@
                 </div>
             </div>
             <!-- LOCATION -->
-            <h3 class="join_title"><label for="locations">지역</label></h3>
-            <div class="">
+            <div class="input_form">
+                <h3 class="join_title"><label for="locations">지역</label></h3>
                 <button class="location_find" id="btnJoin_location" type="button" onclick="serch_loaction()" value="주소 찾기"><span>주소 찾기</span></button><br>
                 <span class="box" style="margin: auto;">
                     <span class="int" type="text" id="locations" placeholder="주소" style="display: flex; align-items: center;"></span>
                 </span>
             </div>
             <!-- INTRODUCTION -->
-            <div>
+            <div class="input_form">
                 <h3 class="join_title"><label for="introduction">자기소개</label> <span
                         style="font-size: 11px; color:rgb(119, 119, 119)">(최대 400자 제한)</span></h3>
                 <span class="box int_name" style="height: 200px;">
@@ -142,7 +156,7 @@
                 </span>
             </div>
             <!-- PREFER -->
-            <div>
+            <div class="input_form">
                 <h3 class="join_title"><label for="prefer">선호</label></h3>
                 <span class="box int_name">
                     <input type="text" id="prefer" class="int" maxlength="20" placeholder="예) 사과 제배, 고구마 제배 등">
@@ -159,6 +173,7 @@
             <!-- <div class="service_btn">
                 <a href="#" onclick="location.href='signin.html'" target='_blank'>로그인</a>
             </div> -->
+        </div>
         </div>
         <!-- content-->
         <!-- footer-->
@@ -179,8 +194,7 @@
 
     <!-- JS -->
     <script src="./js/style_sign_in_up_js/user_put.js"></script>
-    <script src="./js/nav.js"></script>
     <script src="./js/auth.js"></script>
+    <script src="./js/nav.js"></script>
 </body>
-
 </html>

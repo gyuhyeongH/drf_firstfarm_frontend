@@ -1,16 +1,22 @@
+/* 폰트 링크(주아체, 감자꽃체) */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
 /* 레이아웃 틀 */
 html {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #FCF8E8;
 }
 
 body {
     margin: 0;
     height: 100%;
     background: #f5f6f7;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+    font-family: 'Gamja Flower', cursive;
 }
+
 #logo {
     width: 240px;
     height: 44px;
@@ -19,22 +25,56 @@ body {
 
 #header {
     position: relative;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 130px;
+    padding-bottom: 50px;
     text-align: center;
 }
+
+#header_2 {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+#header_3 {
+    position: relative;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    text-align: center;
+}
+
 #wrapper {
     position: relative;
     min-height: 100vh;
     width: 100%;
+    margin: auto;
+    background-color: #FCF8E8;
+    font-family: 'Gamja Flower', cursive;
 }
 
 #content {
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+    width: 600px;
+    height: 2650px;
+    min-height: 100%;
+    /* footer의 height값과 동일 */
+    /* vertical-align: top; */
+    background-color: #fff;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+#content_box {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
     width: 460px;
-    padding-bottom: 100px; /* footer의 height값과 동일 */
+
+    padding-bottom: 130px;
+    margin: auto;
+    /* footer의 height값과 동일 */
 }
 
 footer {
@@ -97,7 +137,8 @@ h3 {
     height: 29px;
     border: none;
     background: #fff;
-    font-size: 15px;
+    /* font-size: 15px; */
+    font-size: 24px;
 }
 
 input {
@@ -176,11 +217,16 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
+.input_form {
+    padding: 15px 0 20px 0;
+}
+
+
 /* 에러메세지 */
 
 .error_next_box {
     margin-top: 9px;
-    font-size: 12px;
+    font-size: 16px;
     color: red;    
     display: none;
 }
@@ -189,7 +235,7 @@ select {
     position: absolute;
     top: 19px;
     right: 38px;
-    font-size: 12px;
+    font-size: 20px;
     color: red;
     display: none;
 }
@@ -197,31 +243,42 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 30px 0 20px;
+    margin: 70px 0 20px;
+    text-align: center;
 }
 
 #btnJoin {
-    width: 100%;
-    padding: 21px 0 17px;
+    width: 70%;
+    height: 50px;
+    /* padding: 21px 0 17px; */
     border: 0;
     cursor: pointer;
     color: #fff;
     background-color: #9EB23B;
-    font-size: 20px;
+    font-size: 27px;
     font-weight: bold;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+    border-radius: 25px;
+}
+
+#btnJoin:hover {
+    font-weight: bold;
+    background-color: #b1c743;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.1);
 }
 
 #btnJoin_location {
     width: 100%;
-    padding: 15px 0 11px;
+    height: 50px;
+    /* padding: 15px 0 11px; */
     border: 0;
     cursor: pointer;
     color: #fff;
     background-color: #9EB23B;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+    border-radius: 15px 15px 0 0;
 }
 
 .box_container {
@@ -253,23 +310,28 @@ select {
 .img_btn_container {
     width: 20%;
     height: 30px;
-    margin-top: 15px;
+    margin-top: 20px;
 
     text-align: center;
 }
 
 #btnJoin_img {
   width: 100%;
-  height: 85%;
+  height: 100%;
     /* padding: 15px 0 11px; */
-    padding: 10px 0 0 0;
+    padding: 2px 0 0 0;
     border: 0;
     cursor: pointer;
     color: #fff;
     background-color: #9EB23B;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 25px;
+    /* font-family: Dotum,'돋움',Helvetica,sans-serif; */
+}
+
+#btnJoin_img:hover {
+    background-color: #b1c743;
 }
 
 .footer {
@@ -315,6 +377,7 @@ select {
   padding: 5px;
 
   font-weight: bold;
+  font-size: 24px;
 }
 
 .category button:hover{
@@ -325,9 +388,62 @@ select {
 
 .service_btn {
     text-align: center;
+    font-size: 20px;
 }
 
 .service_btn a {
     font-weight: bold;
     color: #808080;
+}
+
+/* Card, Dialog */
+.card, .dialog {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 240px;
+    vertical-align: top;
+    background-color: #fff;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+}
+
+.dialog {
+    box-sizing: border-box;
+    padding: 16px;
+}
+
+.dialog > .content {
+    height: 170px;
+    font-size: 0.9em;
+}
+
+.dialog > .content > .title {
+    font-size: 1.3em;
+}
+
+.dialog > .button {
+    width: 90px;
+    float: right;
+}
+
+.card.image {
+    background: url(http://lorempixel.com/300/240/nature/);
+    color: #fff;
+}
+
+/* Misc */
+.center {
+    text-align: center;
+}
+
+.label {
+    padding: 0 16px;
+}
+
+.label-blue {
+    color: #4285f4; 
+}
+
+.label-red {
+    color: #d23f31; 
 }
