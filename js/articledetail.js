@@ -1,20 +1,62 @@
 $(document).ready(function () {
-  get_articledetail(1);
+  article_id = window.localStorage.getItem("article_id");
+  get_articledetail(article_id);
+  // localStorage.remove("article_id");
 });
+
+// $(document).ready(function () {
+//   get_articledetail(55);
+// });
 
 function get_articledetail(article_id) {
   var token = localStorage.getItem("access");
   console.log(token);
 
+  const payload = JSON.parse(localStorage.getItem("payload"));
+  user = payload.user_id;
+
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    url: "http://3.35.37.28:8000/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
     },
     data: {},
     success: function (response) {
+      let review_length = response["article_review"]["rate"];
+      for (let i = 0; i < review_length.length; i++) {
+        let temp_detail_reviewbox;
+
+        let rate = response["article_review"]["rate"][0];
+        let content = response["article_review"]["content"][0];
+        let review_user = response["article_review"]["review_user"][0];
+
+        if (rate == 1) {
+          rate = "⭐️";
+        } else if (rate == 2) {
+          rate = "⭐️⭐️";
+        } else if (rate == 3) {
+          rate = "⭐️⭐️⭐️";
+        } else if (rate == 4) {
+          rate = "⭐️⭐️⭐️⭐️";
+        } else {
+          rate = "⭐️⭐️⭐️⭐️⭐️";
+        }
+
+        temp_detail_reviewbox = `
+        <div class="review_box">
+            <div class="review_rate">${rate}</div>
+            <div class="review_user">
+                <button class="review_user_button">${review_user}</button>
+            </div>
+            <div class="review_content">${content}</div>
+        </div>
+      `;
+        $("#review_box").append(temp_detail_reviewbox);
+      }
+
+      let article_user = response["user"];
       let farm_name = response["farm_name"];
       let title = response["title"];
       let location = response["location"];
@@ -26,9 +68,9 @@ function get_articledetail(article_id) {
       let img2 = response["img2"];
       let img3 = response["img3"];
       let article_category = response["article_category"];
-      let rate = response["article_review"]["rate"][0];
-      let content = response["article_review"]["content"][0];
-      let review_user = response["article_review"]["review_user"][0];
+      // let rate = response["article_review"]["rate"][0];
+      // let content = response["article_review"]["content"][0];
+      // let review_user = response["article_review"]["review_user"][0];
       let phone_number = response["phone_number"]["phone_number"];
       let rank = response["rank"]["rank"];
 
@@ -36,13 +78,44 @@ function get_articledetail(article_id) {
       let temp_detail_img;
       let temp_detail_topbox;
       let temp_detail_bottombox;
-      let temp_detail_reviewbox;
+      // let temp_detail_reviewbox;
       let temp_detail_userbutton;
       let temp_detail_farmbutton;
       let temp_detail_reviewimg;
 
-      // if (localStorage.getItem("payload") != null) { }
-      //   if ((user_id == user)) { }
+      if (article_category == 1) {
+        article_category = "체험";
+      } else {
+        article_category = "근무";
+      }
+
+      if (localStorage.getItem("payload") != null) {
+        if (user == article_user) {
+          temp_detail_farmbutton = `
+          <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html">수정하기</a></button>
+          <button class="end_btn" onclick="delete_articledetail(${article_id})"> 모집마감</button>
+          `;
+        } else {
+          temp_detail_farmbutton = ``;
+        }
+      }
+      $("#farm_button").append(temp_detail_farmbutton);
+
+      if (localStorage.getItem("payload") != null) {
+        if (user == article_user) {
+          temp_detail_userbutton = `
+          <button class="roadmap_btn"><a class="roadmap_btn_word"
+                  href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
+        `;
+        } else {
+          temp_detail_userbutton = `
+          <button class="roadmap_btn"><a class="roadmap_btn_word"
+                  href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
+          <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
+        `;
+        }
+      }
+      $("#user_button").append(temp_detail_userbutton);
 
       temp_detail_titlebox = `
       <div class="title" >
@@ -53,7 +126,7 @@ function get_articledetail(article_id) {
 
       temp_detail_img = `
         <ul class="slides">
-            <li><img src="img/test.jpeg" width="300" height="300" alt=""></li>
+            <li><img src="${img1}" width="300" height="300" alt=""></li>
             <li><img src="${img2}" width="300" height="300" alt=""></li>
             <li><img src="${img3}" width="300" height="300" alt=""></li>
         </ul>
@@ -105,7 +178,7 @@ function get_articledetail(article_id) {
           <button class="left_name_button">${farm_name}</button>
       </div>
       <div class="left_rate_box">
-          <button class="left_rate_button">⭐ ${rate} ⭐</button>
+          <button class="left_rate_button">⭐ ${rank} ⭐</button>
       </div>
       <div class="left_userinfo_box"> ☎️ ${phone_number}</div>
       `;
@@ -151,29 +224,29 @@ function get_articledetail(article_id) {
       `;
       $("#bottom_box").append(temp_detail_bottombox);
 
-      temp_detail_reviewbox = `
-      <div class="review_box">
-          <div class="review_rate">${rate}</div>
-          <div class="review_user">
-              <button class="review_user_button">${review_user}</button>
-          </div>
-          <div class="review_content">${content}</div>
-      </div>
-      `;
-      $("#review_box").append(temp_detail_reviewbox);
+      // temp_detail_reviewbox = `
+      // <div class="review_box">
+      //     <div class="review_rate">${rate}</div>
+      //     <div class="review_user">
+      //         <button class="review_user_button">${review_user}</button>
+      //     </div>
+      //     <div class="review_content">${content}</div>
+      // </div>
+      // `;
+      // $("#review_box").append(temp_detail_reviewbox);
 
-      temp_detail_userbutton = `
-        <button class="roadmap_btn"><a class="roadmap_btn_word"
-                href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
-        <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
-      `;
-      $("#user_button").append(temp_detail_userbutton);
+      // temp_detail_userbutton = `
+      //   <button class="roadmap_btn"><a class="roadmap_btn_word"
+      //           href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
+      //   <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
+      // `;
+      // $("#user_button").append(temp_detail_userbutton);
 
-      temp_detail_farmbutton = `
-        <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html">수정하기</a></button>
-        <button class="end_btn" onclick="delete_articledetail(${article_id})"> 모집마감</button>
-      `;
-      $("#farm_button").append(temp_detail_farmbutton);
+      // temp_detail_farmbutton = `
+      //   <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html">수정하기</a></button>
+      //   <button class="end_btn" onclick="delete_articledetail(${article_id})"> 모집마감</button>
+      // `;
+      // $("#farm_button").append(temp_detail_farmbutton);
 
       temp_detail_reviewimg = `
         <ul class="reviewslides">
@@ -231,7 +304,7 @@ function post_article_apply(article_id) {
 
   $.ajax({
     type: "POST",
-    url: "http://127.0.0.1:8000/article/detail/apply/" + article_id,
+    url: "http://3.35.37.28:8000/article/detail/apply/" + article_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -253,9 +326,16 @@ function post_article_apply(article_id) {
 }
 
 function delete_articledetail(article_id) {
+  var token = localStorage.getItem("access");
+  console.log(token);
+
   $.ajax({
     type: "DELETE",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    beforeSend: function (xhr) {
+      // xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
 
     error: function () {
