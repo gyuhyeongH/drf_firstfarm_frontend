@@ -35,6 +35,7 @@ function get_article(choice) {
         // },
         data: {},
         success: function (response) {
+
             $('#get_article').empty();
             for (let i = 0; i < response.length; i++) {
                 console.log(i)
