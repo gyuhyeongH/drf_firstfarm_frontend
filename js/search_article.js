@@ -44,7 +44,7 @@ function get_article(choice) {
                 let cost = response[i]['cost']
                 let exposure_end_date = response[i]['exposure_end_date'].substr(0, 10)
                 let updated_at = response[i]['updated_at'].substr(0, 10)
-                let temp_article = `<a href="/detail/${id}" class="article_link">
+                let temp_article = `<a href="articledetail.html" onclick="get_articledetail(${id})" class="article_link">
                 <div class="articles">
                 <div class="contents">
                     ${location}
