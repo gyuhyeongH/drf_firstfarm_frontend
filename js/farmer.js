@@ -1,3 +1,8 @@
+// const backend_base_url = "http://127.0.0.1:8000";
+const backend_base_url = "http://3.35.37.28:8000";
+const frontend_base_url = "http://127.0.0.1:5500";
+
+
 $(document).ready(function(){
     get_farmer();
     get_review();
@@ -10,7 +15,7 @@ function get_farmer() {
     // }
     $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/farmer/",
+    url: backend_base_url+"/article/farmer/",
         // url: "http://3.35.37.28:8000/article/farmer/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
@@ -190,7 +195,7 @@ function post_review(article_id) {
     $.ajax({
     type: "POST",
     // url: "http://127.0.0.1:8000/article/1"+"/farmer",
-    url: "http://127.0.0.1:8000/article/"+article_id+"/farmer",
+    url: backend_base_url+"/article/"+article_id+"/farmer",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -217,7 +222,7 @@ function get_review() {
     // }
     $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/review/",
+    url: backend_base_url+"/article/review/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -316,7 +321,7 @@ function put_review(review_id) {
     formData.append("rate",rate);
     $.ajax({
     type: "PUT",
-    url: "http://127.0.0.1:8000/article/farmer/"+review_id,
+    url: backend_base_url+"/article/farmer/"+review_id,
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -342,7 +347,7 @@ function delete_review(review_id) {
     let user = 3;
     $.ajax({
     type: "DELETE",
-    url: "http://127.0.0.1:8000/article/farmer/"+review_id,
+    url: backend_base_url+"/article/farmer/"+review_id,
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -389,7 +394,7 @@ function put_profile(user) {
     formData.append("userprofile[location]",location);
     $.ajax({
     type: "PUT",
-    url: "http://127.0.0.1:8000/user/",
+    url: backend_base_url+"/user/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
