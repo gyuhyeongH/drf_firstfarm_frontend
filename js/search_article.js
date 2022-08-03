@@ -28,7 +28,7 @@ function get_article(choice) {
     $.ajax({
         headers: { "choice": choice, "category": category },
         type: "GET",
-        url: "https://rbgud.shop/article/",
+        url: "http://3.35.37.28:8000/article/",
 
         beforeSend: function (xhr) {
             xhr.setRequestHeader("Content-type", "application/json");
