@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://62e88616164efc5fdf7fac8d--polite-paprenjak-e2afb5.netlify.app/";
-=======
-const backend_base_url = "http://127.0.0.1:8000";
-// const backend_base_url = "http://3.35.37.28:8000";
-const frontend_base_url = "http://127.0.0.1:5500";
->>>>>>> 7fdb76b95f36c9eb66c80e27536f096a8fbbdbc4
+const backend_base_url = "http://3.35.37.28:8000/";
+const frontend_base_url = "https://rbgud.shop";
+
 
 
 // 카테고리 토글
@@ -22,27 +17,27 @@ async function handle_signup() {
   const yy = document.querySelector("#yy");
   const mm = document.querySelector("#mm");
   const dd = document.querySelector("#dd");
-  
+
   const input_img = document.getElementById("input_img").files[0]
-  
+
   const signupData = new FormData();
 
   if (input_img !== undefined) {
     console.log(input_img)
     signupData.append('img', input_img);
   }
-  
+
   const userprofile = JSON.stringify({
-      'fullname': document.getElementById("fullname").value,
-      'gender': document.getElementById("gender").value,
-      'birthday': (yy.value + "-" + mm.value + "-" + dd.value),
-      'age': document.getElementById("age").innerText,
-      'phone_number': document.getElementById("phone_number").value,
-      'location': document.getElementById("locations").innerText,
-      'introduction': document.getElementById("introduction").value,
-      'prefer': document.getElementById("prefer").value,
+    'fullname': document.getElementById("fullname").value,
+    'gender': document.getElementById("gender").value,
+    'birthday': (yy.value + "-" + mm.value + "-" + dd.value),
+    'age': document.getElementById("age").innerText,
+    'phone_number': document.getElementById("phone_number").value,
+    'location': document.getElementById("locations").innerText,
+    'introduction': document.getElementById("introduction").value,
+    'prefer': document.getElementById("prefer").value,
   })
-  
+
   signupData.append('username', username);
   signupData.append('password', password);
   signupData.append('email', email);
@@ -73,7 +68,7 @@ async function handle_signup() {
   else if (response_json['userprofile']) {
     alert("사용중인 전화번호 입니다.\n 다시 확인해주세요.")
   }
-  else if (response.status == 400){
+  else if (response.status == 400) {
     alert("필수 항목을 입력해주세요.");
     console.log(response_json)
   }
@@ -230,7 +225,7 @@ function createElement(e, file) {
   new_img.setAttribute('data-file', file.name);
 
   // console.log(new_img)
-  
+
   return new_img;
 }
 
