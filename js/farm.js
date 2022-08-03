@@ -1,3 +1,7 @@
+// const backend_base_url = "http://127.0.0.1:8000";
+const backend_base_url = "http://3.35.37.28:8000";
+const frontend_base_url = "http://127.0.0.1:5500";
+
 $(document).ready(function(){
     get_farm();
 })
@@ -9,7 +13,7 @@ function get_farm() {
     // }
     $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/farm/",
+    url: backend_base_url+"/article/farm/",
     // url: "http://3.35.37.28:8000/article/farm/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
@@ -148,7 +152,7 @@ function get_apply(article_id) {
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/farm/"+article_id,
+    url: backend_base_url+"/article/farm/"+article_id,
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);

@@ -1,8 +1,6 @@
 const backend_base_url = "http://3.35.37.28:8000/";
 const frontend_base_url = "https://rbgud.shop";
 
-
-
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");
 var user_category_value = document.getElementById("category_value")
@@ -122,37 +120,25 @@ async function handle_signin() {
 
 
 // nav 로그아웃 활성화/비활성화
-window.onload = async function checkLogin() {
-  var payload = localStorage.getItem("payload")
-  var parsed_payload = await JSON.parse(payload)
+// window.onload = async function checkLogin() {
+//   var payload = localStorage.getItem("payload")
+//   var parsed_payload = await JSON.parse(payload)
 
-  const username = document.getElementById("username")
-  const loginoutButton = document.getElementById("loginout")
+//   const username = document.getElementById("username")
+//   const loginoutButton = document.getElementById("loginout")
 
-  if (parsed_payload) {
-    username.innerText = parsed_payload.fullname
-    loginoutButton.innerText = "로그아웃"
-    loginoutButton.setAttribute("onclick", "handle_logout()")
-  }
-  else {
-    console.log(loginoutButton)
-    username.innerText = "로그인해주세요"
-    loginoutButton.innerText = "로그인"
-    loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
-  }
-}
-
-
-// 로그아웃
-async function handle_logout() {
-  localStorage.removeItem("access");
-  localStorage.removeItem("refresh");
-  localStorage.removeItem("payload");
-  alert("로그아웃 되었습니다.");
-  // window.location.replace(`${frontend_base_url}/signin.html`);
-  location.reload()
-}
-
+//   if (parsed_payload) {
+//     username.innerText = parsed_payload.fullname
+//     loginoutButton.innerText = "로그아웃"
+//     loginoutButton.setAttribute("onclick", "handle_logout()")
+//   }
+//   else {
+//     console.log(loginoutButton)
+//     username.innerText = "로그인해주세요"
+//     loginoutButton.innerText = "로그인"
+//     loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
+//   }
+// }
 
 // 지역 주소 지정
 function serch_loaction() {
