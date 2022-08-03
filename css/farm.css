@@ -1,7 +1,16 @@
+/* 폰트 링크(주아체, 감자꽃체) */
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
+body {
+    /* background-color: #FCF8E8; */
+    font-family: 'Gamja Flower', cursive;
+    font-size: 21px;
+}
+
 a{
     text-decoration: none;
     color: #C7D36F;
-    font-family: 'Noto Serif KR', serif;
+    /* font-family: 'Noto Serif KR', serif; */
 }
 .main{
     width:90%;
@@ -13,7 +22,7 @@ a{
     width: 100%;
     margin: auto;
     height: 50px;
-    font-family: 'Noto Serif KR', serif;
+    /* font-family: 'Noto Serif KR', serif; */
     text-align: center;
     font-size: 28px;
     color: white;
