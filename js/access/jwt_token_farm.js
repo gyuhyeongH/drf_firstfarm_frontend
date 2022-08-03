@@ -5,25 +5,25 @@
 var payload = JSON.parse(localStorage.getItem("payload"));
 var curTime = Date.now() / 1000;
 
-// window.onload = async function () {
-//     if (payload != null) {
-//         const user_category = payload.category;
-//         if (user_category != 1) {
-//             window.location.replace(`${frontend_base_url}/farm.html`);
-//         }
-//     }
-//     else if (payload == null) {
-//         alert("로그인 후 이용 가능합니다.")
-//         window.location.replace(`${frontend_base_url}/signin.html`);
-//     }
-//     else {
-//         const exp = payload.exp;
-//         if (curTime > exp) {
-//             alert("토큰이 만료되었습니다. 재로그인 해주세요.")
-//             window.location.replace(`${frontend_base_url}/signin.html`);
-//         }
-//     }
-// };
+window.onload = async function () {
+    if (payload != null) {
+        const user_category = payload.category;
+        if (user_category != 1) {
+            window.location.replace(`${frontend_base_url}/farm.html`);
+        }
+    }
+    else if (payload == null) {
+        alert("로그인 후 이용 가능합니다.")
+        window.location.replace(`${frontend_base_url}/signin.html`);
+    }
+    else {
+        const exp = payload.exp;
+        if (curTime > exp) {
+            alert("토큰이 만료되었습니다. 재로그인 해주세요.")
+            window.location.replace(`${frontend_base_url}/signin.html`);
+        }
+    }
+};
 
 // 로그아웃
 async function handle_logout() {

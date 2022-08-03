@@ -56,11 +56,12 @@ function get_article(choice) {
   $.ajax({
     headers: { choice: choice, category: category },
     type: "GET",
-      url: "http://3.35.37.28:8000/article/",
-    // beforeSend: function (xhr) {
+    //   url: "http://3.35.37.28:8000/article/",
+      url: "http://127.0.0.1:8000/article/",
+    beforeSend: function (xhr) {
     //     xhr.setRequestHeader("Content-type", "application/json");
-    //     xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function (response) {
       $("#get_article").empty();

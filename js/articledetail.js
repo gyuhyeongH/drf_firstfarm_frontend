@@ -18,7 +18,8 @@ function get_articledetail(article_id) {
 
   $.ajax({
     type: "GET",
-    url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    url: "http://127.0.0.1:8000/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -305,7 +306,8 @@ function post_article_apply(article_id) {
 
   $.ajax({
     type: "POST",
-    url: "http://3.35.37.28:8000/article/detail/apply/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/apply/" + article_id,
+    url: "http://127.0.0.1:8000/article/detail/apply/" + article_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -332,7 +334,8 @@ function delete_articledetail(article_id) {
 
   $.ajax({
     type: "DELETE",
-    url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    url: "http://127.0.0.1:8000/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
