@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+const backend_base_url = "https://rbgud.shop";
+const frontend_base_url = "https://62e88616164efc5fdf7fac8d--polite-paprenjak-e2afb5.netlify.app/";
+=======
 const backend_base_url = "http://127.0.0.1:8000";
 // const backend_base_url = "http://3.35.37.28:8000";
 const frontend_base_url = "http://127.0.0.1:5500";
+>>>>>>> 7fdb76b95f36c9eb66c80e27536f096a8fbbdbc4
 
 
 // 카테고리 토글
@@ -122,37 +127,25 @@ async function handle_signin() {
 
 
 // nav 로그아웃 활성화/비활성화
-window.onload = async function checkLogin() {
-  var payload = localStorage.getItem("payload")
-  var parsed_payload = await JSON.parse(payload)
+// window.onload = async function checkLogin() {
+//   var payload = localStorage.getItem("payload")
+//   var parsed_payload = await JSON.parse(payload)
 
-  const username = document.getElementById("username")
-  const loginoutButton = document.getElementById("loginout")
+//   const username = document.getElementById("username")
+//   const loginoutButton = document.getElementById("loginout")
 
-  if (parsed_payload) {
-    username.innerText = parsed_payload.fullname
-    loginoutButton.innerText = "로그아웃"
-    loginoutButton.setAttribute("onclick", "handle_logout()")
-  }
-  else {
-    console.log(loginoutButton)
-    username.innerText = "로그인해주세요"
-    loginoutButton.innerText = "로그인"
-    loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
-  }
-}
-
-
-// 로그아웃
-async function handle_logout() {
-  localStorage.removeItem("access");
-  localStorage.removeItem("refresh");
-  localStorage.removeItem("payload");
-  alert("로그아웃 되었습니다.");
-  // window.location.replace(`${frontend_base_url}/signin.html`);
-  location.reload()
-}
-
+//   if (parsed_payload) {
+//     username.innerText = parsed_payload.fullname
+//     loginoutButton.innerText = "로그아웃"
+//     loginoutButton.setAttribute("onclick", "handle_logout()")
+//   }
+//   else {
+//     console.log(loginoutButton)
+//     username.innerText = "로그인해주세요"
+//     loginoutButton.innerText = "로그인"
+//     loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
+//   }
+// }
 
 // 지역 주소 지정
 function serch_loaction() {
