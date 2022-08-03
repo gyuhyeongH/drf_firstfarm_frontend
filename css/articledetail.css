@@ -35,11 +35,18 @@ UI BASE3
     height: 50px;
     font-family: 'Noto Serif KR', serif;
     text-align: center;
-    font-size: 28px;
+    border-radius: 10px;
     color: white;
     margin-bottom: 30px;
     border: none;
     background-color: #C7D36F;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
 }
 
 .main_box{
@@ -274,19 +281,35 @@ UI BASE3
 
 .roadmap_btn{
     width: 70px;
+    height: 30px;
     margin-bottom: 10px;
 }
 .roadmap_btn:hover{
     cursor: pointer;
 }
+.roadmap_btn_word{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration-line: none;
+    color: inherit;
+}
 
 .apply_btn{
     width: 70px;
     margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration-line: none;
+    color: inherit;
 }
 .apply_btn:hover{
     cursor: pointer;
 }
+
 
 .farm_button_box{
     display: flex;
@@ -295,10 +318,17 @@ UI BASE3
 }
 
 .edit_btn{
+    width: 70px;
+    height: 30px;
+    margin-bottom: 10px;
     margin-right: 10px;
 }
 
 .edit_btn_word{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
     text-decoration-line: none;
     color: inherit;
 }
@@ -308,7 +338,14 @@ UI BASE3
 }
 
 .end_btn{
-
+    width: 70px;
+    margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration-line: none;
+    color: inherit;
 }
 .end_btn:hover{
     cursor: pointer;
@@ -357,11 +394,28 @@ UI BASE3
 }
 
 .back{
+    width: 50px;
+    height: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration-line: none;
+    color: inherit;
     margin-right: 10px;
 }
 
 .go{
-    margin-right: 10px;
+    width: 50px;
+    height: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration-line: none;
+    color: inherit;
 }
 
 .review_container{

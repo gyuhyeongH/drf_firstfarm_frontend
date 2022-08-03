@@ -84,12 +84,14 @@ function get_articledetail(article_id) {
         </div>
         `;
       $("#value").append(temp_detail_value);
-
     },
   });
 }
 
 function put_articledetail(article_id) {
+  var token = localStorage.getItem("access");
+  console.log(token);
+
   let title = $("#edit_title").val();
   let farm_name = $("#edit_farm_name").val();
   let location = $("#sample4_roadAddress").val();
@@ -107,10 +109,14 @@ function put_articledetail(article_id) {
   form_data.append("img1", img1);
   form_data.append("img2", img2);
   form_data.append("img3", img3);
-  
+
   $.ajax({
     type: "PUT",
     url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    beforeSend: function (xhr) {
+      // xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {
       title: title,
       farm_name: farm_name,
