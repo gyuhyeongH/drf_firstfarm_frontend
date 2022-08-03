@@ -9,6 +9,7 @@ function get_articledetail(article_id) {
   $.ajax({
     type: "GET",
     url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
