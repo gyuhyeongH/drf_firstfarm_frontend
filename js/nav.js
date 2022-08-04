@@ -22,6 +22,17 @@ $(document).ready(function () {
 });
 
 async function handle_enter_mypage() {
+<<<<<<< HEAD
+
+    const payload = JSON.parse(localStorage.getItem("payload"));
+    const user_category = payload.category;
+    console.log(user_category)
+
+    if (user_category == 1) {
+        window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farm.html`);
+    } else {
+        window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farmer.html`);
+=======
     console.log("handle_enter_mypage()");
 
     const payload = JSON.parse(localStorage.getItem("payload"));
@@ -31,5 +42,6 @@ async function handle_enter_mypage() {
         window.location.replace(`http://127.0.0.1:5500/farm.html`);
     } else {
         window.location.replace(`http://127.0.0.1:5500/farmer.html`);
+>>>>>>> a2c1a64cc451c20be8ffc37278784ae68e7faaa1
     }
 }
