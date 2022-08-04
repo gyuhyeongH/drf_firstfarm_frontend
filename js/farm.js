@@ -75,7 +75,7 @@ function get_farm() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
+            <button id="info_put">정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);

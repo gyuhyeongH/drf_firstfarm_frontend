@@ -77,7 +77,7 @@ function get_farmer() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
+            <button id="info_put" >정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);
@@ -372,45 +372,45 @@ function delete_review(review_id) {
     })
 }
 
-function put_profile(user) {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
-    let img = $('#inputGroupFile04')[0];
-    if(img.files.length === 0){
-        alert("사진을 업로드 해주세요");
-        return;
-    }
-    let phone_number = $('#inputGroup-phone_number').val()
-    let email = $('#inputGroup-email').val()
-    let location = $('#inputGroup-location').val()
+// function put_profile(user) {
+//     var token = localStorage.getItem("access")
+//     if (localStorage.getItem("payload") != null) {
+//         const payload = JSON.parse(localStorage.getItem("payload"));
+//         user_id = payload.user_id;
+//     }
+//     let img = $('#inputGroupFile04')[0];
+//     if(img.files.length === 0){
+//         alert("사진을 업로드 해주세요");
+//         return;
+//     }
+//     let phone_number = $('#inputGroup-phone_number').val()
+//     let email = $('#inputGroup-email').val()
+//     let location = $('#inputGroup-location').val()
 
-    const formData = new FormData();
-    formData.append("userprofile[img]",img.files[0]);
-    formData.append("userprofile[phone_number]",phone_number);
-    formData.append("email",email);
-    formData.append("userprofile[location]",location);
-    $.ajax({
-    type: "PUT",
-    url: backend_bbase_url+"/user/",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: formData,
-    contentType: false,
-    processData:false,
-    beforeSend: function (x) {
-        if (x && x.overrideMimeType) {
-            x.overrideMimeType("multipart/form-data");
-        }
-    },
-    success: function(response){
-        alert("업데이트 완료")
-        window.location.reload();
-    }
+//     const formData = new FormData();
+//     formData.append("userprofile[img]",img.files[0]);
+//     formData.append("userprofile[phone_number]",phone_number);
+//     formData.append("email",email);
+//     formData.append("userprofile[location]",location);
+//     $.ajax({
+//     type: "PUT",
+//     url: backend_bbase_url+"/user/",
+//     beforeSend: function (xhr) {
+//       xhr.setRequestHeader("Content-type", "application/json");
+//       xhr.setRequestHeader("Authorization", "Bearer " + token);
+//     },
+//     data: formData,
+//     contentType: false,
+//     processData:false,
+//     beforeSend: function (x) {
+//         if (x && x.overrideMimeType) {
+//             x.overrideMimeType("multipart/form-data");
+//         }
+//     },
+//     success: function(response){
+//         alert("업데이트 완료")
+//         window.location.reload();
+//     }
 
-    })
-}
+//     })
+// }
