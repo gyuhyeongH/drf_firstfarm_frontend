@@ -1,5 +1,5 @@
-// const backend_base_url = "http://127.0.0.1:8000";
-// const backend_base_url = "http://3.35.37.28:8000";
+// const "http://127.0.0.1:8000" = "http://127.0.0.1:8000";
+// const "http://127.0.0.1:8000" = "http://3.35.37.28:8000";
 // const frontend_base_url = "http://127.0.0.1:5500";
 
 $(document).ready(function(){
@@ -13,9 +13,8 @@ function get_farm() {
     }
     $.ajax({
     type: "GET",
-    // url: backend_base_url+"/article/farm/",
+    url: "http://127.0.0.1:8000"+"/article/farm/",
     // url: "http://3.35.37.28:8000/article/farm/",
-    url: "http://127.0.0.1:8000/article/farm/",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -118,7 +117,7 @@ function get_farm() {
                     height: 100vh; background-size: cover;">
                         <div class="content">
                             <h3>${created_at} ~ ${exposure_end_date}!</h3>
-                            <h2><a href=#>${title}</a></h2>
+                            <h2><a href="articledetail.html">${title}</a></h2>
                         </div>
                         <div class="img-cover">
                             <p> ✔️ 농장 : ${farmname}} <br />
@@ -153,9 +152,7 @@ function get_apply(article_id) {
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
     type: "GET",
-    // url: backend_base_url+"/article/farm/"+article_id,
-    // url: "http://3.35.37.28:8000/article/farm/"+article_id,
-    url: "http://127.0.0.1:8000/article/farm/"+article_id,
+    url: "http://127.0.0.1:8000"+"/article/farm/"+article_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
