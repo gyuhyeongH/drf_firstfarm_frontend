@@ -1,5 +1,5 @@
-const backend_base_url = "http://3.35.37.28:8000/";
-const frontend_base_url = "https://rbgud.shop";
+const backend_base_url = "https://rbgud.shop";
+const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
 
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");

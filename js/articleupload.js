@@ -37,7 +37,7 @@ function post_articledetail() {
 
   $.ajax({
     type: "POST",
-    url: "http://3.35.37.28:8000/article/detail/",
+    url: "https://rbgud.shop/article/detail/",
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
