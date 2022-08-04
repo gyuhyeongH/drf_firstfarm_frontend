@@ -45,7 +45,7 @@ let menu_list = [
 let go_article_detail = document.querySelectorAll(".article");
 
 function get_article(choice) {
-<<<<<<< HEAD
+
     category = document.getElementsByClassName("nav-link active")[0].value;
     if (category == 3) {
         $(".search_box").hide();
@@ -76,39 +76,6 @@ function get_article(choice) {
                 let exposure_end_date = response[i]["exposure_end_date"].substr(0, 10);
                 let updated_at = response[i]["updated_at"].substr(0, 10);
                 let temp_article = `<a href="articledetail.html" onclick="storage_id(${id})" class="article_link">
-=======
-  category = document.getElementsByClassName("nav-link active")[0].value;
-  if (category == 3) {
-    $(".search_box").hide();
-  } else {
-    $(".search_box").show();
-  }
-  var token = localStorage.getItem("access");
-  console.log(token);
-  $.ajax({
-    headers: { choice: choice, category: category },
-    type: "GET",
-    //   url: "http://3.35.37.28:8000/article/",
-      url: "http://127.0.0.1:8000/article/",
-    beforeSend: function (xhr) {
-    //     xhr.setRequestHeader("Content-type", "application/json");
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {},
-    success: function (response) {
-      $("#get_article").empty();
-      for (let i = 0; i < response.length; i++) {
-        // console.log(i);
-        let id = response[i]["id"];
-        // window.localStorage.setItem("article_id", id);
-        console.log(id);
-        let title = response[i]["title"];
-        let location = response[i]["location"];
-        let cost = response[i]["cost"];
-        let exposure_end_date = response[i]["exposure_end_date"].substr(0, 10);
-        let updated_at = response[i]["updated_at"].substr(0, 10);
-        let temp_article = `<a href="articledetail.html" onclick="storage_id(${id})" class="article_link">
->>>>>>> a2c1a64cc451c20be8ffc37278784ae68e7faaa1
                 <div class="articles">
                 <div class="contents">
                     ${location}
@@ -126,23 +93,12 @@ function get_article(choice) {
                 ${updated_at}
                 </div>
             </div></a>`;
-<<<<<<< HEAD
+
                 $("#get_article").append(temp_article);
             }
-
         },
-        error: function () {
-            $("#get_article").empty();
-        }
-
+        error: function () { $("#get_article").empty(); }
     });
-=======
-        $("#get_article").append(temp_article);
-      }
-      },
-      error: function () { $("#get_article").empty(); }
-  });
->>>>>>> a2c1a64cc451c20be8ffc37278784ae68e7faaa1
 }
 
 function storage_id(id) {
