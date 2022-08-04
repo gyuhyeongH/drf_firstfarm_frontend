@@ -21,15 +21,15 @@ $(document).ready(function () {
     
 });
 
-// async function handle_enter_mypage() {
-//     console.log("handle_enter_mypage()");
+async function handle_enter_mypage() {
+    console.log("handle_enter_mypage()");
 
-//     const payload = JSON.parse(localStorage.getItem("payload"));
-//     const user_category = payload.category;
+    const payload = JSON.parse(localStorage.getItem("payload"));
+    const user_category = payload.category;
 
-//     if (user_category == 1) {
-//         window.location.replace(`${frontend_base_url}/farm.html`);
-//     } else {
-//         window.location.replace(`${frontend_base_url}/farmer.html`);
-//     }
-// }
+    if (user_category == 1) {
+        window.location.replace(`http://127.0.0.1:5500/farm.html`);
+    } else {
+        window.location.replace(`http://127.0.0.1:5500/farmer.html`);
+    }
+}
