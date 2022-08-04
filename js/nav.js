@@ -12,18 +12,6 @@ $(document).ready(function () {
         $('#a_mypage').show();
     }
 
-    if (payload != null) {
-        if (payload.category == 1 ) {
-            $('#a_article').show();
-        }
-        else {
-            $('#a_article').hide();
-        }
-    }
-    else {
-        $('#a_article').hide();
-    }
-    
 });
 
 async function handle_enter_mypage() {
@@ -35,7 +23,5 @@ async function handle_enter_mypage() {
         } else {
             window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farmer.html`);
         }
-    } else {
-        $('#a_mypage').hide();
     }
 }

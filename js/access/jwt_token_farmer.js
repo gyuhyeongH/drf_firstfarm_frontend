@@ -4,9 +4,8 @@ var curTime = Date.now() / 1000;
 window.onload = async function () {
     if (payload != null) {
         const user_category = payload.category;
-        if (user_category != 2) {
-            console.log(user_category)
-            window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farm.html`);
+        if (user_category == 1) {
+
         }
     }
     else if (payload == null) {
