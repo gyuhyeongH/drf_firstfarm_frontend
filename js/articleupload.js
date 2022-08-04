@@ -37,12 +37,7 @@ function post_articledetail() {
 
   $.ajax({
     type: "POST",
-<<<<<<< HEAD
     url: "https://rbgud.shop/article/detail/",
-=======
-    // url: "http://3.35.37.28:8000/article/detail/",
-    url: "http://127.0.0.1:8000/article/detail/",
->>>>>>> a2c1a64cc451c20be8ffc37278784ae68e7faaa1
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
