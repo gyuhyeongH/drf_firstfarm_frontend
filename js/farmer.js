@@ -3,34 +3,34 @@ $(document).ready(function(){
     get_review();
 })
 function get_farmer() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access_token")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/farmer/",
     // url: "http://3.35.37.28:8000/article/farmer/",
     url: "https://rbgud.shop/article/farmer/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
-        let user =response['user']
-        let rank = response['rank']
-        let birthday = response['birthday']
-        let email = response['email']
-        let fullname = response['fullname']
-        let location = response['location']
-        let prefer = response['prefer']
-        let gender = response['gender']
-        let introduction = response['introduction']
-        let phone_number = response['phone_number']
-        let points = response['points']
-        // let prof_img = response['img']
+        let user =response[0]['user']
+        let rank = response[0]['userinfo']['rank']
+        let birthday = response[0]['userinfo']['birthday']
+        let email = response[0]['userinfo']['email']
+        let fullname = response[0]['userinfo']['fullname']
+        let location = response[0]['userinfo']['location']
+        let prefer = response[0]['userinfo']['prefer']
+        let gender = response[0]['userinfo']['gender']
+        let introduction = response[0]['userinfo']['introduction']
+        let phone_number = response[0]['userinfo']['phone_number']
+        let points = response[0]['userinfo']['points']
+        // let prof_img = response[0]['userinfo']['img']
         let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
         $('.title_b').append(temp_title);
 
@@ -73,7 +73,7 @@ function get_farmer() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
+            <button id="info_put">정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);
@@ -81,6 +81,7 @@ function get_farmer() {
             <div id="desc">
                 <p> 소개글 : ${introduction} 입니다  <br /></p>
                 <p> ${fullname}님은 ${rank} 중 입니다 🌱 <br /></p>
+                <p>다음 랭크까지 ${points}% 모았어요 ! <br /></p>
             </div>    
             <div id="percentbar">
                 <div>
@@ -93,13 +94,13 @@ function get_farmer() {
         $('#review_post_box').empty();
         for (let i = 0; i < response.length; i++){
             // let article_category = response[i]['article_category']
-            let article_id = response[i]['article_id']
-            let farmname = response[i]['farmname']
-            let location = response[i]['location']
-            let title = response[i]['title']
-            let cost = response[i]['cost']
-            let desc = response[i]['desc']
-            let period = response[i]['period']
+            let article_id = response[i]['articleinfo']['article_id']
+            let farmname = response[i]['articleinfo']['farm_name']
+            let location = response[i]['articleinfo']['location']
+            let title = response[i]['articleinfo']['title']
+            let cost = response[i]['articleinfo']['cost']
+            let desc = response[i]['articleinfo']['desc']
+            let period = response[i]['articleinfo']['period']
 
             let temp_li = `
             <li>
@@ -170,7 +171,7 @@ function get_farmer() {
 
 /* 리뷰 작성 */
 function post_review(article_id) {
-    // var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access_token")
 
     let content = $('#exampleFormControlTextarea1').val()
     let img = $('#formFileMultiple')[0];
@@ -193,10 +194,10 @@ function post_review(article_id) {
     // url: "http://3.35.37.28:8000/article/1"+"/farmer",
     url: "https://rbgud.shop/article/1"+"/farmer",
     // url: backend_base_url+"/article/"+article_id+"/farmer",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: formData,
     cache: false,
     contentType: false,
@@ -212,19 +213,19 @@ function post_review(article_id) {
 }
 
 function get_review() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access_token")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/review/",
     url: "https://rbgud.shop/article/review/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         for (let i = 0; i < response.length; i++){
@@ -296,11 +297,11 @@ function get_review() {
 }
 
 function put_review(review_id) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access_token")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     let content = $('#review_content_put').val()
     let img = $('#put_FileMultiple')[0];
     if(img.files.length === 0){
@@ -322,10 +323,10 @@ function put_review(review_id) {
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
     url: "https://rbgud.shop/article/farmer/"+review_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: formData,
     contentType: false,
     processData:false,
@@ -343,17 +344,17 @@ function put_review(review_id) {
 }
 
 function delete_review(review_id) {
-    // var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access_token")
     let user = 3;
     $.ajax({
     type: "DELETE",
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
     url: "https://rbgud.shop/article/farmer/"+review_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {"user":user},
     contentType: false,
     processData:false,
@@ -374,47 +375,47 @@ function delete_review(review_id) {
     })
 }
 
-function put_profile(user) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
-    let img = $('#inputGroupFile04')[0];
-    if(img.files.length === 0){
-        alert("사진을 업로드 해주세요");
-        return;
-    }
-    let phone_number = $('#inputGroup-phone_number').val()
-    let email = $('#inputGroup-email').val()
-    let location = $('#inputGroup-location').val()
+// function put_profile(user) {
+//     var token = localStorage.getItem("access_token")
+//     if (localStorage.getItem("payload") != null) {
+//         const payload = JSON.parse(localStorage.getItem("payload"));
+//         user_id = payload.user_id;
+//     }
+//     let img = $('#inputGroupFile04')[0];
+//     if(img.files.length === 0){
+//         alert("사진을 업로드 해주세요");
+//         return;
+//     }
+//     let phone_number = $('#inputGroup-phone_number').val()
+//     let email = $('#inputGroup-email').val()
+//     let location = $('#inputGroup-location').val()
 
-    const formData = new FormData();
-    formData.append("userprofile[img]",img.files[0]);
-    formData.append("userprofile[phone_number]",phone_number);
-    formData.append("email",email);
-    formData.append("userprofile[location]",location);
-    $.ajax({
-    type: "PUT",
-    // url: backend_base_url+"/user/",
-    // url: "http://3.35.37.28:8000//user/",
-    url: "https://rbgud.shop/user/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
-    data: formData,
-    contentType: false,
-    processData:false,
-    beforeSend: function (x) {
-        if (x && x.overrideMimeType) {
-            x.overrideMimeType("multipart/form-data");
-        }
-    },
-    success: function(response){
-        alert("업데이트 완료")
-        window.location.reload();
-    }
+//     const formData = new FormData();
+//     formData.append("userprofile[img]",img.files[0]);
+//     formData.append("userprofile[phone_number]",phone_number);
+//     formData.append("email",email);
+//     formData.append("userprofile[location]",location);
+//     $.ajax({
+//     type: "PUT",
+//     // url: backend_base_url+"/user/",
+//     // url: "http://3.35.37.28:8000//user/",
+//     url: "https://rbgud.shop/user/",
+//     beforeSend: function (xhr) {
+//       xhr.setRequestHeader("Content-type", "application/json");
+//       xhr.setRequestHeader("Authorization", "Bearer " + token);
+//     },
+//     data: formData,
+//     contentType: false,
+//     processData:false,
+//     beforeSend: function (x) {
+//         if (x && x.overrideMimeType) {
+//             x.overrideMimeType("multipart/form-data");
+//         }
+//     },
+//     success: function(response){
+//         alert("업데이트 완료")
+//         window.location.reload();
+//     }
 
-    })
-}
+//     })
+// }
