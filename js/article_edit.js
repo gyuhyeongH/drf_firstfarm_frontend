@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  get_articledetail(2);
+  article_id = window.localStorage.getItem("article_id");
+  get_articledetail(article_id);
 });
 
 function get_articledetail(article_id) {
@@ -8,7 +9,6 @@ function get_articledetail(article_id) {
   // user = payload.user;
   $.ajax({
     type: "GET",
-    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
     url: "http://127.0.0.1:8000/article/detail/" + article_id,
     data: {},
     success: function (response) {
@@ -135,6 +135,11 @@ function put_articledetail(article_id) {
 
     success: function (response) {
       alert("업데이트 완료");
+      window.location.reload();
+    },
+
+    error: function (response) {
+      alert("게시글 수정 실패!");
       window.location.reload();
     },
   });
