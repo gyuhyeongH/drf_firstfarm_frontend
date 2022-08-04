@@ -1,4 +1,4 @@
-const backend_bbase_url = "http://127.0.0.1:8000";
+const bbackend_bbase_url = "http://127.0.0.1:8000";
 // const backend_bbase_url = "http://3.35.37.28:8000";
 // const frontend_base_url = "http://127.0.0.1:5500";
 
@@ -15,7 +15,7 @@ function get_farmer() {
     }
     $.ajax({
     type: "GET",
-    url: backend_bbase_url+"/article/farmer/",
+    url: bbackend_bbase_url+"/article/farmer/",
         // url: "http://3.35.37.28:8000/article/farmer/",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
@@ -23,17 +23,17 @@ function get_farmer() {
     },
     data: {},
     success: function(response){
-        let user =response['user']
-        let rank = response['rank']
-        let birthday = response['birthday']
-        let email = response['email']
-        let fullname = response['fullname']
-        let location = response['location']
-        let prefer = response['prefer']
-        let gender = response['gender']
-        let introduction = response['introduction']
-        let phone_number = response['phone_number']
-        let points = response['points']
+        let user =response[0]['user']
+        let rank = response[0]['userinfo']['rank']
+        let birthday = response[0]['userinfo']['birthday']
+        let email = response[0]['userinfo']['email']
+        let fullname = response[0]['userinfo']['fullname']
+        let location = response[0]['userinfo']['location']
+        let prefer = response[0]['userinfo']['prefer']
+        let gender = response[0]['userinfo']['gender']
+        let introduction = response[0]['userinfo']['introduction']
+        let phone_number = response[0]['userinfo']['phone_number']
+        let points = response[0]['userinfo']['points']
         // let prof_img = response['img']
         let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
         $('.title_b').append(temp_title);
@@ -85,6 +85,7 @@ function get_farmer() {
             <div id="desc">
                 <p> 소개글 : ${introduction} 입니다  <br /></p>
                 <p> ${fullname}님은 ${rank} 중 입니다 🌱 <br /></p>
+                <p>다음 랭크까지 ${points}% 모았어요 ! <br /></p>
             </div>    
             <div id="percentbar">
                 <div>
@@ -96,14 +97,13 @@ function get_farmer() {
         $('#intro').append(temp_intro);
         $('#review_post_box').empty();
         for (let i = 0; i < response.length; i++){
-            // let article_category = response[i]['article_category']
-            let article_id = response[i]['article_id']
-            let farmname = response[i]['farmname']
-            let location = response[i]['location']
-            let title = response[i]['title']
-            let cost = response[i]['cost']
-            let desc = response[i]['desc']
-            let period = response[i]['period']
+            let article_id = response[i]['articleinfo']['article_id']
+            let farmname = response[i]['articleinfo']['farm_name']
+            let location = response[i]['articleinfo']['location']
+            let title = response[i]['articleinfo']['title']
+            let cost = response[i]['articleinfo']['cost']
+            let desc = response[i]['articleinfo']['desc']
+            let period = response[i]['articleinfo']['period']
 
             let temp_li = `
             <li>
@@ -125,7 +125,6 @@ function get_farmer() {
                     <div>
                         <a onclick="document.getElementById('review_post_box').classList.remove('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">후기 작성</a>
                         <a onclick="document.getElementById('review_post_box').classList.add('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">작성 취소</a>
-
                     </div>
 
                 </div>
@@ -174,8 +173,8 @@ function get_farmer() {
 
 /* 리뷰 작성 */
 function post_review(article_id) {
+    console.log(article_id)
     var token = localStorage.getItem("access")
-
     let content = $('#exampleFormControlTextarea1').val()
     let img = $('#formFileMultiple')[0];
     if(img.files.length === 0){
@@ -192,10 +191,11 @@ function post_review(article_id) {
     formData.append("img3",img.files[2]);
     formData.append("content",content);
     formData.append("rate",rate);
+    console.log(formData)
     $.ajax({
     type: "POST",
     // url: "http://127.0.0.1:8000/article/1"+"/farmer",
-    url: backend_bbase_url+"/article/"+article_id+"/farmer",
+    url: "http://127.0.0.1:8000/article/"+article_id+"/farmer",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -205,6 +205,7 @@ function post_review(article_id) {
     contentType: false,
     processData: false,
     success: function(response){
+        console.log(response)
         if (response["result"] == '리뷰 작성 완료!') {
             window.location.reload();
         } else {
@@ -222,7 +223,7 @@ function get_review() {
     }
     $.ajax({
     type: "GET",
-    url: backend_bbase_url+"/article/review/",
+    url: bbackend_bbase_url+"/article/review/",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -321,7 +322,7 @@ function put_review(review_id) {
     formData.append("rate",rate);
     $.ajax({
     type: "PUT",
-    url: backend_bbase_url+"/article/farmer/"+review_id,
+    url: bbackend_bbase_url+"/article/farmer/"+review_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -347,7 +348,7 @@ function delete_review(review_id) {
     let user = 3;
     $.ajax({
     type: "DELETE",
-    url: backend_bbase_url+"/article/farmer/"+review_id,
+    url: bbackend_bbase_url+"/article/farmer/"+review_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -394,7 +395,7 @@ function delete_review(review_id) {
 //     formData.append("userprofile[location]",location);
 //     $.ajax({
 //     type: "PUT",
-//     url: backend_bbase_url+"/user/",
+//     url: bbackend_bbase_url+"/user/",
 //     beforeSend: function (xhr) {
 //       xhr.setRequestHeader("Content-type", "application/json");
 //       xhr.setRequestHeader("Authorization", "Bearer " + token);
