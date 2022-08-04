@@ -11,6 +11,14 @@ $(document).ready(function () {
         $('#a_logout').show();
         $('#a_mypage').show();
     }
+
+    if (payload.category == 1 ) {
+        $('#a_article').hide();
+    }
+    else {
+        $('#a_article').show();
+    }
+    
 });
 
 async function handle_enter_mypage() {
