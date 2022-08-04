@@ -8,20 +8,20 @@ $(document).ready(function(){
     get_review();
 })
 function get_farmer() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/farmer/",
     // url: "http://3.35.37.28:8000/article/farmer/",
     url: "http://127.0.0.1:8000/article/farmer/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         let user =response['user']
@@ -175,7 +175,7 @@ function get_farmer() {
 
 /* 리뷰 작성 */
 function post_review(article_id) {
-    // var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
 
     let content = $('#exampleFormControlTextarea1').val()
     let img = $('#formFileMultiple')[0];
@@ -198,10 +198,10 @@ function post_review(article_id) {
     // url: "http://3.35.37.28:8000/article/1"+"/farmer",
     url: "http://127.0.0.1:8000/article/1"+"/farmer",
     // url: backend_base_url+"/article/"+article_id+"/farmer",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: formData,
     cache: false,
     contentType: false,
@@ -217,19 +217,19 @@ function post_review(article_id) {
 }
 
 function get_review() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/review/",
     url: "http://127.0.0.1:8000/article/review/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         for (let i = 0; i < response.length; i++){
@@ -301,11 +301,11 @@ function get_review() {
 }
 
 function put_review(review_id) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     let content = $('#review_content_put').val()
     let img = $('#put_FileMultiple')[0];
     if(img.files.length === 0){
@@ -327,10 +327,10 @@ function put_review(review_id) {
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
     url: "http://127.0.0.1:8000/article/farmer/"+review_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: formData,
     contentType: false,
     processData:false,
@@ -348,17 +348,17 @@ function put_review(review_id) {
 }
 
 function delete_review(review_id) {
-    // var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     let user = 3;
     $.ajax({
     type: "DELETE",
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
     url: "http://127.0.0.1:8000/article/farmer/"+review_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {"user":user},
     contentType: false,
     processData:false,
@@ -380,11 +380,11 @@ function delete_review(review_id) {
 }
 
 function put_profile(user) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     let img = $('#inputGroupFile04')[0];
     if(img.files.length === 0){
         alert("사진을 업로드 해주세요");
@@ -404,10 +404,10 @@ function put_profile(user) {
     // url: backend_base_url+"/user/",
     // url: "http://3.35.37.28:8000//user/",
     url: "http://127.0.0.1:8000/user/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: formData,
     contentType: false,
     processData:false,

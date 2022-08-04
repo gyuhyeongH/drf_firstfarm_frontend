@@ -6,20 +6,20 @@ $(document).ready(function(){
     get_farm();
 })
 function get_farm() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/farm/",
     // url: "http://3.35.37.28:8000/article/farm/",
     url: "http://127.0.0.1:8000/article/farm/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         let user =response['user']
@@ -118,7 +118,7 @@ function get_farm() {
                     height: 100vh; background-size: cover;">
                         <div class="content">
                             <h3>${created_at} ~ ${exposure_end_date}!</h3>
-                            <h2><a href="articledetail.html">${title}</a></h2>
+                            <h2><a href=#>${title}</a></h2>
                         </div>
                         <div class="img-cover">
                             <p> ✔️ 농장 : ${farmname}} <br />
@@ -145,21 +145,21 @@ function get_farm() {
 }
 
 function get_apply(article_id) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/farm/"+article_id,
     // url: "http://3.35.37.28:8000/article/farm/"+article_id,
     url: "http://127.0.0.1:8000/article/farm/"+article_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         $('.review_container').empty();
