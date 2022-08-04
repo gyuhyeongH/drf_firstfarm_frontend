@@ -1,8 +1,3 @@
-// const backend_base_url = "http://127.0.0.1:8000";
-// const backend_base_url = "http://3.35.37.28:8000";
-// const frontend_base_url = "http://127.0.0.1:5500";
-
-
 $(document).ready(function(){
     get_farmer();
     get_review();
@@ -17,7 +12,7 @@ function get_farmer() {
     type: "GET",
     // url: backend_base_url+"/article/farmer/",
     // url: "http://3.35.37.28:8000/article/farmer/",
-    url: "http://127.0.0.1:8000/article/farmer/",
+    url: "https://rbgud.shop/article/farmer/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -196,7 +191,7 @@ function post_review(article_id) {
     $.ajax({
     type: "POST",
     // url: "http://3.35.37.28:8000/article/1"+"/farmer",
-    url: "http://127.0.0.1:8000/article/1"+"/farmer",
+    url: "https://rbgud.shop/article/1"+"/farmer",
     // url: backend_base_url+"/article/"+article_id+"/farmer",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
@@ -225,7 +220,7 @@ function get_review() {
     $.ajax({
     type: "GET",
     // url: backend_base_url+"/article/review/",
-    url: "http://127.0.0.1:8000/article/review/",
+    url: "https://rbgud.shop/article/review/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -326,7 +321,7 @@ function put_review(review_id) {
     type: "PUT",
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
-    url: "http://127.0.0.1:8000/article/farmer/"+review_id,
+    url: "https://rbgud.shop/article/farmer/"+review_id,
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -354,7 +349,7 @@ function delete_review(review_id) {
     type: "DELETE",
     // url: backend_base_url+"/article/farmer/"+review_id,
     // url: "http://3.35.37.28:8000/article/farmer/"+review_id,
-    url: "http://127.0.0.1:8000/article/farmer/"+review_id,
+    url: "https://rbgud.shop/article/farmer/"+review_id,
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -403,7 +398,7 @@ function put_profile(user) {
     type: "PUT",
     // url: backend_base_url+"/user/",
     // url: "http://3.35.37.28:8000//user/",
-    url: "http://127.0.0.1:8000/user/",
+    url: "https://rbgud.shop/user/",
     // beforeSend: function (xhr) {
     //   xhr.setRequestHeader("Content-type", "application/json");
     //   xhr.setRequestHeader("Authorization", "Bearer " + token);

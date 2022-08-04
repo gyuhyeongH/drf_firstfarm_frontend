@@ -75,7 +75,10 @@ async function handle_signup() {
 
 // 로그인
 async function handle_signin() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c07346a2218a33f17bda29b7a94d15403f652778
   const signinData = {
     username: document.getElementById("id").value,
     password: document.getElementById("pswd1").value,
@@ -235,8 +238,6 @@ realUpload.addEventListener('change', getImageFiles);
 // 카테고리 토글
 function handleClick(event) {
   user_category_value = event.target.value;
-
-  console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
 
