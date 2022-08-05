@@ -1,38 +1,43 @@
-$(document).ready(function(){
+// const backend_base_url = "http://127.0.0.1:8000";
+const backend_base_url = "https://rbgud.shop";
+const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
+
+$(document).ready(function () {
     get_farm();
 })
 function get_farm() {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
     $.ajax({
-    type: "GET",
-    url: "https://rbgud.shop/article/farm/",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {},
-    success: function(response){
-        let user =response[0]['user']
-        let rank = response[0]['userinfo']['rank']
-        let birthday = response[0]['userinfo']['birthday']
-        let email = response[0]['userinfo']['email']
-        let fullname = response[0]['userinfo']['fullname']
-        let location = response[0]['userinfo']['location']
-        let prefer = response[0]['userinfo']['prefer']
-        let gender = response[0]['userinfo']['gender']
-        let introduction = response[0]['userinfo']['introduction']
-        let phone_number = response[0]['userinfo']['phone_number']
-        let points = response[0]['userinfo']['points']
-        // let prof_img= response['profile_img']
-        
-        let temp_title = `<div class="title"> ${user} 농장 페이지 😎</div>`;
-        $('.title_b').append(temp_title);
+        type: "GET",
+        url: "https://rbgud.shop/article/farm/",
+        // url: "http://3.35.37.28:8000/article/farm/",
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: {},
+        success: function (response) {
+            let user = response['user']
+            let rank = response['rank']
+            let birthday = response['birthday']
+            let email = response['email']
+            let fullname = response['fullname']
+            let location = response['location']
+            let prefer = response['prefer']
+            let gender = response['gender']
+            let introduction = response['introduction']
+            let phone_number = response['phone_number']
+            let points = response['points']
+            // let prof_img= response['profile_img']
 
-        let temp_profile = `
+            let temp_title = `<div class="title"> ${user} 농장 페이지 😎</div>`;
+            $('.title_b').append(temp_title);
+
+            let temp_profile = `
         <img src="https://www.urbanbrush.net/web/wp-content/uploads/edd/2020/01/urbanbrush-20200107213951786095.jpg" alt="default이미지" srcset="">
                 <p> ✔️ 이름 : ${fullname} <br />
                     ✔️ 성별 : ${gender} <br />
@@ -43,8 +48,8 @@ function get_farm() {
                     💡 prefer : ${prefer} <br />
                 </p>
                 <button id="info_put" onclick="document.getElementById('put_profile').classList.remove('hide');">정보 수정</button>`;
-        $('#profilebox').append(temp_profile);
-        let temp_put_profile = `
+            $('#profilebox').append(temp_profile);
+            let temp_put_profile = `
         <div id="put_profile" class="hide">
             <div class="input-group" style="margin-bottom: 20px;display: flex;flex-direction: row;">
                 <p style="width:30%">프로필 변경: </p>
@@ -70,11 +75,11 @@ function get_farm() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put">정보수정</button>
+            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
         </div>
         `;
-        $('#profilebox').append(temp_put_profile);
-        let temp_intro =`
+            $('#profilebox').append(temp_put_profile);
+            let temp_intro = `
             <div id="desc">
                 <p> 소개글 : ${introduction} 입니다  <br /></p>
                 <p> ${fullname}님은 ${rank} 중 입니다 🌱 <br /></p>
@@ -87,26 +92,24 @@ function get_farm() {
             </div>
             
         `
-        $('#intro').append(temp_intro);
-        for (let i = 0; i < response.length; i++){
-            // let article_category = response[i]['article_category']
-            // let response = response[0]
-            let article_id = response[i]['id']
-            let farmname = response[i]['farm_name']
+            $('#intro').append(temp_intro);
+            for (let i = 0; i < response.length; i++) {
+                // let article_category = response[i]['article_category']
+                let article_id = response[i]['id']
+                let farmname = response[i]['farmname']
+                let location = response[i]['location']
+                let title = response[i]['title']
+                let cost = response[i]['cost']
+                let requirement = response[i]['requirement']
+                let period = response[i]['period']
+                // let img1 = response[i]['img1']
+                // let desc = response[i]['desc']
+                // let display_article = response[i]['display_article']
+                let exposure_end_date = response[i]['exposuer_end_date']
+                let created_at = response[i]['created_at']
+                // let updated_at = response[i]['updated_at']
 
-            let location = response[i]['location']
-            let title = response[i]['title']
-            let cost = response[i]['cost']
-            let requirement = response[i]['requirement']
-            let period = response[i]['period']
-            // let img1 = response[i]['img1']
-            // let desc = response[i]['desc']
-            // let display_article = response[i]['display_article']
-            let exposure_end_date = response[i]['exposure_end_date']
-            let created_at = response[i]['created_at']
-            // let updated_at = response[i]['updated_at']
-
-            let temp_li = `
+                let temp_li = `
             <li>
                 <div>
                     <div class="posts" style="position: relative;
@@ -134,41 +137,42 @@ function get_farm() {
             </li>
 
             `;
-            $('.slides').append(temp_li);
-        
-        }}
+                $('.slides').append(temp_li);
+
+            }
+        }
     })
 }
 
 function get_apply(article_id) {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
-    type: "GET",
-    url: "https://rbgud.shop/article/farm/"+article_id,
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {},
-    success: function(response){
-        $('.review_container').empty();
-        for (let i = 0; i < response.length; i++){
-            console.log(i)
-            let rank = response[i]['rank']
-            let email = response[i]['email']
-            let fullname = response[i]['fullname']
-            let location = response[i]['location']
-            let gender = response[i]['gender']
-            let age = response[i]['age']
-            let phone_number = response[i]['phone_number']
-            let accept = response[i]['accept']
-            
-            let temp_apply = `
+        type: "GET",
+        url: "https://rbgud.shop/article/farm/" + article_id,
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: {},
+        success: function (response) {
+            $('.review_container').empty();
+            for (let i = 0; i < response.length; i++) {
+                console.log(i)
+                let rank = response[i]['rank']
+                let email = response[i]['email']
+                let fullname = response[i]['fullname']
+                let location = response[i]['location']
+                let gender = response[i]['gender']
+                let age = response[i]['age']
+                let phone_number = response[i]['phone_number']
+                let accept = response[i]['accept']
+
+                let temp_apply = `
             <div class="review_box">
                 <div class="review_rate">${rank}</div>
                 <div class="review_content">
@@ -181,8 +185,8 @@ function get_apply(article_id) {
                 <div class="review_content">${email}</div>
                 <div class="review_content">${accept}</div>
             </div>`;
-            $('.review_container').append(temp_apply);
+                $('.review_container').append(temp_apply);
+            }
         }
-    }
     })
 }
