@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  get_articledetail(2);
+  article_id = window.localStorage.getItem("article_id");
+  get_articledetail(article_id);
 });
 
 function get_articledetail(article_id) {
@@ -8,7 +9,7 @@ function get_articledetail(article_id) {
   // user = payload.user;
   $.ajax({
     type: "GET",
-    url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    url: "https://rbgud.shop/article/detail/" + article_id,
     data: {},
     success: function (response) {
       let farm_name = response["farm_name"];
@@ -112,7 +113,8 @@ function put_articledetail(article_id) {
 
   $.ajax({
     type: "PUT",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    // url: "http://3.35.37.28:8000/article/detail/" + article_id,
+    url: "https://rbgud.shop/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -133,6 +135,11 @@ function put_articledetail(article_id) {
 
     success: function (response) {
       alert("업데이트 완료");
+      window.location.reload();
+    },
+
+    error: function (response) {
+      alert("게시글 수정 실패!");
       window.location.reload();
     },
   });

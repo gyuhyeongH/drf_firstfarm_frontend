@@ -1,9 +1,5 @@
-
-const backend_base_url = "http://127.0.0.1:8000";
-
-const frontend_base_url = "http://127.0.0.1:5500";
-
-
+const backend_base_url = "https://rbgud.shop";
+const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
 
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");
@@ -19,27 +15,27 @@ async function handle_signup() {
   const yy = document.querySelector("#yy");
   const mm = document.querySelector("#mm");
   const dd = document.querySelector("#dd");
-  
+
   const input_img = document.getElementById("input_img").files[0]
-  
+
   const signupData = new FormData();
 
   if (input_img !== undefined) {
     console.log(input_img)
     signupData.append('img', input_img);
   }
-  
+
   const userprofile = JSON.stringify({
-      'fullname': document.getElementById("fullname").value,
-      'gender': document.getElementById("gender").value,
-      'birthday': (yy.value + "-" + mm.value + "-" + dd.value),
-      'age': document.getElementById("age").innerText,
-      'phone_number': document.getElementById("phone_number").value,
-      'location': document.getElementById("locations").innerText,
-      'introduction': document.getElementById("introduction").value,
-      'prefer': document.getElementById("prefer").value,
+    'fullname': document.getElementById("fullname").value,
+    'gender': document.getElementById("gender").value,
+    'birthday': (yy.value + "-" + mm.value + "-" + dd.value),
+    'age': document.getElementById("age").innerText,
+    'phone_number': document.getElementById("phone_number").value,
+    'location': document.getElementById("locations").innerText,
+    'introduction': document.getElementById("introduction").value,
+    'prefer': document.getElementById("prefer").value,
   })
-  
+
   signupData.append('username', username);
   signupData.append('password', password);
   signupData.append('email', email);
@@ -70,7 +66,7 @@ async function handle_signup() {
   else if (response_json['userprofile']) {
     alert("사용중인 전화번호 입니다.\n 다시 확인해주세요.")
   }
-  else if (response.status == 400){
+  else if (response.status == 400) {
     alert("필수 항목을 입력해주세요.");
     console.log(response_json)
   }
@@ -79,8 +75,6 @@ async function handle_signup() {
 
 // 로그인
 async function handle_signin() {
-  console.log("handle_signin()");
-
   const signinData = {
     username: document.getElementById("id").value,
     password: document.getElementById("pswd1").value,
@@ -114,6 +108,7 @@ async function handle_signin() {
         })
         .join("")
     );
+    alert("로그인 완료!")
     localStorage.setItem("payload", jsonPayload);
     window.location.replace(`${frontend_base_url}/search_article.html`);
   } else {
@@ -123,7 +118,7 @@ async function handle_signin() {
 }
 
 
-// nav 로그아웃 활성화/비활성화
+// // nav 로그아웃 활성화/비활성화
 // window.onload = async function checkLogin() {
 //   var payload = localStorage.getItem("payload")
 //   var parsed_payload = await JSON.parse(payload)
@@ -132,17 +127,27 @@ async function handle_signin() {
 //   const loginoutButton = document.getElementById("loginout")
 
 //   if (parsed_payload) {
-//     username.innerText = parsed_payload.fullname
+//     // username.innerText = parsed_payload.fullname
 //     loginoutButton.innerText = "로그아웃"
 //     loginoutButton.setAttribute("onclick", "handle_logout()")
 //   }
 //   else {
 //     console.log(loginoutButton)
-//     username.innerText = "로그인해주세요"
-//     loginoutButton.innerText = "로그인"
+//     // username.innerText = "로그인해주세요"
+//     // loginoutButton.innerText = "로그인"
 //     loginoutButton.setAttribute("onclick", "location.href='/signin.html'")
 //   }
 // }
+
+// 로그아웃
+async function handle_logout() {
+  localStorage.removeItem("access");
+  localStorage.removeItem("refresh");
+  localStorage.removeItem("payload");
+  alert("로그아웃 되었습니다.");
+  window.location.replace(`${frontend_base_url}/signin.html`);
+  // location.reload()
+}
 
 // 지역 주소 지정
 function serch_loaction() {
@@ -215,7 +220,7 @@ function createElement(e, file) {
   new_img.setAttribute('data-file', file.name);
 
   // console.log(new_img)
-  
+
   return new_img;
 }
 
@@ -229,8 +234,6 @@ realUpload.addEventListener('change', getImageFiles);
 // 카테고리 토글
 function handleClick(event) {
   user_category_value = event.target.value;
-
-  console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
 

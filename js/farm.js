@@ -1,37 +1,32 @@
-// const backend_base_url = "http://127.0.0.1:8000";
-const backend_base_url = "http://3.35.37.28:8000";
-const frontend_base_url = "http://127.0.0.1:5500";
-
 $(document).ready(function(){
     get_farm();
 })
 function get_farm() {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     $.ajax({
     type: "GET",
-    url: backend_base_url+"/article/farm/",
-    // url: "http://3.35.37.28:8000/article/farm/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    url: "https://rbgud.shop/article/farm/",
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
-        let user =response['user']
-        let rank = response['rank']
-        let birthday = response['birthday']
-        let email = response['email']
-        let fullname = response['fullname']
-        let location = response['location']
-        let prefer = response['prefer']
-        let gender = response['gender']
-        let introduction = response['introduction']
-        let phone_number = response['phone_number']
-        let points = response['points']
+        let user =response[0]['user']
+        let rank = response[0]['userinfo']['rank']
+        let birthday = response[0]['userinfo']['birthday']
+        let email = response[0]['userinfo']['email']
+        let fullname = response[0]['userinfo']['fullname']
+        let location = response[0]['userinfo']['location']
+        let prefer = response[0]['userinfo']['prefer']
+        let gender = response[0]['userinfo']['gender']
+        let introduction = response[0]['userinfo']['introduction']
+        let phone_number = response[0]['userinfo']['phone_number']
+        let points = response[0]['userinfo']['points']
         // let prof_img= response['profile_img']
         
         let temp_title = `<div class="title"> ${user} 농장 페이지 😎</div>`;
@@ -75,7 +70,7 @@ function get_farm() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
+            <button id="info_put">정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);
@@ -95,8 +90,10 @@ function get_farm() {
         $('#intro').append(temp_intro);
         for (let i = 0; i < response.length; i++){
             // let article_category = response[i]['article_category']
+            // let response = response[0]
             let article_id = response[i]['id']
-            let farmname = response[i]['farmname']
+            let farmname = response[i]['farm_name']
+
             let location = response[i]['location']
             let title = response[i]['title']
             let cost = response[i]['cost']
@@ -105,7 +102,7 @@ function get_farm() {
             // let img1 = response[i]['img1']
             // let desc = response[i]['desc']
             // let display_article = response[i]['display_article']
-            let exposure_end_date = response[i]['exposuer_end_date']
+            let exposure_end_date = response[i]['exposure_end_date']
             let created_at = response[i]['created_at']
             // let updated_at = response[i]['updated_at']
 
@@ -144,19 +141,19 @@ function get_farm() {
 }
 
 function get_apply(article_id) {
-    // var token = localStorage.getItem("access_token")
-    // if (localStorage.getItem("payload") != null) {
-    //     const payload = JSON.parse(localStorage.getItem("payload"));
-    //     user_id = payload.user_id;
-    // }
+    var token = localStorage.getItem("access")
+    if (localStorage.getItem("payload") != null) {
+        const payload = JSON.parse(localStorage.getItem("payload"));
+        user_id = payload.user_id;
+    }
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
     type: "GET",
-    url: backend_base_url+"/article/farm/"+article_id,
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    url: "https://rbgud.shop/article/farm/"+article_id,
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         $('.review_container').empty();
