@@ -1,8 +1,3 @@
-const bbackend_bbase_url = "http://127.0.0.1:8000";
-// const backend_bbase_url = "http://3.35.37.28:8000";
-// const frontend_base_url = "http://127.0.0.1:5500";
-
-
 $(document).ready(function(){
     get_farmer();
     get_review();
@@ -15,8 +10,7 @@ function get_farmer() {
     }
     $.ajax({
     type: "GET",
-    url: bbackend_bbase_url+"/article/farmer/",
-        // url: "http://3.35.37.28:8000/article/farmer/",
+    url: "https://rbgud.shop/article/farmer/",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -34,7 +28,6 @@ function get_farmer() {
         let introduction = response[0]['userinfo']['introduction']
         let phone_number = response[0]['userinfo']['phone_number']
         let points = response[0]['userinfo']['points']
-        // let prof_img = response['img']
         let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
         $('.title_b').append(temp_title);
 
@@ -77,7 +70,7 @@ function get_farmer() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" >정보수정</button>
+            <button id="info_put">정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);
@@ -173,7 +166,6 @@ function get_farmer() {
 
 /* 리뷰 작성 */
 function post_review(article_id) {
-    console.log(article_id)
     var token = localStorage.getItem("access")
     let content = $('#exampleFormControlTextarea1').val()
     let img = $('#formFileMultiple')[0];
@@ -194,8 +186,7 @@ function post_review(article_id) {
     console.log(formData)
     $.ajax({
     type: "POST",
-    // url: "http://127.0.0.1:8000/article/1"+"/farmer",
-    url: "http://127.0.0.1:8000/article/"+article_id+"/farmer",
+    url: "https://rbgud.shop/article/1"+"/farmer",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -223,7 +214,7 @@ function get_review() {
     }
     $.ajax({
     type: "GET",
-    url: bbackend_bbase_url+"/article/review/",
+    url: "https://rbgud.shop/article/review/",
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -322,7 +313,7 @@ function put_review(review_id) {
     formData.append("rate",rate);
     $.ajax({
     type: "PUT",
-    url: bbackend_bbase_url+"/article/farmer/"+review_id,
+    url: "https://rbgud.shop/article/farmer/"+review_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -348,7 +339,7 @@ function delete_review(review_id) {
     let user = 3;
     $.ajax({
     type: "DELETE",
-    url: bbackend_bbase_url+"/article/farmer/"+review_id,
+    url: "https://rbgud.shop/article/farmer/"+review_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -375,6 +366,7 @@ function delete_review(review_id) {
 
 // function put_profile(user) {
 //     var token = localStorage.getItem("access")
+//     var token = localStorage.getItem("access_token")
 //     if (localStorage.getItem("payload") != null) {
 //         const payload = JSON.parse(localStorage.getItem("payload"));
 //         user_id = payload.user_id;
@@ -395,7 +387,7 @@ function delete_review(review_id) {
 //     formData.append("userprofile[location]",location);
 //     $.ajax({
 //     type: "PUT",
-//     url: bbackend_bbase_url+"/user/",
+//     url: "https://rbgud.shop/user/",
 //     beforeSend: function (xhr) {
 //       xhr.setRequestHeader("Content-type", "application/json");
 //       xhr.setRequestHeader("Authorization", "Bearer " + token);

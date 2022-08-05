@@ -1,6 +1,5 @@
-// const backend_base_url = "http://3.35.37.28:8000";
-const backend_base_url = "http://127.0.0.1:8000";
-const frontend_base_url = "http://127.0.0.1:5500";
+const backend_base_url = "https://rbgud.shop";
+const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
 
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");
@@ -76,8 +75,6 @@ async function handle_signup() {
 
 // 로그인
 async function handle_signin() {
-  console.log("handle_signin()");
-
   const signinData = {
     username: document.getElementById("id").value,
     password: document.getElementById("pswd1").value,
@@ -237,8 +234,6 @@ realUpload.addEventListener('change', getImageFiles);
 // 카테고리 토글
 function handleClick(event) {
   user_category_value = event.target.value;
-
-  console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
 

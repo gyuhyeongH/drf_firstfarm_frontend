@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  article_id = window.localStorage.getItem("article_id");
+  let article_id = window.localStorage.getItem("article_id");
+  console.log(article_id)
   get_articledetail(article_id);
   // localStorage.remove("article_id");
 });
@@ -17,7 +18,7 @@ function get_articledetail(article_id) {
 
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    url: "https://rbgud.shop/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -304,7 +305,7 @@ function post_article_apply(article_id) {
 
   $.ajax({
     type: "POST",
-    url: "http://127.0.0.1:8000/article/detail/apply/" + article_id,
+    url: "https://rbgud.shop/article/detail/apply/" + article_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -331,7 +332,7 @@ function delete_articledetail(article_id) {
 
   $.ajax({
     type: "DELETE",
-    url: "http://127.0.0.1:8000/article/detail/" + article_id,
+    url: "https://rbgud.shop/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
       xhr.setRequestHeader("Authorization", "Bearer " + token);
