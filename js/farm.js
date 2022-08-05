@@ -2,20 +2,18 @@ $(document).ready(function(){
     get_farm();
 })
 function get_farm() {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
     }
     $.ajax({
     type: "GET",
-    // url: backend_base_url+"/article/farm/",
-    // url: "http://3.35.37.28:8000/article/farm/",
     url: "https://rbgud.shop/article/farm/",
-    // beforeSend: function (xhr) {
-    //   xhr.setRequestHeader("Content-type", "application/json");
-    //   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    // },
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
     data: {},
     success: function(response){
         let user =response[0]['user']
@@ -72,7 +70,7 @@ function get_farm() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
+            <button id="info_put">정보수정</button>
         </div>
         `;
         $('#profilebox').append(temp_put_profile);
@@ -92,8 +90,10 @@ function get_farm() {
         $('#intro').append(temp_intro);
         for (let i = 0; i < response.length; i++){
             // let article_category = response[i]['article_category']
+            // let response = response[0]
             let article_id = response[i]['id']
             let farmname = response[i]['farm_name']
+
             let location = response[i]['location']
             let title = response[i]['title']
             let cost = response[i]['cost']
@@ -141,7 +141,7 @@ function get_farm() {
 }
 
 function get_apply(article_id) {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
@@ -149,8 +149,6 @@ function get_apply(article_id) {
     document.getElementById('apply_info').classList.remove('hide');
     $.ajax({
     type: "GET",
-    // url: backend_base_url+"/article/farm/"+article_id,
-    // url: "http://3.35.37.28:8000/article/farm/"+article_id,
     url: "https://rbgud.shop/article/farm/"+article_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");
