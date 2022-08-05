@@ -1,6 +1,5 @@
-const backend_base_url = "http://127.0.0.1:8000";
-// const backend_base_url = "http://3.35.37.28:8000";
-const frontend_base_url = "http://127.0.0.1:5500";
+const backend_base_2_url = "https://rbgud.shop";
+const frontend_base_2_url = "https://polite-paprenjak-e2afb5.netlify.app";
 
 // 사용자 정보 가져오기
 window.onload = async function loadUserProfile() {
@@ -9,7 +8,7 @@ window.onload = async function loadUserProfile() {
 
     document.getElementById("email").value = userdata.email
     const userprofile_img = document.querySelector("#default_img")
-    userprofile_img.setAttribute("src", `${backend_base_url}${userdata.userprofile.img}`)
+    userprofile_img.setAttribute("src", `${backend_base_2_url}${userdata.userprofile.img}`)
     userprofile_img.setAttribute("class", " int_img")
     document.getElementById("locations").innerText = userdata.userprofile.location
     document.getElementById("introduction").value = userdata.userprofile.introduction
@@ -58,7 +57,7 @@ async function handle_signput() {
     user = await getUser()
     const user_id = user.id
 
-    const response = await fetch(`${backend_base_url}/user/` + user_id + `/`, {
+    const response = await fetch(`${backend_base_2_url}/user/` + user_id + `/`, {
         method: "PUT",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -69,7 +68,7 @@ async function handle_signput() {
     response_json = await response.json();
 
     if (response.status == 200) {
-        // window.location.replace(`${frontend_base_url}/signin.html`);
+        // window.location.replace(`${frontend_base_2_url}/signin.html`);
         alert("수정사항이 정상적으로 저장되었습니다.")
         setTimeout(function () {
             location.reload();
@@ -94,7 +93,7 @@ async function handle_signput() {
 
 // 유저 데이터 불러오기
 async function getUser() {
-    const response = await fetch(`${backend_base_url}/user/`, {
+    const response = await fetch(`${backend_base_2_url}/user/`, {
         method: 'GET',
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
