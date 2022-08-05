@@ -75,7 +75,7 @@ function get_article(choice) {
                 let cost = response[i]["cost"];
                 let exposure_end_date = response[i]["exposure_end_date"].substr(0, 10);
                 let updated_at = response[i]["updated_at"].substr(0, 10);
-                let temp_article = `<a href="articledetail.html" class="article_link">
+                let temp_article = `<a href="articledetail.html" onclick="storage_id(${id})" class="article_link">
                 <div class="articles">
                 <div class="contents">
                     ${location}
@@ -101,6 +101,6 @@ function get_article(choice) {
     });
 }
 
-function storage_id(id) {
-    window.localStorage.setItem("article_id", id);
+function storage_id(article_id) {
+    window.localStorage.setItem("article_id", article_id);
 }
