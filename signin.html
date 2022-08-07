@@ -53,24 +53,26 @@
         <!-- content-->
         <div id="content">
             <div id="content_box">
-                <!-- ID -->
-                <div class="input_form" style="margin-bottom: 20px;">
-                    <h3 class="join_title">
-                        <label for="id">아이디</label>
-                    </h3>
-                    <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
-                <!-- PW1 -->
-                <div class="input_form">
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="password" id="pswd1" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+                <form id="login_form">
+                    <!-- ID -->
+                    <div class="input_form" style="margin-bottom: 20px;">
+                        <h3 class="join_title">
+                            <label for="id">아이디</label>
+                        </h3>
+                        <span class="box int_id">
+                            <input type="text" id="id" class="int" maxlength="20">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                    <!-- PW1 -->
+                    <div class="input_form">
+                        <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                        <span class="box int_pass">
+                            <input type="password" id="pswd1" class="int" maxlength="20">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                </form>
                 <!-- JOIN BTN -->
                 <div class="btn_area">
                     <button type="button" id="btnJoin" onclick="handle_signin()">
@@ -101,7 +103,6 @@
 
         <!-- 동기 JS -->
         <script src="./js/sign_in_up_js/sign_in.js"></script>
-
         <script src="./js/nav.js"></script>
 </body>
 
