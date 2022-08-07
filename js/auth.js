@@ -111,7 +111,7 @@ async function handle_signin() {
     );
     alert("로그인 완료!")
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace(`${frontend_base_url}/search_article.html`);
+    window.location.replace(`${frontend_base_url}/index2.html`);
   } else {
     // alert(response.status);
     alert("아이디 또는 비밀번호를 확인해주세요.");
