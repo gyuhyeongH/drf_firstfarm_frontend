@@ -31,14 +31,36 @@
         <nav class="navbar fixed-top navbar-light" style="background-color: #C7D36F; padding-top: 0; padding-bottom: 0;"
             id="navigationBar">
             <ul>
-                <li>
-                    <a href="index2.html" class="link">소개</a>
+                <li class="btn_hover">
+                    <a href="index.html" class="link">소개</a>
                 </li>
-                <li>
+                <li class="btn_hover">
                     <a href="search_article.html" class="link">알바 / 체험 찾기</a>
                 </li>
-                <li>
+                <li class="btn_hover">
                     <a href="articleupload.html" class="link" id="a_article">공고 등록</a>
+                </li>
+            </ul>
+            <ul>
+                <li class="btn_hover">
+                    <a id="a_mypage" href="farmer.html" class="link">
+                        마이페이지
+                    </a>
+                </li>
+                <li class="btn_hover">
+                    <a id="a_logout" class="nav-logout" onclick="handle_logout()">
+                        로그아웃
+                    </a>
+                </li>
+                <li class="btn_hover">
+                    <a id="a_login" class="nav-signin" href="signin.html">
+                        로그인
+                    </a>
+                </li>
+                <li class="btn_hover">
+                    <a id="a_signup" class="nav-signup" href="signup.html">
+                        회원가입
+                    </a>
                 </li>
             </ul>
         </nav>
