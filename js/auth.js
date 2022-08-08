@@ -65,7 +65,7 @@ async function handle_signup() {
     alert("사용중인 이메일이거나 이메일 형식이 맞지 않습니다.\n 다시 확인해주세요.")
   }
   else if (response_json['userprofile']) {
-    alert("사용중인 전화번호 입니다.\n 다시 확인해주세요.")
+    alert("세부사항에 입력되지 않거나 잘못된 정보입니다.\n 다시 확인해주세요.")
   }
   else if (response.status == 400) {
     alert("필수 항목을 입력해주세요.");
@@ -94,26 +94,22 @@ async function handle_signin() {
   console.log(response_json.access);
 
   if (response.status == 200) {
-    localStorage.setItem("access", response_json.access);
-    // #localstorage에 access란 변수에 담겨온 access값을 받아와서 저장
+    localStorage.setItem("access_token", response_json.access)
+    localStorage.setItem("refresh_token", response_json.refresh)
 
-    localStorage.setItem("refresh", response_json.refresh);
+    const base64Url = response_json.access.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
 
-    const base64Url = response_json.access.split(".")[1];
-    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split("")
-        .map(function (c) {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
+    localStorage.setItem("payload", jsonPayload);
+
+    location.reload();
     alert("로그인 완료!")
     localStorage.setItem("payload", jsonPayload);
     window.location.replace(`${frontend_base_url}/index2.html`);
   } else {
-    // alert(response.status);
     alert("아이디 또는 비밀번호를 확인해주세요.");
   }
 }
