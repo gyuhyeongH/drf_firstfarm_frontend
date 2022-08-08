@@ -1,11 +1,6 @@
 function post_articledetail() {
   var token = localStorage.getItem("access");
-  console.log(token);
-  // if (localStorage.getItem("payload") != null) {
-  //   const payload = JSON.parse(localStorage.getItem("payload"));
-  //   user_id = payload.user_id;
-  //   console.log(user_id)
-  // }
+
   let article_category = $("#article_category").val();
   let farm_name = $("#farm_name").val();
   let location = $("#sample4_roadAddress").val();
@@ -19,7 +14,6 @@ function post_articledetail() {
   let img3 = $("#img3")[0].files[0];
   let form_data = new FormData();
 
-  // form_data.append("user", user_id)
   form_data.append("article_category", article_category);
   form_data.append("farm_name", farm_name);
   form_data.append("location", location);
@@ -31,9 +25,6 @@ function post_articledetail() {
   form_data.append("img1", img1);
   form_data.append("img2", img2);
   form_data.append("img3", img3);
-  for (var pair of form_data.entries()) {
-    console.log(pair[0] + ", " + pair[1]);
-  }
 
   $.ajax({
     type: "POST",
@@ -49,13 +40,11 @@ function post_articledetail() {
 
     error: function () {
       alert("error");
-      // window.location.reload();
       location.reload();
     },
     success: function () {
       alert("게시글이 작성되었습니다.");
-      // window.location.reload();
-      location.reload();
+      window.location.replace(`${frontend_base_url}/search_article.html`);
     },
   });
 }
@@ -160,8 +149,6 @@ function handleClick(event) {
   // console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
-
-  // console.log(event.target.classList);
 
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
