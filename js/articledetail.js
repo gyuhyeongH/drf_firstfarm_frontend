@@ -23,7 +23,7 @@ function get_articledetail(article_id) {
     },
     data: {},
     success: function (response) {
-      let review_length = response["article_review"]["rate"];
+      let review_length = response["article_review"]["rate"].length;
       for (let i = 0; i < review_length.length; i++) {
         let temp_detail_reviewbox;
         let temp_detail_reviewimg;
@@ -79,7 +79,7 @@ function get_articledetail(article_id) {
         }
       }
 
-      let apply_user = response["apply"]["apply"][0];
+      let apply_user = response["apply"];
       let article_user = response["user"];
       let farm_name = response["farm_name"];
       let title = response["title"];
@@ -142,7 +142,7 @@ function get_articledetail(article_id) {
           <button class="roadmap_btn"><a class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
         `;
-        } else if (apply_user != undefined) {
+        } else if (apply_user) {
           temp_detail_userbutton = `
           <button class="roadmap_btn"><a class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
