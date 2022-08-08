@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&display=swap');
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 62.5%;
+    background-color: #34363f;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+header {
+    position: relative;
+    /* height: 100vh; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #476052;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header .overlay h1 {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+    margin: 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14vw;
+    color: lightblue;
+    mix-blend-mode: screen;
+    opacity: 0.78;
+}
+
+@media (max-width: 768px) {
+    header .overlay h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-height: 500px) {
+    header .overlay h1 {
+        font-size: 6rem;
+    }
+}
+
+header .overlay h1 span {
+    display: block;
+    letter-spacing: 5px;
+    font-size: 2vw;
+}
+
+@media (max-width: 768px) {
+    header .overlay h1 span {
+        font-size: 1.25rem;
+    }
+}
+
+header .parallax {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+header .parallax div {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: calc(100% + (15px * 2));
+    height: calc(100% + (15px * 2));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 200ms ease;
+}
+
+@media (max-height: 600px) {
+    header .parallax div {
+        background-size: 100%;
+    }
+}
+
+header .parallax .one {
+    /* background-image: url("https://tornis.robbowen.digital/img/mist.png"); */
+    z-index: 4;
+    animation: side 25s linear infinite;
+}
+
+header .parallax .two {
+    /* background-image: url("https://tornis.robbowen.digital/img/tree_top.png"); */
+    /* background-image: url("https://file.mk.co.kr/meet/neds/2013/07/image_readtop_2013_595188_1374023982982432.jpg"); */
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUPhfYr4WnbDZYoYym7u7DRy5TnIYNjwyciA&usqp=CAU"); */
+    /* filter: brightness(60%); */
+    z-index: 3;
+}
+
+header .parallax .three {
+    /* background-image: url("https://tornis.robbowen.digital/img/mist.png"); */
+    z-index: 2;
+    animation: side 25s linear 5s infinite;
+}
+
+header .parallax .four {
+    /* background-image: url("https://tornis.robbowen.digital/img/tree_mid.png"); */
+    z-index: 1;
+}
+
+header .parallax .five {
+    /* background-image: url("https://tornis.robbowen.digital/img/tree_base.jpg"); */
+    z-index: 0;
+}
+
+@keyframes side {
+
+    20%,
+    60%,
+    100% {
+        transform: translateX(15px);
+    }
+
+    40%,
+    80% {
+        transform: translateX(-15px);
+    }
+}
+
+main {
+    position: relative;
+    margin-bottom: 10vh;
+    padding: 2em 4em;
+    min-height: 80vh;
+    background-color: #34363f;
+}
+
+main .container {
+    position: relative;
+    z-index: 2;
+    font-family: 'Gamja Flower', cursive;
+    font-size: 2rem;
+    color: lightblue;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    min-height: 10vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: lightblue;
+    background-color: #282a31;
+}
+
+footer a {
+    padding-bottom: 0.25em;
+    text-decoration: none;
+    border-bottom: 1px dashed lightblue;
+    color: lightblue;
+}
+
+
+/* 네비게이션 바 */
+#navigationBar {
+    /* background: #fff; */
+    /* box-shadow: 0px 1px 10px 10px #ddd; */
+    height: 60px;
+    text-align: left;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    font-family: 'Gamja Flower', cursive;
+}
+
+#navigationBar>ul>li {
+    display: inline;
+}
+
+#navigationBar>ul>li>a {
+    color: #fff;
+    /* font-weight: bold; */
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin: 0px;
+    padding: 0px 15px;
+    text-decoration: none;
+    transition: color 0.3s ease-in;
+    cursor: pointer;
+    font-size: 26px;
+
+    /* background-color: blueviolet; */
+    transition: width 0.95s, height 1s;
+}
+
+#navigationBar>ul>li>a:hover {
+    color: #C7D36F;
+    font-weight: bold;
+    /* background-color: #34363f; */
+    
+    /* width: 100%;
+    height: 100%; */
+    transition: width 1s, height 0.25s;
+}
+
+
+/*======= Button 2 =======*/
+
+.btn_hover{
+    padding: 24px 15px 15px 15px;
+    /* margin: 10px 4px; */
+    color: #fff;
+    /* font-family: sans-serif; */
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn_hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+    -webkit-transform: scaleY(.3);
+    transform: scaleY(.3);
+    opacity: 0;
+    transition: all .3s
+}
+
+.btn_hover:hover {
+    color: #6098FF;
+}
+
+.btn_hover:hover::before {
+    opacity: 1;
+    background-color: rgba(169, 169, 169, 0.251);
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    transition: -webkit-transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity .4s;
+    transition: transform .6s cubic-bezier(.08, .35, .13, 1.02), opacity
+}
