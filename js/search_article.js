@@ -120,9 +120,10 @@ function search_articles() {
         return false;
     }
     $.ajax({
+        headers: { choice: search_text },
         type: "GET",
         url: "https://rbgud.shop/article/search",
-        data: { "search_text": search_text },
+        data: {},
         success: function (response) {
             $("#get_article").empty();
             let responsed = response.reverse();
