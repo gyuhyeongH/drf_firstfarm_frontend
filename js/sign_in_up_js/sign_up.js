@@ -52,13 +52,6 @@ gender.addEventListener("focusout", function () {
         error[5].style.display = "none";
     }
 });
-// locations.addEventListener("focusout", function () {
-//     if (locations.value === "지역 선택") {
-//         error[8].style.display = "block";
-//     } else {
-//         error[8].style.display = "none";
-//     }
-// });
 mobile.addEventListener("focusout", checkPhoneNum);
 prefer.addEventListener("focusout", checkPrefer);
 
@@ -253,8 +246,6 @@ function getImageFiles(e) {
   const imagePreview = document.querySelector('.box_img');
   const docFrag = new DocumentFragment();
 
-  // console.log(files)
-
   if ([...files].length >= 2) {
     alert('이미지는 1개만 업로드가 가능합니다.');
     return;
@@ -284,8 +275,6 @@ function createElement(e, file) {
   var new_img = document.querySelector('#default_img');
   new_img.setAttribute('src', e.target.result);
   new_img.setAttribute('data-file', file.name);
-
-  // console.log(new_img)
 
   return new_img;
 }
@@ -330,10 +319,7 @@ function serch_loaction() {
 // 카테고리 토글
 function handleClick(event) {
   user_category_value = event.target.value;
-  // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
-
-  // console.log(event.target.classList);
 
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
