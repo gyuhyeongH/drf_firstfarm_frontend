@@ -1,6 +1,7 @@
 const payload = JSON.parse(localStorage.getItem("payload"));
 
 $(document).ready(function () {
+    $('#a_article').hide();
     if (payload == null) {
         $('#a_logout').hide();
         $('#a_mypage').hide();
@@ -10,8 +11,10 @@ $(document).ready(function () {
         $('#a_signup').hide();
         $('#a_logout').show();
         $('#a_mypage').show();
+        if (payload.category == 1) {
+            $('#a_article').show();
+        }
     }
-
 });
 
 async function handle_enter_mypage() {
