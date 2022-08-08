@@ -1,37 +1,39 @@
-$(document).ready(function(){
+$(document).ready(function () {
     get_farmer();
     get_review();
 })
 function get_farmer() {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
     $.ajax({
-    type: "GET",
-    url: "https://rbgud.shop/article/farmer/",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {},
-    success: function(response){
-        let user =response[0]['user']
-        let rank = response[0]['userinfo']['rank']
-        let birthday = response[0]['userinfo']['birthday']
-        let email = response[0]['userinfo']['email']
-        let fullname = response[0]['userinfo']['fullname']
-        let location = response[0]['userinfo']['location']
-        let prefer = response[0]['userinfo']['prefer']
-        let gender = response[0]['userinfo']['gender']
-        let introduction = response[0]['userinfo']['introduction']
-        let phone_number = response[0]['userinfo']['phone_number']
-        let points = response[0]['userinfo']['points']
-        let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
-        $('.title_b').append(temp_title);
+        type: "GET",
+        url: "https://rbgud.shop/article/farmer/",
+        // url: "http://3.35.37.28:8000/article/farmer/",
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: {},
+        success: function (response) {
+            let user = response['user']
+            let rank = response['rank']
+            let birthday = response['birthday']
+            let email = response['email']
+            let fullname = response['fullname']
+            let location = response['location']
+            let prefer = response['prefer']
+            let gender = response['gender']
+            let introduction = response['introduction']
+            let phone_number = response['phone_number']
+            let points = response['points']
+            // let prof_img = response['img']
+            let temp_title = `<div class="title"> ${user} 농부 페이지 😎</div>`;
+            $('.title_b').append(temp_title);
 
-        let temp_profile = `
+            let temp_profile = `
         <img src="https://www.urbanbrush.net/web/wp-content/uploads/edd/2020/01/urbanbrush-20200107213951786095.jpg" alt="default이미지" srcset="">
                 <p> ✔️ 이름 : ${fullname} <br />
                     ✔️ 성별 : ${gender} <br />
@@ -43,8 +45,8 @@ function get_farmer() {
                 </p>
                 <button id="info_put" onclick="document.getElementById('put_profile').classList.remove('hide');">정보 수정</button>
                 `;
-        $('#profilebox').append(temp_profile);
-        let temp_put_profile = `
+            $('#profilebox').append(temp_profile);
+            let temp_put_profile = `
         <div id="put_profile" class="hide">
             <div class="input-group" style="margin-bottom: 20px;display: flex;flex-direction: row;">
                 <p style="width:30%">프로필 변경: </p>
@@ -70,15 +72,14 @@ function get_farmer() {
                 </div>
                 <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
             </div>  
-            <button id="info_put">정보수정</button>
+            <button id="info_put" onclick="put_profile(${user})">정보수정</button>
         </div>
         `;
-        $('#profilebox').append(temp_put_profile);
-        let temp_intro =`
+            $('#profilebox').append(temp_put_profile);
+            let temp_intro = `
             <div id="desc">
                 <p> 소개글 : ${introduction} 입니다  <br /></p>
                 <p> ${fullname}님은 ${rank} 중 입니다 🌱 <br /></p>
-                <p>다음 랭크까지 ${points}% 모았어요 ! <br /></p>
             </div>    
             <div id="percentbar">
                 <div>
@@ -87,18 +88,19 @@ function get_farmer() {
             </div>
             
         `
-        $('#intro').append(temp_intro);
-        $('#review_post_box').empty();
-        for (let i = 0; i < response.length; i++){
-            let article_id = response[i]['articleinfo']['article_id']
-            let farmname = response[i]['articleinfo']['farm_name']
-            let location = response[i]['articleinfo']['location']
-            let title = response[i]['articleinfo']['title']
-            let cost = response[i]['articleinfo']['cost']
-            let desc = response[i]['articleinfo']['desc']
-            let period = response[i]['articleinfo']['period']
+            $('#intro').append(temp_intro);
+            $('#review_post_box').empty();
+            for (let i = 0; i < response.length; i++) {
+                // let article_category = response[i]['article_category']
+                let article_id = response[i]['article_id']
+                let farmname = response[i]['farmname']
+                let location = response[i]['location']
+                let title = response[i]['title']
+                let cost = response[i]['cost']
+                let desc = response[i]['desc']
+                let period = response[i]['period']
 
-            let temp_li = `
+                let temp_li = `
             <li>
             <div>
             <!-- Posts -->
@@ -118,6 +120,7 @@ function get_farmer() {
                     <div>
                         <a onclick="document.getElementById('review_post_box').classList.remove('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">후기 작성</a>
                         <a onclick="document.getElementById('review_post_box').classList.add('hide');" title="Button push blue/green" class="button btnPush btnBlueGreen">작성 취소</a>
+
                     </div>
 
                 </div>
@@ -126,9 +129,9 @@ function get_farmer() {
             </div>
             </li>
             `;
-            $('.slides').append(temp_li);
+                $('.slides').append(temp_li);
 
-            let temp_post_box = `
+                let temp_post_box = `
             <div class="apply_box">
             <h3>후기 작성하기</h3>
             </div>
@@ -159,80 +162,81 @@ function get_farmer() {
 
             <button id="review_uproad" onclick="post_review(${article_id})">후기 업로드하기</button>
             `
-            $('#review_post_box').append(temp_post_box);
-        }}
+                $('#review_post_box').append(temp_post_box);
+            }
+        }
     })
 }
 
 /* 리뷰 작성 */
 function post_review(article_id) {
-    var token = localStorage.getItem("access")
+    // var token = localStorage.getItem("access_token")
+
     let content = $('#exampleFormControlTextarea1').val()
     let img = $('#formFileMultiple')[0];
-    if(img.files.length === 0){
+    if (img.files.length === 0) {
         alert("사진을 업로드 해주세요");
         return;
-    }else if(img.files.length > 3){
+    } else if (img.files.length > 3) {
         alert("사진 업로드는 최대 3개까지 가능합니다");
         return;
     }
     let rate = $('.form-select').val()
     const formData = new FormData();
-    formData.append("img1",img.files[0]);
-    formData.append("img2",img.files[1]);
-    formData.append("img3",img.files[2]);
-    formData.append("content",content);
-    formData.append("rate",rate);
-    console.log(formData)
+    formData.append("img1", img.files[0]);
+    formData.append("img2", img.files[1]);
+    formData.append("img3", img.files[2]);
+    formData.append("content", content);
+    formData.append("rate", rate);
     $.ajax({
-    type: "POST",
-    url: "https://rbgud.shop/article/1"+"/farmer",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: formData,
-    cache: false,
-    contentType: false,
-    processData: false,
-    success: function(response){
-        console.log(response)
-        if (response["result"] == '리뷰 작성 완료!') {
-            window.location.reload();
-        } else {
-            window.location.reload();
-        }
+        type: "POST",
+        // url: "http://127.0.0.1:8000/article/1"+"/farmer",
+        url: "https://rbgud.shop/article/" + article_id + "/farmer/",
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+            if (response["result"] == '리뷰 작성 완료!') {
+                window.location.reload();
+            } else {
+                window.location.reload();
+            }
         }
     })
 }
 
 function get_review() {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
     $.ajax({
-    type: "GET",
-    url: "https://rbgud.shop/article/review/",
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {},
-    success: function(response){
-        for (let i = 0; i < response.length; i++){
-            let article_title = response[i]['title']
-            let period = response[i]['period']
-            let review_id = response[i]['id']
-            let rate = response[i]['rate']
-            let img1 = response[i]['img1']
-            let img2 = response[i]['img2']
-            let img3 = response[i]['img3']
-            let content = response[i]['content']
-            let created_at = response[i]['created_at']
-            let updated_at = response[i]['updated_at']
-            let temp_review =`
+        type: "GET",
+        url: "https://rbgud.shop/article/review/",
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: {},
+        success: function (response) {
+            for (let i = 0; i < response.length; i++) {
+                let article_title = response[i]['title']
+                let period = response[i]['period']
+                let review_id = response[i]['id']
+                let rate = response[i]['rate']
+                let img1 = response[i]['img1']
+                let img2 = response[i]['img2']
+                let img3 = response[i]['img3']
+                let content = response[i]['content']
+                let created_at = response[i]['created_at']
+                let updated_at = response[i]['updated_at']
+                let temp_review = `
             <div>
                 <header class="major">
                     <span class="date">${period}</span>
@@ -250,8 +254,8 @@ function get_review() {
                 <button onclick="delete_review(${review_id})">후기 삭제</button>
             </div>
                 `;
-            $('.review_b').append(temp_review);
-            let temp_put =`                    
+                $('.review_b').append(temp_review);
+                let temp_put = `                    
             <div class="apply_box">
             <h3>후기 수정하기</h3>
             </div>
@@ -282,128 +286,128 @@ function get_review() {
 
             <button id="review_uproad" onclick="put_review(${review_id})">후기 수정하기</button>
         `;
-        $('#review_put_box').append(temp_put);
+                $('#review_put_box').append(temp_put);
 
-        }}
+            }
+        }
 
     })
 }
 
 function put_review(review_id) {
-    var token = localStorage.getItem("access")
-    if (localStorage.getItem("payload") != null) {
-        const payload = JSON.parse(localStorage.getItem("payload"));
-        user_id = payload.user_id;
-    }
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
     let content = $('#review_content_put').val()
     let img = $('#put_FileMultiple')[0];
-    if(img.files.length === 0){
+    if (img.files.length === 0) {
         alert("사진을 업로드 해주세요");
         return;
-    }else if(img.files.length > 3){
+    } else if (img.files.length > 3) {
         alert("사진 업로드는 최대 3개까지 가능합니다");
         return;
     }
     let rate = $('.put-select').val();
     const formData = new FormData();
-    formData.append("img1",img.files[0]);
-    formData.append("img2",img.files[1]);
-    formData.append("img3",img.files[2]);
-    formData.append("content",content);
-    formData.append("rate",rate);
+    formData.append("img1", img.files[0]);
+    formData.append("img2", img.files[1]);
+    formData.append("img3", img.files[2]);
+    formData.append("content", content);
+    formData.append("rate", rate);
     $.ajax({
-    type: "PUT",
-    url: "https://rbgud.shop/article/farmer/"+review_id,
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: formData,
-    contentType: false,
-    processData:false,
-    beforeSend: function (x) {
-        if (x && x.overrideMimeType) {
-            x.overrideMimeType("multipart/form-data");
+        type: "PUT",
+        url: backend_base_url + "/article/farmer/" + review_id,
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: formData,
+        contentType: false,
+        processData: false,
+        beforeSend: function (x) {
+            if (x && x.overrideMimeType) {
+                x.overrideMimeType("multipart/form-data");
+            }
+        },
+        success: function (response) {
+            alert("업데이트 완료")
+            window.location.reload();
         }
-    },
-    success: function(response){
-        alert("업데이트 완료")
-        window.location.reload();
-    }
 
     })
 }
 
 function delete_review(review_id) {
-    var token = localStorage.getItem("access")
+    // var token = localStorage.getItem("access_token")
     let user = 3;
     $.ajax({
-    type: "DELETE",
-    url: "https://rbgud.shop/article/farmer/"+review_id,
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
-    },
-    data: {"user":user},
-    contentType: false,
-    processData:false,
-    beforeSend: function (x) {
-        if (x && x.overrideMimeType) {
-            x.overrideMimeType("multipart/form-data");
+        type: "DELETE",
+        url: "https://rbgud.shop/article/farmer/" + review_id,
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: { "user": user },
+        contentType: false,
+        processData: false,
+        beforeSend: function (x) {
+            if (x && x.overrideMimeType) {
+                x.overrideMimeType("multipart/form-data");
+            }
+        },
+        success: function (response) {
+            alert(response["message"])
+            if (response["message"] == '리뷰 삭제 완료.') {
+                window.location.reload();
+            } else {
+                window.location.reload();
+            }
         }
-    },
-    success: function(response){
-        alert(response["message"])
-          if (response["message"] == '리뷰 삭제 완료.') {
-              window.location.reload();
-          } else {
-              window.location.reload();
-          }
-    }
 
     })
 }
 
-// function put_profile(user) {
-//     var token = localStorage.getItem("access")
-//     var token = localStorage.getItem("access_token")
-//     if (localStorage.getItem("payload") != null) {
-//         const payload = JSON.parse(localStorage.getItem("payload"));
-//         user_id = payload.user_id;
-//     }
-//     let img = $('#inputGroupFile04')[0];
-//     if(img.files.length === 0){
-//         alert("사진을 업로드 해주세요");
-//         return;
-//     }
-//     let phone_number = $('#inputGroup-phone_number').val()
-//     let email = $('#inputGroup-email').val()
-//     let location = $('#inputGroup-location').val()
+function put_profile(user) {
+    // var token = localStorage.getItem("access_token")
+    // if (localStorage.getItem("payload") != null) {
+    //     const payload = JSON.parse(localStorage.getItem("payload"));
+    //     user_id = payload.user_id;
+    // }
+    let img = $('#inputGroupFile04')[0];
+    if (img.files.length === 0) {
+        alert("사진을 업로드 해주세요");
+        return;
+    }
+    let phone_number = $('#inputGroup-phone_number').val()
+    let email = $('#inputGroup-email').val()
+    let location = $('#inputGroup-location').val()
 
-//     const formData = new FormData();
-//     formData.append("userprofile[img]",img.files[0]);
-//     formData.append("userprofile[phone_number]",phone_number);
-//     formData.append("email",email);
-//     formData.append("userprofile[location]",location);
-//     $.ajax({
-//     type: "PUT",
-//     url: "https://rbgud.shop/user/",
-//     beforeSend: function (xhr) {
-//       xhr.setRequestHeader("Content-type", "application/json");
-//       xhr.setRequestHeader("Authorization", "Bearer " + token);
-//     },
-//     data: formData,
-//     contentType: false,
-//     processData:false,
-//     beforeSend: function (x) {
-//         if (x && x.overrideMimeType) {
-//             x.overrideMimeType("multipart/form-data");
-//         }
-//     },
-//     success: function(response){
-//         alert("업데이트 완료")
-//         window.location.reload();
-//     }
+    const formData = new FormData();
+    formData.append("userprofile[img]", img.files[0]);
+    formData.append("userprofile[phone_number]", phone_number);
+    formData.append("email", email);
+    formData.append("userprofile[location]", location);
+    $.ajax({
+        type: "PUT",
+        url: backend_base_url + "/user/",
+        // beforeSend: function (xhr) {
+        //   xhr.setRequestHeader("Content-type", "application/json");
+        //   xhr.setRequestHeader("Authorization", "Bearer " + token);
+        // },
+        data: formData,
+        contentType: false,
+        processData: false,
+        beforeSend: function (x) {
+            if (x && x.overrideMimeType) {
+                x.overrideMimeType("multipart/form-data");
+            }
+        },
+        success: function (response) {
+            alert("업데이트 완료")
+            window.location.reload();
+        }
 
-//     })
-// }
+    })
+}

@@ -6,15 +6,20 @@ $(document).ready(function () {
 function get_articledetail(article_id) {
   var token = localStorage.getItem("access");
 
-  const payload = JSON.parse(localStorage.getItem("payload"));
-  user = payload.user_id;
+  var user = "";
+  if (localStorage.getItem("access")) {
+    const payload = JSON.parse(localStorage.getItem("payload"));
+    user = payload.user_id;
+  }
 
   $.ajax({
     type: "GET",
     url: "https://rbgud.shop/article/detail/" + article_id,
     beforeSend: function (xhr) {
       // xhr.setRequestHeader("Content-type", "application/json");
-      xhr.setRequestHeader("Authorization", "Bearer " + token);
+      if (token) {
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+      }
     },
     data: {},
     success: function (response) {
