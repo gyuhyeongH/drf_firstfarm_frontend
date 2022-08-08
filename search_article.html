@@ -61,6 +61,7 @@
     </header>
     <div class="main">
         <nav style="margin-top: 100px;z-index: 1000; background-color: #E0DECA;">
+
             <ul class=" nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link onclick" data-bs-toggle="tab" type="button" name="">전체</button>
@@ -139,8 +140,10 @@
             </p>
 
         </div>
-
-
+        <div class="seach_bar">
+            <input type="text" class="searchTerm" placeholder="제목 or 내용 검색" id="search_text" name="search_text">
+            <button type="submit" class="searchButton" onclick="search_articles()">검색</button>
+        </div>
 
         <div class="explanation">
             <div class="contents">지역</div>
