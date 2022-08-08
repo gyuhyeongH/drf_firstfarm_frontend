@@ -36,60 +36,63 @@ function get_farm() {
             let phone_number = response[0]['userinfo']['phone_number']
             let points = response[0]['userinfo']['points']
             let prof_img= response[0]['userinfo']['profile_img']
-            prof_img = backend_base_url+prof_img
+            if(prof_img == undefined || null){
+                prof_img = 'https://www.logoyogo.com/web/wp-content/uploads/edd/2021/05/logoyogo-1-4.jpg';
+            }else{
+                prof_img = backend_base_url+prof_img
+            }
     
-
             let temp_title = `<div class="title"> ${fullname} 농장주 페이지 😎</div>`;
             $('.title_b').append(temp_title);
 
             let temp_profile = `
             <div id="plzhide">
-            <img src="${prof_img}" alt="default이미지" srcset="">
-                <p> ✔️ 이름 : ${fullname} <br />
-                    ✔️ 성별 : ${gender} <br />
-                    ✔️ phone_number : ${phone_number} <br />
-                    ✔️ email : ${email} <br />
-                    🎂 birthday : ${birthday} <br />
-                    📍 location : ${location} <br />
-                    💡 prefer : ${prefer} <br />
-                </p>
-                <button id="info_put" onclick="add_hide()">정보 수정</button>      
+                <img src="${prof_img}" alt="default이미지" srcset="">
+                    <p> ✔️ 이름 : ${fullname} <br />
+                        ✔️ 성별 : ${gender} <br />
+                        ✔️ phone_number : ${phone_number} <br />
+                        ✔️ email : ${email} <br />
+                        🎂 birthday : ${birthday} <br />
+                        📍 location : ${location} <br />
+                        💡 prefer : ${prefer} <br />
+                    </p>
+                    <button id="info_put" onclick="add_hide()">정보 수정</button>      
              </div>`;
             $('#profilebox').append(temp_profile);
             let temp_put_profile = `
             <div id="put_profile" class="hide">
-        <div class="input-group" style="margin-bottom: 20px;display: flex;flex-direction: row;">
-            <p style="width:30%">프로필 변경: </p>
-            <div class="custom-file" style="width:30%">
-            <input type="file" class="custom-file-input" id="input_img">
+                <div class="input-group" style="margin-bottom: 20px;display: flex;flex-direction: row;">
+                    <p style="width:30%">프로필 변경: </p>
+                    <div class="custom-file" style="width:30%">
+                    <input type="file" class="custom-file-input" id="input_img">
+                    </div>
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">위치:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="locations">
+                </div>   
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">email</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email">
+                </div>  
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">소개:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="introduction">
+                </div>  
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text" >선호:</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"id="prefer">
+                </div>  
+                <button id="info_put" onclick="handle_signput(${user})" >정보수정</button>
             </div>
-        </div>
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text">위치:</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="locations">
-        </div>   
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text">email</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="email">
-        </div>  
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text">소개:</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="introduction">
-        </div>  
-        <div class="input-group input-group-sm mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" >선호:</span>
-            </div>
-            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"id="prefer">
-        </div>  
-        <button id="info_put" onclick="handle_signput(${user})" >정보수정</button>
-    </div>
             `;
             $('#profilebox').append(temp_put_profile);
             let temp_intro = `
@@ -117,7 +120,11 @@ function get_farm() {
                 let exposure_end_date = response[i]['exposuer_end_date']
                 let created_at = response[i]['created_at']
                 let img1 = response[i]['img1']
-                img1 = backend_base_url+img1
+                if(img1 == undefined || img1 == null){
+                    img1 = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-organic-farm-spring-hui-poster-background-material-image_127030.jpg';
+                }else{
+                    img1 = backend_base_url+img1
+                }
 
                 let temp_li = `
             <li>
@@ -196,7 +203,8 @@ function get_apply(article_id) {
                         <div class="review_content">${phone_number}</div>
                         <div class="review_content">${email}</div>
                         <div class="review_content">
-                        <button onclick="put_apply(${article_id},${apply_id},${accept})">수락 취소</button>
+                            수락함!
+                            <button onclick="put_apply(${article_id},${apply_id},${accept})">수락 취소</button>
                         </div>
                     </div>`;
                     $('.review_container').append(temp_apply);
@@ -213,12 +221,12 @@ function get_apply(article_id) {
                         <div class="review_content">${phone_number}</div>
                         <div class="review_content">${email}</div>
                         <div class="review_content">
-                            <button onclick="put_apply(${article_id},${apply_id},${accept})">신청 수락</button>
+                        대기중... 
+                        <button onclick="put_apply(${article_id},${apply_id},${accept})">신청 수락</button>
                         </div>
                     </div>`;
                     $('.review_container').append(temp_apply);
                 }
-    
             }
         }
     })
@@ -247,10 +255,6 @@ async function handle_signput(user_id) {
     // 객체
     const email = document.getElementById("email").value
     const input_img = document.getElementById("input_img").files[0]
-    console.log(email)
-    const location = document.getElementById("locations").innerText
-    const introduction = document.getElementById("introduction").value
-    const prefer = document.getElementById("prefer").value
 
     const signputData = new FormData();
 
@@ -281,7 +285,6 @@ async function handle_signput(user_id) {
     response_json = await response.json();
 
     if (response.status == 200) {
-        // window.location.replace(`${frontend_base_2_url}/signin.html`);
         alert("수정사항이 정상적으로 저장되었습니다.")
         setTimeout(function () {
             window.location.reload();

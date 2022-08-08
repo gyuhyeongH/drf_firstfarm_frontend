@@ -218,6 +218,7 @@ a{
 
 #main_get {
     display: block;
+    top:70px;
     background-color: #ffffff;
     position: relative;
     margin: 0 auto;
