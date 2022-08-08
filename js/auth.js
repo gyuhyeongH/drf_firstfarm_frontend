@@ -72,6 +72,13 @@ async function handle_signup() {
 }
 
 
+$('.int').keyup('keyup', function (event) {
+  if (event.keyCode === 13) {
+    $('#btnJoin').click();
+  }
+
+});
+
 // 로그인
 async function handle_signin() {
   const signinData = {
