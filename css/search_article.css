@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     width: 80%;
     margin: auto;
+
 }
 
 .search_box {
@@ -109,4 +110,41 @@ body {
 .article_link {
     text-decoration-line: none;
     color: black;
+}
+
+.search_bar {
+    width: 50%;
+    position: relative;
+    display: flex;
+    float: right;
+    justify-content: right;
+}
+
+.searchTerm {
+    width: 80%;
+    border: 3px solid #C7D36F;
+    border-right: none;
+    padding: 5px;
+    height: 35px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #C7D36F;
+}
+
+.searchTerm:focus {
+    color: #9EB23B;
+}
+
+.searchButton {
+    width: 80px;
+    height: 35px;
+    margin-top: 15px;
+    margin-left: -5px;
+    border: 1px solid #9EB23B;
+    background: #9EB23B;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
 }
