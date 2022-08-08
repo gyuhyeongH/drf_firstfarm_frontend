@@ -43,7 +43,7 @@ window.onload = () => {
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    "refresh": localStorage.getItem("refresh_token")
+                    "refresh": localStorage.getItem("refresh")
                 })
             }
             );
@@ -55,7 +55,7 @@ window.onload = () => {
             // 새롭게 발급 받은 accessToken을 localStorage에 저장
             const accessToken = data.access;
             const refreshToken = data.refresh;
-            localStorage.setItem("access_token", accessToken);
+            localStorage.setItem("access", accessToken);
 
             const base64Url = data.access.split('.')[1];
             const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -63,7 +63,7 @@ window.onload = () => {
                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
             }).join(''));
             localStorage.setItem("payload", jsonPayload);
-            localStorage.setItem("refresh_token", refreshToken);
+            localStorage.setItem("refresh", refreshToken);
             console.log("성공!! : " + accessToken);
         });
     }

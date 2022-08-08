@@ -92,8 +92,8 @@ async function handle_signin() {
   console.log(response_json.access);
 
   if (response.status == 200) {
-    localStorage.setItem("access_token", response_json.access)
-    localStorage.setItem("refresh_token", response_json.refresh)
+    localStorage.setItem("access", response_json.access)
+    localStorage.setItem("refresh", response_json.refresh)
 
     const base64Url = response_json.access.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -106,7 +106,7 @@ async function handle_signin() {
     location.reload();
     alert("로그인 완료!")
     localStorage.setItem("payload", jsonPayload);
-    window.location.replace(`${frontend_base_url}/index2.html`);
+    window.location.replace(`${frontend_base_url}/index.html`);
   } else {
     alert("아이디 또는 비밀번호를 확인해주세요.");
   }
