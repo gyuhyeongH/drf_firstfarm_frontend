@@ -105,10 +105,10 @@ header .parallax .one {
 }
 
 header .parallax .two {
-    /* background-image: url("https://tornis.robbowen.digital/img/tree_top.png"); */
-    background-image: url("https://file.mk.co.kr/meet/neds/2013/07/image_readtop_2013_595188_1374023982982432.jpg");
+    background-image: url("https://tornis.robbowen.digital/img/tree_top.png");
+    /* background-image: url("https://file.mk.co.kr/meet/neds/2013/07/image_readtop_2013_595188_1374023982982432.jpg"); */
     /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUPhfYr4WnbDZYoYym7u7DRy5TnIYNjwyciA&usqp=CAU"); */
-    filter: brightness(50%);
+    /* filter: brightness(60%); */
     z-index: 3;
 }
 
