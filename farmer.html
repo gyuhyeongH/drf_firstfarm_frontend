@@ -18,121 +18,119 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/nav.css" />
     <link rel="stylesheet" href="./css/farm.css" />
-</head>
+    </head>
 
-<body style="background-color: #FCF8E8;">
-    <header style="z-index: 1000;">
-        <nav class="navbar fixed-top navbar-light" style="background-color: #C7D36F; padding-top: 0; padding-bottom: 0;"
-            id="navigationBar">
-            <ul>
-                <li>
-                    <a href="index.html" class="link">소개</a>
-                </li>
-                <li>
-                    <a href="search_article.html" class="link">알바 / 체험 찾기</a>
-                </li>
-                <li>
-                    <a href="articleupload.html" class="link" id="a_article">공고 등록</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <a id="a_logout" style="float:right; margin-right:15px;" onclick="handle_logout()">
-                        로그아웃
-                    </a>
-                </li>
-                <li>
-                    <a id="a_mypage" style="float:right;" onclick="handle_enter_mypage()" class="link">
-                        마이페이지
-                    </a>
-                </li>
-                <li>
-                    <a id="a_signup" style="float:right; margin-right: 15px;" class="nav-signup" href="signup.html">
-                        회원가입
-                    </a>
-                </li>
-                <li>
-                    <a id="a_login" style="float:right" class="nav-signin" href="signin.html">
-                        로그인
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <body style="background-color: #FCF8E8;">
+        <header style="z-index: 1000;">
+            <nav class="navbar fixed-top navbar-light"
+                style="background-color: #C7D36F; padding-top: 0; padding-bottom: 0;" id="navigationBar">
+                <ul>
+                    <li>
+                        <a href="index.html" class="link">소개</a>
+                    </li>
+                    <li>
+                        <a href="search_article.html" class="link">알바 / 체험 찾기</a>
+                    </li>
+                    <li>
+                        <a href="articleupload.html" class="link" id="a_article">공고 등록</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a id="a_logout" style="float:right; margin-right:15px;" onclick="handle_logout()">
+                            로그아웃
+                        </a>
+                    </li>
+                    <li>
+                        <a id="a_mypage" style="float:right;" onclick="handle_enter_mypage()" class="link">
+                            마이페이지
+                        </a>
+                    </li>
+                    <li>
+                        <a id="a_signup" style="float:right; margin-right: 15px;" class="nav-signup" href="signup.html">
+                            회원가입
+                        </a>
+                    </li>
+                    <li>
+                        <a id="a_login" style="float:right" class="nav-signin" href="signin.html">
+                            로그인
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
 
-    <div class="main">
-        <div id="wraper">
-            <!-- Intro -->
-            <div class="title_b">
-
-            </div>
-            <div class="mypage">
-                <div id="profilebox">
+        <div class="main">
+            <div id="wraper">
+                <!-- Intro -->
+                <div class="title_b">
 
                 </div>
-                <div id="intro">
+                <div class="mypage">
+                    <div id="profilebox">
 
-                </div>
-            </div>
-
-        </div>
-
-        <!--사용자가 다녀 온 공고 조회-->
-        <div class="article_image_container">
-            <div class="article_image_box">
-                <div class="title">다녀온 농장</div>
-
-                <div id="slideShow">
-                    <ul class="slides">
-
-                    </ul>
-                    <p class="controller">
-                        <!-- &lang: 왼쪽 방향 화살표
-                     &rang: 오른쪽 방향 화살표 -->
-                        <span class="prev">&lang;</span>
-                        <span class="next">&rang;</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="review_container hide" id="review_post_box" style="width:90%;">
-
-        </div>
-        <!-- Main -->
-
-        <div id="main_get" style="margin-top: 100px;">
-            <h1>작성한 후기</h1>
-            <div class="review_b">
-
-            </div>
-            <div class="put_b">
-                <article class="post featured">
-                    <div class="review_container hide" id="review_put_box" style="width:90%;">
                     </div>
-                </article>
+                    <div id="intro">
+
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Footer -->
-            <footer>
-                 <div class="pagination">
-                    <a href="#" class="previous">Prev</a>
-                    <a href="#" class="page active">1</a>
-                    <a href="#" class="page">2</a>
-                    <a href="#" class="page">3</a>
-                    <span class="extra">&hellip;</span>
-                    <a href="#" class="page">8</a>
-                    <a href="#" class="page">9</a>
-                    <a href="#" class="page">10</a>
-                    <a href="#" class="next">Next</a>
+            <!--사용자가 다녀 온 공고 조회-->
+            <div class="article_image_container">
+                <div class="article_image_box">
+                    <div class="title">다녀온 농장</div>
+
+                    <div id="slideShow">
+                        <ul class="slides">
+
+                        </ul>
+                        <p class="controller">
+                            <!-- &lang: 왼쪽 방향 화살표
+                     &rang: 오른쪽 방향 화살표 -->
+                            <span class="prev">&lang;</span>
+                            <span class="next">&rang;</span>
+                        </p>
+                    </div>
                 </div>
-            </footer>
+            </div>
 
-        </div>
+            <div class="review_container hide" id="review_post_box" style="width:90%;">
 
-        <script src="./js/access/jwt_token_farmer.js"></script>
+            </div>
+            <!-- Main -->
+
+            <div id="main_get" style="margin-top: 100px;">
+                <h1>작성한 후기</h1>
+                <div class="review_b">
+
+                </div>
+                <div class="put_b">
+                    <article class="post featured">
+                        <div class="review_container hide" id="review_put_box" style="width:90%;">
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Footer -->
+                <footer>
+                    <div class="pagination">
+                        <a href="#" class="previous">Prev</a>
+                        <a href="#" class="page active">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <span class="extra">&hellip;</span>
+                        <a href="#" class="page">8</a>
+                        <a href="#" class="page">9</a>
+                        <a href="#" class="page">10</a>
+                        <a href="#" class="next">Next</a>
+                    </div>
+                </footer>
+
+            </div>
+
         <script src="./js/articledetail.js"></script>
-        <script src="./js/auth.js"></script>
         <script src="./js/farmer.js"></script>
         <script src="./js/nav.js"></script>
         <script src="./js/slider.js"></script>
