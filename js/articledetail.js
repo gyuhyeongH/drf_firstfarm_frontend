@@ -1,17 +1,12 @@
 $(document).ready(function () {
   let article_id = window.localStorage.getItem("article_id");
   get_articledetail(article_id);
-  // localStorage.remove("article_id");
 });
-
-// $(document).ready(function () {
-//   get_articledetail(55);
-// });
 
 function get_articledetail(article_id) {
   var token = localStorage.getItem("access");
-  console.log(token);
-  var user = ''
+
+  var user = "";
   if (localStorage.getItem("access")) {
     const payload = JSON.parse(localStorage.getItem("payload"));
     user = payload.user_id;
@@ -28,14 +23,17 @@ function get_articledetail(article_id) {
     },
     data: {},
     success: function (response) {
-      let review_length = response["article_review"]["rate"];
+      let review_length = response["article_review"]["rate"].length;
       for (let i = 0; i < review_length.length; i++) {
         let temp_detail_reviewbox;
+        let temp_detail_reviewimg;
 
         let rate = response["article_review"]["rate"][0];
         let content = response["article_review"]["content"][0];
         let review_user = response["article_review"]["review_user"][0];
-
+        let review_img1 = response["article_review"]["review_img"][0];
+        let review_img2 = response["article_review"]["review_img"][1];
+        let review_img3 = response["article_review"]["review_img"][2];
         if (rate == 1) {
           rate = "⭐️";
         } else if (rate == 2) {
@@ -56,10 +54,32 @@ function get_articledetail(article_id) {
             </div>
             <div class="review_content">${content}</div>
         </div>
-      `;
+        `;
         $("#review_box").append(temp_detail_reviewbox);
+
+        if (review_img1 != undefined) {
+          temp_detail_reviewimg1 = `
+            <li><img src="${review_img1}" width="300px" height="300px" alt=""></li>
+            `;
+          $("#reviewimg").append(temp_detail_reviewimg1);
+        }
+
+        if (review_img2 != undefined) {
+          temp_detail_reviewimg2 = `
+            <li><img src="${review_img2}" width="300px" height="300px" alt=""></li>
+            `;
+          $("#reviewimg").append(temp_detail_reviewimg2);
+        }
+
+        if (review_img3 != undefined) {
+          temp_detail_reviewimg3 = `
+            <li><img src="${review_img3}" width="300px" height="300px" alt=""></li>
+            `;
+          $("#reviewimg").append(temp_detail_reviewimg3);
+        }
       }
 
+      let apply_user = response["apply"];
       let article_user = response["user"];
       let farm_name = response["farm_name"];
       let title = response["title"];
@@ -71,10 +91,23 @@ function get_articledetail(article_id) {
       let img1 = response["img1"];
       let img2 = response["img2"];
       let img3 = response["img3"];
+
+      if (img1 == null) {
+        img1 =
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+      }
+
+      if (img2 == null) {
+        img2 =
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+      }
+
+      if (img3 == null) {
+        img3 =
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+      }
+
       let article_category = response["article_category"];
-      // let rate = response["article_review"]["rate"][0];
-      // let content = response["article_review"]["content"][0];
-      // let review_user = response["article_review"]["review_user"][0];
       let phone_number = response["phone_number"]["phone_number"];
       let rank = response["rank"]["rank"];
 
@@ -82,10 +115,8 @@ function get_articledetail(article_id) {
       let temp_detail_img;
       let temp_detail_topbox;
       let temp_detail_bottombox;
-      // let temp_detail_reviewbox;
       let temp_detail_userbutton;
       let temp_detail_farmbutton;
-      let temp_detail_reviewimg;
 
       if (article_category == 1) {
         article_category = "체험";
@@ -110,6 +141,12 @@ function get_articledetail(article_id) {
           temp_detail_userbutton = `
           <button class="roadmap_btn"><a class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
+        `;
+        } else if (apply_user) {
+          temp_detail_userbutton = `
+          <button class="roadmap_btn"><a class="roadmap_btn_word"
+                  href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
+          <button class="apply_btn" onclick="delete_article_apply(${article_id})"> 취소하기</button>
         `;
         } else {
           temp_detail_userbutton = `
@@ -228,40 +265,6 @@ function get_articledetail(article_id) {
       `;
       $("#bottom_box").append(temp_detail_bottombox);
 
-      // temp_detail_reviewbox = `
-      // <div class="review_box">
-      //     <div class="review_rate">${rate}</div>
-      //     <div class="review_user">
-      //         <button class="review_user_button">${review_user}</button>
-      //     </div>
-      //     <div class="review_content">${content}</div>
-      // </div>
-      // `;
-      // $("#review_box").append(temp_detail_reviewbox);
-
-      // temp_detail_userbutton = `
-      //   <button class="roadmap_btn"><a class="roadmap_btn_word"
-      //           href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
-      //   <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
-      // `;
-      // $("#user_button").append(temp_detail_userbutton);
-
-      // temp_detail_farmbutton = `
-      //   <button class="edit_btn"> <a class="edit_btn_word" href="/article_edit.html">수정하기</a></button>
-      //   <button class="end_btn" onclick="delete_articledetail(${article_id})"> 모집마감</button>
-      // `;
-      // $("#farm_button").append(temp_detail_farmbutton);
-
-      temp_detail_reviewimg = `
-        <ul class="reviewslides">
-            <li><img src="img/test1.jpeg" width="300px" height="300px" alt=""></li>
-            <li><img src="img/test.jpeg" width="300px" height="300px" alt=""></li>
-            <li><img src="img/test2.jpeg" width="300px" height="300px" alt=""></li>
-            <li><img src="img/test3.jpeg" width="300px" height="300px" alt=""></li>
-        </ul>
-      `;
-      $("#reviewimg").append(temp_detail_reviewimg);
-
       //리뷰 이미지 슬라이드
       var reviewslides = document.querySelector(".reviewslides"),
         reviewslide = document.querySelectorAll(".reviewslides li"),
@@ -303,7 +306,6 @@ function get_articledetail(article_id) {
 
 function post_article_apply(article_id) {
   var token = localStorage.getItem("access");
-  console.log(token);
   let form_data = new FormData();
 
   $.ajax({
@@ -329,9 +331,35 @@ function post_article_apply(article_id) {
   });
 }
 
+function delete_article_apply(article_id) {
+  var token = localStorage.getItem("access");
+  let form_data = new FormData();
+
+  $.ajax({
+    type: "DELETE",
+    url: "https://rbgud.shop/article/detail/apply/" + article_id,
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader("Content-type", "application/json");
+      xhr.setRequestHeader("Authorization", "Bearer " + token);
+    },
+    data: form_data,
+    cache: false,
+    contentType: false,
+    processData: false,
+
+    error: function () {
+      alert("error");
+      window.location.reload();
+    },
+    success: function () {
+      alert("신청이 취소되었습니다.");
+      window.location.reload();
+    },
+  });
+}
+
 function delete_articledetail(article_id) {
   var token = localStorage.getItem("access");
-  console.log(token);
 
   $.ajax({
     type: "DELETE",

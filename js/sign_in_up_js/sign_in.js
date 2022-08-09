@@ -51,3 +51,10 @@ function checkInPw() {
     error[1].style.display = "none";
   }
 }
+
+
+$("#login_form").keypress(function (e) {
+  if (e.keyCode === 13) {
+    handle_signin();
+  }
+});
