@@ -1,4 +1,3 @@
-
 // 게시글 이미지 슬라이드
 const slides = document.querySelector(".slides"); //전체 슬라이드 컨테이너
 const slideImg = document.querySelectorAll(".slides li"); //모든 슬라이드들
