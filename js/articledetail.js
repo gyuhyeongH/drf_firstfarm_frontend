@@ -172,8 +172,8 @@ function get_articledetail(article_id) {
             <li><img src="${img3}" width="300" height="300" alt=""></li>
         </ul>
         <p class="controller">
-            <span class="prev">&lang;</span>
-            <span class="next">&rang;</span>
+            <span class="prev"> ◀️ </span>
+            <span class="next"> ▶️ </span>
         </p>
         `;
       $("#slideShow").append(temp_detail_img);
