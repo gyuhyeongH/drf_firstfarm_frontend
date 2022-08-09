@@ -20,8 +20,7 @@ $(document).ready(function () {
 async function handle_enter_mypage() {
     const payload = JSON.parse(localStorage.getItem("payload"));
     if (payload != null) {
-        const user_category = payload.category;
-        if (user_category == 1) {
+        if (payload.category == 1) {
             window.location.replace(`https://hwisu.shop/farm.html`);
         } else {
             window.location.replace(`https://hwisu.shop/farmer.html`);

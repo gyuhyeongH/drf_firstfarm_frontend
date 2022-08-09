@@ -1,16 +1,12 @@
-// const backend_base_url = "http://127.0.0.1:8000";
-const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://hwisu.shop";
-
 $(document).ready(function () {
     get_farm();
 })
-function add_hide(){
+function add_hide() {
     document.getElementById('plzhide').classList.add('hide');
     document.getElementById('put_profile').classList.remove('hide');
 }
 function get_farm() {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
@@ -19,12 +15,11 @@ function get_farm() {
         type: "GET",
         url: "https://rbgud.shop/article/farm/",
         beforeSend: function (xhr) {
-          xhr.setRequestHeader("Content-type", "application/json");
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
         },
         data: {},
         success: function (response) {
-            let user =response[0]['user']
+            let user = response[0]['user']
             let rank = response[0]['userinfo']['rank']
             let birthday = response[0]['userinfo']['birthday']
             let email = response[0]['userinfo']['email']
@@ -35,13 +30,13 @@ function get_farm() {
             let introduction = response[0]['userinfo']['introduction']
             let phone_number = response[0]['userinfo']['phone_number']
             let points = response[0]['userinfo']['points']
-            let prof_img= response[0]['userinfo']['profile_img']
-            if(prof_img == undefined || null){
+            let prof_img = response[0]['userinfo']['profile_img']
+            if (prof_img == undefined || null) {
                 prof_img = 'https://www.logoyogo.com/web/wp-content/uploads/edd/2021/05/logoyogo-1-4.jpg';
-            }else{
-                prof_img = backend_base_url+prof_img
+            } else {
+                prof_img = "https://rbgud.shop" + prof_img
             }
-    
+
             let temp_title = `<div class="title"> ${fullname} 농장주 페이지 😎</div>`;
             $('.title_b').append(temp_title);
 
@@ -111,19 +106,19 @@ function get_farm() {
             $('#intro').append(temp_intro);
             for (let i = 0; i < response.length; i++) {
                 let article_id = response[i]['id']
-                let farmname = response[i]['farmname']
+                let farmname = response[i]['farm_name']
                 let location = response[i]['location']
                 let title = response[i]['title']
                 let cost = response[i]['cost']
                 let requirement = response[i]['requirement']
                 let period = response[i]['period']
-                let exposure_end_date = response[i]['exposuer_end_date']
+                let exposure_end_date = response[i]['exposure_end_date']
                 let created_at = response[i]['created_at']
                 let img1 = response[i]['img1']
-                if(img1 == undefined || img1 == null){
+                if (img1 == undefined || img1 == null) {
                     img1 = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-organic-farm-spring-hui-poster-background-material-image_127030.jpg';
-                }else{
-                    img1 = backend_base_url+img1
+                } else {
+                    img1 = "https://rbgud.shop" + img1
                 }
 
                 let temp_li = `
@@ -162,7 +157,7 @@ function get_farm() {
 }
 
 function get_apply(article_id) {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
@@ -172,8 +167,8 @@ function get_apply(article_id) {
         type: "GET",
         url: "https://rbgud.shop/article/farm/" + article_id,
         beforeSend: function (xhr) {
-          xhr.setRequestHeader("Content-type", "application/json");
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
         },
         data: {},
         success: function (response) {
@@ -190,7 +185,7 @@ function get_apply(article_id) {
                 let phone_number = response[i]['userinfo']['phone_number']
                 let accept = response[i]['accept']
 
-                if (accept == true){
+                if (accept == true) {
                     let temp_apply = `
                     <div class="review_box">
                         <div class="review_rate">${rank}</div>
@@ -208,7 +203,7 @@ function get_apply(article_id) {
                         </div>
                     </div>`;
                     $('.review_container').append(temp_apply);
-                }else{
+                } else {
                     let temp_apply = `
                     <div class="review_box">
                         <div class="review_rate">${rank}</div>
@@ -232,20 +227,20 @@ function get_apply(article_id) {
     })
 }
 
-function put_apply(article_id,apply_id,accept) {
-    if(accept==true){
+function put_apply(article_id, apply_id, accept) {
+    if (accept == true) {
         accept = false
-    }else{
+    } else {
         accept = true
     }
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:8000/article/farm/"+article_id+"/"+apply_id,
-        data: {'accept':accept},
+        url: "https://rbgud.shop/article/farm/" + article_id + "/" + apply_id,
+        data: { 'accept': accept },
         success: function (response) {
             alert('신청 변경 완료');
             window.location.reload();
-            
+
         }
     })
 }
@@ -262,7 +257,7 @@ async function handle_signput(user_id) {
         console.log(input_img)
         signputData.append('img', input_img);
     }
-    
+
     const userprofile = JSON.stringify({
         'location': document.getElementById("locations").innerText,
         'introduction': document.getElementById("introduction").value,
@@ -272,9 +267,9 @@ async function handle_signput(user_id) {
     signputData.append('email', email);
     signputData.append('img', input_img);
     signputData.append('userprofile', userprofile);
-    
 
-    const response = await fetch(`${backend_base_url}/user/` + user_id + `/`, {
+
+    const response = await fetch(`https://rbgud.shop/user/` + user_id + `/`, {
         method: "PUT",
         headers: {
             Authorization: "Bearer " + localStorage.getItem("access"),
@@ -288,7 +283,7 @@ async function handle_signput(user_id) {
         alert("수정사항이 정상적으로 저장되었습니다.")
         setTimeout(function () {
             window.location.reload();
-        }, 100); 
+        }, 100);
 
     }
     else if (response_json['email']) {
