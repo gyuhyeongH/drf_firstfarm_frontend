@@ -1,7 +1,6 @@
 const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
-// const backend_base_2_url = "http://127.0.0.1:8000";
-// const frontend_base_2_url = "http://127.0.0.1:5500";
+const frontend_base_url = "https://hwisu.shop";
+
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");
 var user_category_value = document.getElementById("category_value")
@@ -21,7 +20,6 @@ async function handle_signup() {
   const signupData = new FormData();
 
   if (input_img !== undefined) {
-    console.log(input_img)
     signupData.append('img', input_img);
   }
 
@@ -68,7 +66,7 @@ async function handle_signup() {
   }
   else if (response.status == 400) {
     alert("필수 항목을 입력해주세요.");
-    console.log(response_json)
+
   }
 }
 
@@ -97,7 +95,6 @@ async function handle_signin() {
   });
 
   response_json = await response.json();
-  console.log(response_json.access);
 
   if (response.status == 200) {
     localStorage.setItem("access", response_json.access)
