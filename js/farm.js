@@ -1,6 +1,6 @@
 // const backend_base_url = "http://127.0.0.1:8000";
 const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
+const frontend_base_url = "https://hwisu.shop";
 
 $(document).ready(function () {
     get_farm();

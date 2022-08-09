@@ -22,9 +22,9 @@ async function handle_enter_mypage() {
     if (payload != null) {
         const user_category = payload.category;
         if (user_category == 1) {
-            window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farm.html`);
+            window.location.replace(`https://hwisu.shop/farm.html`);
         } else {
-            window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/farmer.html`);
+            window.location.replace(`https://hwisu.shop/farmer.html`);
         }
     }
 }
@@ -33,7 +33,7 @@ window.onload = () => {
     const payload = JSON.parse(localStorage.getItem("payload"));
     if (payload) {
         if (payload.exp > (Date.now() / 1000)) {
-        // 아직 access 토큰의 인가 유효시간이 남은 경우
+            // 아직 access 토큰의 인가 유효시간이 남은 경우
             console.log("통과");
         } else {
             console.log("갱신 시작");
@@ -81,5 +81,5 @@ async function handle_logout() {
     localStorage.removeItem("refresh");
     localStorage.removeItem("payload");
     alert("로그아웃 되었습니다.");
-    window.location.replace(`https://polite-paprenjak-e2afb5.netlify.app/index.html`);
+    window.location.replace(`https://hwisu.shop/index.html`);
 }
