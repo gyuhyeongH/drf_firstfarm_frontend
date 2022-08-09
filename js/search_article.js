@@ -1,15 +1,8 @@
 $(document).ready(function () {
     get_article();
-    for (let i = 0; i < menu_list.length; i++) {
-        get_article_button[i].addEventListener(
-            "click",
-            () => {
-                get_article(menu_list[i]);
-            },
-            false
-        );
-    }
 });
+
+
 
 let menu_recommend = document.getElementsByClassName("nav-link")[3];
 if (localStorage.getItem("access")) {
@@ -49,6 +42,15 @@ let menu_list = [
     "16",
 ];
 
+for (let i = 0; i < menu_list.length; i++) {
+    get_article_button[i].addEventListener(
+        "click",
+        () => {
+            get_article(menu_list[i]);
+        },
+        false
+    );
+}
 
 function get_article(choice) {
     category = document.getElementsByClassName("nav-link active")[0].value;
@@ -122,7 +124,6 @@ function storage_id(article_id) {
 
 function search_articles() {
     let search_text = $("#search_text").val();
-    console.log(search_text)
     if (search_text == '') {
         return false;
     }

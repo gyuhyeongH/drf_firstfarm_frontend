@@ -45,7 +45,7 @@ function post_articledetail() {
     },
     success: function () {
       alert("게시글이 작성되었습니다.");
-      window.location.replace(`${frontend_base_url}/search_article.html`);
+      window.location.replace("https://hwisu.shop/search_article.html");
     },
   });
 }

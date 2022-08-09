@@ -44,13 +44,13 @@ yy.addEventListener("focusout", isBirthCompleted);
 mm.addEventListener("focusout", isBirthCompleted);
 dd.addEventListener("focusout", isBirthCompleted);
 gender.addEventListener("focusout", function () {
-    if (gender.value === "성별") {
-      error[5].style.display = "block";
-      error[5].style.position = "fixed";
-        
-    } else {
-        error[5].style.display = "none";
-    }
+  if (gender.value === "성별") {
+    error[5].style.display = "block";
+    error[5].style.position = "fixed";
+
+  } else {
+    error[5].style.display = "none";
+  }
 });
 mobile.addEventListener("focusout", checkPhoneNum);
 prefer.addEventListener("focusout", checkPrefer);
@@ -195,8 +195,8 @@ function isBirthRight() {
 }
 
 function checkAge() {
-    let today = new Date();  
-    let year = today.getFullYear();
+  let today = new Date();
+  let year = today.getFullYear();
   if (Number(yy.value) < 1920) {
     error[6].innerHTML = "생년월일을 다시 확인해주세요.";
     error[6].style.display = "block";
@@ -210,7 +210,7 @@ function checkAge() {
     error[6].style.display = "block";
     error[6].style.position = "fixed";
   } else {
-      age.innerHTML = (year - yy.value + 1);
+    age.innerHTML = (year - yy.value + 1);
     error[6].style.display = "none";
   }
 }
@@ -320,7 +320,7 @@ function serch_loaction() {
 function handleClick(event) {
   user_category_value = event.target.value;
   // 콘솔창을 보면 둘다 동일한 값이 나온다
-
+  console.log(user_category_value)
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
   } else {
@@ -329,6 +329,7 @@ function handleClick(event) {
     }
 
     event.target.classList.add("clicked");
+
   }
 }
 

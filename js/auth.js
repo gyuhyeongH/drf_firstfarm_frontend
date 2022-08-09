@@ -20,7 +20,6 @@ async function handle_signup() {
   const signupData = new FormData();
 
   if (input_img !== undefined) {
-    console.log(input_img)
     signupData.append('img', input_img);
   }
 
@@ -67,7 +66,7 @@ async function handle_signup() {
   }
   else if (response.status == 400) {
     alert("필수 항목을 입력해주세요.");
-    console.log(response_json)
+
   }
 }
 
@@ -96,7 +95,6 @@ async function handle_signin() {
   });
 
   response_json = await response.json();
-  console.log(response_json.access);
 
   if (response.status == 200) {
     localStorage.setItem("access", response_json.access)

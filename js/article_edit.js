@@ -88,7 +88,6 @@ function get_articledetail(article_id) {
 
 function put_articledetail(article_id) {
   var token = localStorage.getItem("access");
-  console.log(token);
 
   let title = $("#edit_title").val();
   let farm_name = $("#edit_farm_name").val();
@@ -123,18 +122,13 @@ function put_articledetail(article_id) {
       period: period,
       requirement: requirement,
       desc: desc,
-      img1: img1,
-      img2: img2,
-      img3: img3,
       article_category: article_category,
     },
 
     success: function (response) {
       alert("업데이트 완료");
-      // window.location.reload();
-      window.location.replace(`${frontend_base_url}/articledetail.html`);
+      window.location.replace(`https://hwisu.shop/articledetail.html`);
     },
-
     error: function (response) {
       alert("게시글 수정 실패!");
       window.location.reload();

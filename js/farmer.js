@@ -33,7 +33,7 @@ function get_farmer() {
         },
         data: {},
         success: function (response) {
-            if (response.length > 1) {
+            if (response.length > 0) {
                 let rank = response[0]['userinfo']['rank']
                 let birthday = response[0]['userinfo']['birthday']
                 let email = response[0]['userinfo']['email']
@@ -45,8 +45,6 @@ function get_farmer() {
                 let phone_number = response[0]['userinfo']['phone_number']
                 let points = response[0]['userinfo']['points']
                 let prof_img = response[0]['userinfo']['img']
-                let accpt = response[0]['accept']
-
 
                 if (prof_img == undefined || null) {
                     prof_img = 'https://www.logoyogo.com/web/wp-content/uploads/edd/2021/05/logoyogo-1-4.jpg';
@@ -56,7 +54,6 @@ function get_farmer() {
 
                 let temp_profile = `
                     <div id="plzhide">
-                        <img src=${prof_img} alt="default이미지" srcset="">
                         <p> ✔️ 이름 : ${fullname} <br />
                             ✔️ 성별 : ${gender} <br />
                             ✔️ phone_number : ${phone_number} <br />
@@ -65,7 +62,6 @@ function get_farmer() {
                             📍 location : ${location} <br />
                             💡 prefer : ${prefer} <br />
                         </p>
-                        <button id="info_put" onclick="add_hide()">정보 수정</button>
                     </div>
                         `;
                 $('#profilebox').append(temp_profile);
@@ -173,7 +169,7 @@ function get_farmer() {
                 let introduction = response.introduction
                 let phone_number = response.phone_number
                 let points = response.points
-                let prof_img = response.img
+                let prof_img = response.profile_img
 
                 if (prof_img == undefined || null) {
                     prof_img = 'https://www.logoyogo.com/web/wp-content/uploads/edd/2021/05/logoyogo-1-4.jpg';
@@ -183,7 +179,6 @@ function get_farmer() {
 
                 let temp_profile = `
                     <div id="plzhide">
-                        <img src=${prof_img} alt="default이미지" srcset="">
                         <p> ✔️ 이름 : ${fullname} <br />
                             ✔️ 성별 : ${gender} <br />
                             ✔️ phone_number : ${phone_number} <br />
@@ -249,6 +244,9 @@ function post_review(article_id) {
             } else {
                 window.location.reload();
             }
+        },
+        error: function () {
+            alert("뎃글, 점수는 필수입니다.")
         }
     })
 }

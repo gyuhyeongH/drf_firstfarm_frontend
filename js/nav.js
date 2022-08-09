@@ -33,12 +33,9 @@ window.onload = () => {
     if (payload) {
         if (payload.exp > (Date.now() / 1000)) {
             // 아직 access 토큰의 인가 유효시간이 남은 경우
-            console.log("통과");
         } else {
-            console.log("갱신 시작");
             // 인증 시간이 지났기 때문에 다시 refreshToken으로 다시 요청을 해야 한다.
             const requestRefreshToken = async (url) => {
-                console.log(url)
                 const response = await fetch(url, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -66,11 +63,9 @@ window.onload = () => {
                 }).join(''));
                 localStorage.setItem("payload", jsonPayload);
                 localStorage.setItem("refresh", refreshToken);
-                console.log("성공!! : " + accessToken);
             });
         }
     } else {
-        console.log("access token is null");
     };
 };
 

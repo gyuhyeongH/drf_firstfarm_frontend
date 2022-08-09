@@ -132,7 +132,6 @@ function get_apply(article_id) {
         success: function (response) {
             $('.review_container').empty();
             for (let i = 0; i < response.length; i++) {
-                console.log(i)
                 let apply_id = response[i]['user']
                 let rank = response[i]['userinfo']['rank']
                 let email = response[i]['userinfo']['email']
