@@ -1,13 +1,9 @@
-// const backend_base_url = "http://127.0.0.1:8000";
-const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://polite-paprenjak-e2afb5.netlify.app";
-
 $(document).ready(function () {
     get_farm();
 })
 
 function get_farm() {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
@@ -16,12 +12,11 @@ function get_farm() {
         type: "GET",
         url: "https://rbgud.shop/article/farm/",
         beforeSend: function (xhr) {
-          xhr.setRequestHeader("Content-type", "application/json");
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
         },
         data: {},
         success: function (response) {
-            let user =response[0]['user']
+            let user = response[0]['user']
             let rank = response[0]['userinfo']['rank']
             let birthday = response[0]['userinfo']['birthday']
             let email = response[0]['userinfo']['email']
@@ -32,8 +27,8 @@ function get_farm() {
             let introduction = response[0]['userinfo']['introduction']
             let phone_number = response[0]['userinfo']['phone_number']
             let points = response[0]['userinfo']['points']
-            let prof_img= response[0]['userinfo']['profile_img']
-            if(prof_img == undefined || null){
+            let prof_img = response[0]['userinfo']['profile_img']
+            if (prof_img == undefined || null) {
                 prof_img = 'https://www.logoyogo.com/web/wp-content/uploads/edd/2021/05/logoyogo-1-4.jpg';
             }
 
@@ -75,10 +70,12 @@ function get_farm() {
                 let cost = response[i]['cost']
                 let requirement = response[i]['requirement']
                 let period = response[i]['period']
+
                 let exposure_end_date = response[i]['exposure_end_date'].split('T')[0]
                 let created_at = response[i]['created_at'].split('T')[0]
+
                 let img1 = response[i]['img1']
-                if(img1 == undefined || img1 == null){
+                if (img1 == undefined || img1 == null) {
                     img1 = 'https://png.pngtree.com/thumb_back/fh260/back_our/20190617/ourmid/pngtree-organic-farm-spring-hui-poster-background-material-image_127030.jpg';
                 }
 
@@ -118,7 +115,7 @@ function get_farm() {
 }
 
 function get_apply(article_id) {
-    var token = localStorage.getItem("access_token")
+    var token = localStorage.getItem("access")
     if (localStorage.getItem("payload") != null) {
         const payload = JSON.parse(localStorage.getItem("payload"));
         user_id = payload.user_id;
@@ -128,14 +125,13 @@ function get_apply(article_id) {
         type: "GET",
         url: "https://rbgud.shop/article/farm/" + article_id,
         beforeSend: function (xhr) {
-          xhr.setRequestHeader("Content-type", "application/json");
-          xhr.setRequestHeader("Authorization", "Bearer " + token);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
         },
         data: {},
         success: function (response) {
             $('.review_container').empty();
             for (let i = 0; i < response.length; i++) {
-                console.log(i)
                 let apply_id = response[i]['user']
                 let rank = response[i]['userinfo']['rank']
                 let email = response[i]['userinfo']['email']
@@ -146,7 +142,7 @@ function get_apply(article_id) {
                 let phone_number = response[i]['userinfo']['phone_number']
                 let accept = response[i]['accept']
 
-                if (accept == true){
+                if (accept == true) {
                     let temp_apply = `
                     <div class="review_box">
                         <div class="review_rate">${rank}</div>
@@ -164,7 +160,7 @@ function get_apply(article_id) {
                         </div>
                     </div>`;
                     $('.review_container').append(temp_apply);
-                }else{
+                } else {
                     let temp_apply = `
                     <div class="review_box">
                         <div class="review_rate">${rank}</div>
@@ -188,20 +184,20 @@ function get_apply(article_id) {
     })
 }
 
-function put_apply(article_id,apply_id,accept) {
-    if(accept==true){
+function put_apply(article_id, apply_id, accept) {
+    if (accept == true) {
         accept = false
-    }else{
+    } else {
         accept = true
     }
     $.ajax({
         type: "PUT",
-        url: "http://127.0.0.1:8000/article/farm/"+article_id+"/"+apply_id,
-        data: {'accept':accept},
+        url: "https://rbgud.shop/article/farm/" + article_id + "/" + apply_id,
+        data: { 'accept': accept },
         success: function (response) {
             alert('신청 변경 완료');
             window.location.reload();
-            
+
         }
     })
 }
