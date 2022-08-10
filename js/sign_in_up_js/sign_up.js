@@ -320,12 +320,12 @@ function serch_loaction() {
 function handleClick(event) {
   user_category_value = event.target.value;
   // 콘솔창을 보면 둘다 동일한 값이 나온다
-  console.log(user_category_value)
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
   } else {
     for (var i = 0; i < category_btn.length; i++) {
       category_btn[i].classList.remove("clicked");
+
     }
 
     event.target.classList.add("clicked");

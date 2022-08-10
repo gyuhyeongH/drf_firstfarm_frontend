@@ -3,7 +3,7 @@ const frontend_base_url = "https://hwisu.shop";
 
 // 카테고리 토글
 var category_btn = document.getElementsByClassName("category_btn");
-var user_category_value = document.getElementById("category_value")
+var user_category_value = ''
 
 // 회원가입
 async function handle_signup() {
