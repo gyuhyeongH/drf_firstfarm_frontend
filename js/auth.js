@@ -1,12 +1,6 @@
 const backend_base_url = "https://rbgud.shop";
 const frontend_base_url = "https://hwisu.shop";
 
-<<<<<<< HEAD
-// 카테고리 토글
-var category_btn = document.getElementsByClassName("category_btn");
-var user_category_value = ''
-=======
->>>>>>> 329bfe92a999232f488b90d6abb0d47d5f501c34
 
 // 회원가입
 async function handle_signup() {
@@ -154,7 +148,7 @@ function XSSCheck(str, level) {
 // 아이디 검증
 function idPatternCheck(username) {
   const idPattern = /[a-zA-Z0-9]{5,20}/;
-  
+
   if (!idPattern.test(username)) {
     alert("5~20자의 영문 소문자, 숫자만 사용 가능합니다.")
     var offset = $('#category_value').offset();

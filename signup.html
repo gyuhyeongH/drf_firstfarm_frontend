@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="./css/sign_in_up_css/sign_up.css">
     <link rel="stylesheet" href="./css/nav.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Server JS -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
+        </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- 비동기 JS -->
-    <script src="./js/auth.js"></script>
+
 </head>
 
 <body style="background-color: #FCF8E8;">
@@ -72,206 +72,209 @@
         </div>
         <!-- content-->
         <div id="content">
-        <div id="content_box">
-            <!-- header_1 -->
-            <div id="header_2">
-                <div class="waviy">
-                    <span style="--i:1">필</span>
-                    <span style="--i:2">수</span>
-                    <span style="--i:3">사</span>
-                    <span style="--i:4">항</span>
+            <div id="content_box">
+                <!-- header_1 -->
+                <div id="header_2">
+                    <div class="waviy">
+                        <span style="--i:1">필</span>
+                        <span style="--i:2">수</span>
+                        <span style="--i:3">사</span>
+                        <span style="--i:4">항</span>
+                    </div>
                 </div>
-            </div>
-            <!-- CATEGORY-->
-            <div class="category">
-                <div>
-                    <button class="category_btn" id="category_value" value="1">농장주
-                    </button>
+                <!-- CATEGORY-->
+                <div class="category">
+                    <div>
+                        <button class="category_btn" id="category_value" value="1">농장주
+                        </button>
+                    </div>
+                    <div>
+                        <button class="category_btn" id="category_value" value="2">여름지기
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <button class="category_btn" id="category_value" value="2">여름지기
-                    </button>
-                </div>
-            </div>
-            <h3 class="join_title" style="text-align:center; padding-top: 20px;">
-                <label for="">구분 선택!</label><br>
-            </h3>
-            <!-- ID -->
-            <div class="input_form">
-                <h3 class="join_title">
-                    <label for="id">아이디</label>
+                <h3 class="join_title" style="text-align:center; padding-top: 20px;">
+                    <label for="">구분 선택!</label><br>
                 </h3>
-                <span class="box int_id">
-                    <input type="text" id="id" class="int" maxlength="20">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- EMAIL -->
-            <div class="input_form">
-                <h3 class="join_title">
-                    <label for="email">본인확인 이메일</label>
-                </h3>
-                <span class="box int_email">
-                    <input type="text" id="email" class="int" maxlength="100" placeholder="필수입력">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- PW1 -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
-                <span class="box int_pass">
-                    <input type="password" id="pswd1" class="int" maxlength="20">
-                    <span id="alertTxt">사용불가</span>
-                    <img src="./img/style_sign_in_up_images/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- PW2 -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                <span class="box int_pass_check">
-                    <input type="password" id="pswd2" class="int" maxlength="20">
-                    <img src="./img/style_sign_in_up_images/m_icon_check_disable.png" id="pswd2_img1"
-                        class="pswdImg">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- header_2 -->
-            <div id="header_3">
-                <div class="waviy">
-                    <span style="--i:1">세</span>
-                    <span style="--i:2">부</span>
-                    <span style="--i:3">사</span>
-                    <span style="--i:4">항</span>
-                </div>
-                <h3 style="color: red">* 은 필수 사항입니다.</h3>
-            </div>
-            <!-- PICTURE -->
-            <h3 class="join_title"><label for="">프로필 사진</label></h3>
-            <div class="box_container">
-                <div class="box_img">
-                    <img id="default_img" class="int_img" src="./img/style_sign_in_up_images/form_profile_img.png" type="file">
-                </div>
-                <div class="img_btn_container">
-                    <input style="display: none;" id="input_img" class="img_find" type="file" accept="image/jpeg, image/jpg, image/png" required multiple onclick="">
-                    <div id="btnJoin_img" class="upload">사진 넣기</div>
-                    <span style="font-weight: bold; font-size: 16px; color:rgb(75, 75, 75)">(150px * 150px)</span>
-                </div>
-            </div>
-            <!-- NAME -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="fullname">* 이름(실명)</label></h3>
-                <span class="box int_name">
-                    <input type="text" id="fullname" class="int" maxlength="20">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- GENDER -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="gender">* 성별</label></h3>
-                <span class="box gender_code">
-                    <select id="gender" class="sel">
-                        <option>성별</option>
-                        <option value="M">남자</option>
-                        <option value="W">여자</option>
-                    </select>
-                </span>
-                <span class="error_next_box">필수 정보입니다.</span>
-            </div>
-            <!-- BIRTH -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="yy">* 생년월일</label></h3>
-                <div id="bir_wrap">
-                    <!-- BIRTH_YY -->
-                    <div id="bir_yy">
-                        <span class="box">
-                            <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
-                            </input>
-                    </div>
-                    <!-- BIRTH_MM -->
-                    <div id="bir_mm">
-                        <span class="box">
-                            <select id="mm" class="sel">
-                                <option>월</option>
-                                <option value="01">1</option>
-                                <option value="02">2</option>
-                                <option value="03">3</option>
-                                <option value="04">4</option>
-                                <option value="05">5</option>
-                                <option value="06">6</option>
-                                <option value="07">7</option>
-                                <option value="08">8</option>
-                                <option value="09">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                        </span>
-                    </div>
-                    <!-- BIRTH_DD -->
-                    <div id="bir_dd">
-                        <span class="box">
-                            <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
-                        </span>
-                    </div>
-                </div>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- AGE -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="age">나이(자동 입력)</label></h3>
-                <span class="box">
-                    <span type="text" id="age" class="int" maxlength="2" value="age"
-                        style="display: flex; align-items: center; background-color: #ececec;">
+                <!-- ID -->
+                <div class="input_form">
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" id="id" class="int" maxlength="20">
                     </span>
-                </span>
-            </div>
-            <!-- MOBILE -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="phone_number">* 휴대전화</label></h3>
-                <span class="box int_mobile">
-                    <input type="tel" id="phone_number" class="int" maxlength="16" placeholder="전화번호 입력">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- LOCATION -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="locations">* 지역</label></h3>
-                <button class="location_find" id="btnJoin_location" type="button" onclick="serch_loaction()" value="주소 찾기"><span>주소 찾기</span></button><br>
-                <span class="box" style="margin: auto;">
-                    <span class="int" type="text" id="locations" placeholder="주소" style="display: flex; align-items: center;"></span>
-                </span>
-            </div>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- EMAIL -->
+                <div class="input_form">
+                    <h3 class="join_title">
+                        <label for="email">본인확인 이메일</label>
+                    </h3>
+                    <span class="box int_email">
+                        <input type="text" id="email" class="int" maxlength="100" placeholder="필수입력">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- PW1 -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <span class="box int_pass">
+                        <input type="password" id="pswd1" class="int" maxlength="20">
+                        <span id="alertTxt">사용불가</span>
+                        <img src="./img/style_sign_in_up_images/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- PW2 -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="password" id="pswd2" class="int" maxlength="20">
+                        <img src="./img/style_sign_in_up_images/m_icon_check_disable.png" id="pswd2_img1"
+                            class="pswdImg">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- header_2 -->
+                <div id="header_3">
+                    <div class="waviy">
+                        <span style="--i:1">세</span>
+                        <span style="--i:2">부</span>
+                        <span style="--i:3">사</span>
+                        <span style="--i:4">항</span>
+                    </div>
+                    <h3 style="color: red">* 은 필수 사항입니다.</h3>
+                </div>
+                <!-- PICTURE -->
+                <h3 class="join_title"><label for="">프로필 사진</label></h3>
+                <div class="box_container">
+                    <div class="box_img">
+                        <img id="default_img" class="int_img" src="./img/style_sign_in_up_images/form_profile_img.png"
+                            type="file">
+                    </div>
+                    <div class="img_btn_container">
+                        <input style="display: none;" id="input_img" class="img_find" type="file"
+                            accept="image/jpeg, image/jpg, image/png" required multiple onclick="">
+                        <div id="btnJoin_img" class="upload">사진 넣기</div>
+                        <span style="font-weight: bold; font-size: 16px; color:rgb(75, 75, 75)">(150px * 150px)</span>
+                    </div>
+                </div>
+                <!-- NAME -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="fullname">* 이름(실명)</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="fullname" class="int" maxlength="20">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- GENDER -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="gender">* 성별</label></h3>
+                    <span class="box gender_code">
+                        <select id="gender" class="sel">
+                            <option>성별</option>
+                            <option value="M">남자</option>
+                            <option value="W">여자</option>
+                        </select>
+                    </span>
+                    <span class="error_next_box">필수 정보입니다.</span>
+                </div>
+                <!-- BIRTH -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="yy">* 생년월일</label></h3>
+                    <div id="bir_wrap">
+                        <!-- BIRTH_YY -->
+                        <div id="bir_yy">
+                            <span class="box">
+                                <input type="text" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                        </div>
+                        <!-- BIRTH_MM -->
+                        <div id="bir_mm">
+                            <span class="box">
+                                <select id="mm" class="sel">
+                                    <option>월</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </span>
+                        </div>
+                        <!-- BIRTH_DD -->
+                        <div id="bir_dd">
+                            <span class="box">
+                                <input type="text" id="dd" class="int" maxlength="2" placeholder="일">
+                            </span>
+                        </div>
+                    </div>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- AGE -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="age">나이(자동 입력)</label></h3>
+                    <span class="box">
+                        <span type="text" id="age" class="int" maxlength="2" value="age"
+                            style="display: flex; align-items: center; background-color: #ececec;">
+                        </span>
+                    </span>
+                </div>
+                <!-- MOBILE -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="phone_number">* 휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="phone_number" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- LOCATION -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="locations">* 지역</label></h3>
+                    <button class="location_find" id="btnJoin_location" type="button" onclick="serch_loaction()"
+                        value="주소 찾기"><span>주소 찾기</span></button><br>
+                    <span class="box" style="margin: auto;">
+                        <span class="int" type="text" id="locations" placeholder="주소"
+                            style="display: flex; align-items: center;"></span>
+                    </span>
+                </div>
 
-            <!-- INTRODUCTION -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="introduction">자기소개</label> <span
-                        style="font-size: 11px; color:rgb(119, 119, 119)">(최대 400자 제한)</span></h3>
-                <span class="box int_name" style="height: 200px;">
-                    <textarea type="textarea" id="introduction" class="int" maxlength=400"
-                        style="height: 170px; padding-top: 2px; word-break:break-all; resize: none;"
-                        placeholder="간단하게 자신을 소개해 주세요."></textarea>
-                </span>
+                <!-- INTRODUCTION -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="introduction">자기소개</label> <span
+                            style="font-size: 11px; color:rgb(119, 119, 119)">(최대 400자 제한)</span></h3>
+                    <span class="box int_name" style="height: 200px;">
+                        <textarea type="textarea" id="introduction" class="int" maxlength=400"
+                            style="height: 170px; padding-top: 2px; word-break:break-all; resize: none;"
+                            placeholder="간단하게 자신을 소개해 주세요."></textarea>
+                    </span>
+                </div>
+                <!-- PREFER -->
+                <div class="input_form">
+                    <h3 class="join_title"><label for="prefer">* 선호</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="prefer" class="int" maxlength="20" placeholder="예) 사과 제배, 고구마 제배 등">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <!-- JOIN BTN-->
+                <div class="btn_area">
+                    <button type="button" id="btnJoin" onclick="handle_signup()">
+                        <span>가입하기</span>
+                    </button>
+                </div>
+                <!-- service BTN -->
+                <div class="service_btn">
+                    <a href="#" onclick="location.href='signin.html'" target='_blank'>로그인</a>
+                </div>
             </div>
-            <!-- PREFER -->
-            <div class="input_form">
-                <h3 class="join_title"><label for="prefer">* 선호</label></h3>
-                <span class="box int_name">
-                    <input type="text" id="prefer" class="int" maxlength="20" placeholder="예) 사과 제배, 고구마 제배 등">
-                </span>
-                <span class="error_next_box"></span>
-            </div>
-            <!-- JOIN BTN-->
-            <div class="btn_area">
-                <button type="button" id="btnJoin" onclick="handle_signup()">
-                    <span>가입하기</span>
-                </button>
-            </div>
-            <!-- service BTN -->
-            <div class="service_btn">
-                <a href="#" onclick="location.href='signin.html'" target='_blank'>로그인</a>
-            </div>
-        </div>
         </div>
         <!-- content-->
         <!-- footer-->
@@ -279,8 +282,10 @@
     <!-- wrapper -->
 
     <!-- 동기 JS -->
+    <script src="./js/auth.js"></script>
     <script src="./js/sign_in_up_js/sign_up.js"></script>
     <script src="./js/nav.js"></script>
+
 </body>
 
 </html>

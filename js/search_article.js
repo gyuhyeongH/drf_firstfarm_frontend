@@ -169,15 +169,14 @@ function search_articles() {
                     ${updated_at}
                     </div>
                 </div></a>`;
-                    $("#get_article").append(temp_article);
-                }
-            },
-            error: function () {
-                $("#get_article").empty();
-                let temp_article = '<p>검색 결과 없음</p>'
-                $("#get_article").append(temp_article);
-            }
-        });
+        $("#get_article").append(temp_article);
+      }
+    },
+    error: function () {
+      $("#get_article").empty();
+      let temp_article = '<p>검색 결과 없음</p>'
+      $("#get_article").append(temp_article);
     }
+  });
 }
 
