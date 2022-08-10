@@ -1,3 +1,13 @@
+function XSSCheck(str, level) {
+  if (level == undefined || level == 0) {
+    str = str.replace(/\<|\>|\"|\'|\%|\;|\(|\)|\&|\+|\-/g, "");
+  } else if (level != undefined && level == 1) {
+    str = str.replace(/\</g, "&lt;");
+    str = str.replace(/\>/g, "&gt;");
+  }
+  return str;
+}
+
 $(document).ready(function () {
   article_id = window.localStorage.getItem("article_id");
   get_articledetail(article_id);
@@ -24,14 +34,11 @@ function get_articledetail(article_id) {
       let temp_detail_value;
 
       temp_detail_value = `
-        <div class="category_box">
-          <div class="category_title">카테고리 선택</div>
-          <div class="category_input_box">
-              <button class="category_button" id="category1">체험</button>
-              <button class="category_button" id="category2">근무</button>
-              <input class="category_input" type="text" id="article_category" name="article_category" value="${article_category}">
-          </div>
+
+        <div class="category_hidden_box">
+            <input class="category_input" type="text" id="article_category" name="article_category" value="${article_category}">
         </div>
+          
         <div class="name_box" id="name">
             <div class="name_title">농장 이름</div>
             <div class="name_input_box">
@@ -115,13 +122,13 @@ function put_articledetail(article_id) {
       xhr.setRequestHeader("Authorization", "Bearer " + token);
     },
     data: {
-      title: title,
-      farm_name: farm_name,
-      location: location,
-      cost: cost,
-      period: period,
-      requirement: requirement,
-      desc: desc,
+      title: XSSCheck(title, 1),
+      farm_name: XSSCheck(farm_name),
+      location: XSSCheck(location, 1),
+      cost: XSSCheck(cost, 1),
+      period: XSSCheck(period, 1),
+      requirement: XSSCheck(requirement, 1),
+      desc: XSSCheck(desc, 1),
       article_category: article_category,
     },
 
