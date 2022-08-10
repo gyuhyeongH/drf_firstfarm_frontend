@@ -101,6 +101,7 @@ UI BASE3
     background-color: #FCF9C6;
     color: black;
     border: none;
+    pointer-events: none;
 }
 
 .left_userinfo_box{
@@ -138,6 +139,7 @@ UI BASE3
 
 .right_rank-intro_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_rank-intro_content{
@@ -162,6 +164,7 @@ UI BASE3
 
 .right_period_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_period_content{
@@ -186,6 +189,7 @@ UI BASE3
 
 .right_location_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_location_content{
@@ -210,6 +214,7 @@ UI BASE3
 
 .right_requirement_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_requirement_content{
@@ -234,6 +239,7 @@ UI BASE3
 
 .right_cost_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_cost_content{
@@ -258,6 +264,7 @@ UI BASE3
 
 .right_desc_title_button{
     font-size: 15px;
+    pointer-events: none;
 }
 
 .right_desc_content{
@@ -419,6 +426,30 @@ UI BASE3
     color: inherit;
 }
 
+/* 리뷰 */
+.review_title{
+    width: 100%;
+    margin: 0 auto 0 auto;
+    height: 20px;
+    font-family: 'Noto Serif KR', serif;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 30px;
+    border: none;
+    background-color: #C7D36F;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.review_title_word{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
 .review_container{
     width: 90%;
     margin: auto;
@@ -438,12 +469,17 @@ UI BASE3
 
 .review_rate{
     margin-left: 1%;
-    width: 7%;
+    width: 10%;
+    font-size: 20px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .review_user{
-    margin-left: 3%;
+    margin-left: 1%;
     width: 8%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .review_user_button{
@@ -451,9 +487,11 @@ UI BASE3
 }
 
 .review_content{
-    width: 77%;
+    width: 78%;
     font-size: 18px;
-    margin-left: 3%;
+    margin-left: 1%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 

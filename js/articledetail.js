@@ -24,16 +24,16 @@ function get_articledetail(article_id) {
     data: {},
     success: function (response) {
       let review_length = response["article_review"]["rate"].length;
-      for (let i = 0; i < review_length.length; i++) {
+      for (let i = 0; i < review_length; i++) {
         let temp_detail_reviewbox;
         let temp_detail_reviewimg;
 
-        let rate = response["article_review"]["rate"][0];
-        let content = response["article_review"]["content"][0];
-        let review_user = response["article_review"]["review_user"][0];
-        let review_img1 = response["article_review"]["review_img"][0];
-        let review_img2 = response["article_review"]["review_img"][1];
-        let review_img3 = response["article_review"]["review_img"][2];
+        let rate = response["article_review"]["rate"][i];
+        let content = response["article_review"]["content"][i];
+        let review_user = response["article_review"]["review_user"][i];
+        let review_img1 = response["article_review"]["review_img"][0 + 3 * i];
+        let review_img2 = response["article_review"]["review_img"][1 + 3 * i];
+        let review_img3 = response["article_review"]["review_img"][2 + 3 * i];
         if (rate == 1) {
           rate = "⭐️";
         } else if (rate == 2) {
@@ -94,17 +94,17 @@ function get_articledetail(article_id) {
 
       if (img1 == null) {
         img1 =
-          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/%E1%84%91%E1%85%A5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%91%E1%85%A1%E1%86%B73.png";
       }
 
       if (img2 == null) {
         img2 =
-          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/%E1%84%91%E1%85%A5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%91%E1%85%A1%E1%86%B73.png";
       }
 
       if (img3 == null) {
         img3 =
-          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/output2_2slvTP3.jpg";
+          "https://s3.ap-northeast-2.amazonaws.com/firstfarm-media/img/%E1%84%91%E1%85%A5%E1%84%89%E1%85%B3%E1%84%90%E1%85%B3%E1%84%91%E1%85%A1%E1%86%B73.png";
       }
 
       let article_category = response["article_category"];
@@ -139,18 +139,18 @@ function get_articledetail(article_id) {
       if (localStorage.getItem("payload") != null) {
         if (user == article_user) {
           temp_detail_userbutton = `
-          <button class="roadmap_btn"><a class="roadmap_btn_word"
+          <button class="roadmap_btn"><a target="_blank" class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
         `;
         } else if (apply_user) {
           temp_detail_userbutton = `
-          <button class="roadmap_btn"><a class="roadmap_btn_word"
+          <button class="roadmap_btn"><a target="_blank" class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
           <button class="apply_btn" onclick="delete_article_apply(${article_id})"> 취소하기</button>
         `;
         } else {
           temp_detail_userbutton = `
-          <button class="roadmap_btn"><a class="roadmap_btn_word"
+          <button class="roadmap_btn"><a target="_blank" class="roadmap_btn_word"
                   href="https://map.kakao.com/link/search/${location}">길찾기</a></button>
           <button class="apply_btn" onclick="post_article_apply(${article_id})"> 신청하기</button>
         `;
