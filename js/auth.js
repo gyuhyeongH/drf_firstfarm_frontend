@@ -1,5 +1,7 @@
-const backend_base_url = "https://rbgud.shop";
-const frontend_base_url = "https://hwisu.shop";
+// const backend_base_url = "https://rbgud.shop";
+// const frontend_base_url = "https://hwisu.shop";
+const backend_base_url = "http://127.0.0.1:8000";
+const frontend_base_url = "http://127.0.0.1:5500";
 
 // 회원가입
 async function handle_signup() {
@@ -26,12 +28,13 @@ async function handle_signup() {
   const introduction = document.getElementById("introduction").value
   const prefer = document.getElementById("prefer").value
 
-  // 카테고리 검증
-  catePatternCheck(category_btn);
-  // 아이디 검증
-  idPatternCheck(username);
-  // 비밀번호 검증
-  pwPatternCheck(password);
+  // // 카테고리 검증
+  // catePatternCheck(category_btn);
+  // // 아이디 검증
+  // idPatternCheck(username);
+  // // 비밀번호 검증
+  // pwPatternCheck(password);
+  // console.log(pwPatternCheck(password))
 
   // formData 입력
   const signupData = new FormData();
@@ -42,20 +45,31 @@ async function handle_signup() {
   }
 
   const userprofile = JSON.stringify({
-    'fullname': XSSCheck(fullname),
-    'gender': XSSCheck(gender),
+    'fullname': fullname,
+    'gender': gender,
     'birthday': birthday,
     'age': age,
-    'phone_number': XSSCheck(phone_number),
-    'location': XSSCheck(locations),
-    'introduction': XSSCheck(introduction, 1),
-    'prefer': XSSCheck(prefer),
+    'phone_number': phone_number,
+    'location': locations,
+    'introduction': introduction,
+    'prefer': prefer,
   })
+  
+  // const userprofile = JSON.stringify({
+  //   'fullname': XSSCheck(fullname),
+  //   'gender': XSSCheck(gender),
+  //   'birthday': birthday,
+  //   'age': age,
+  //   'phone_number': XSSCheck(phone_number),
+  //   'location': XSSCheck(locations),
+  //   'introduction': XSSCheck(introduction, 1),
+  //   'prefer': XSSCheck(prefer),
+  // })
 
-  signupData.append('username', XSSCheck(username));
-  signupData.append('password', XSSCheck(password));
-  signupData.append('email', XSSCheck(email));
-  signupData.append('user_category', var_user_category_value);
+  signupData.append('username', username);
+  signupData.append('password', password);
+  signupData.append('email', email);
+  signupData.append('user_category', category_btn);
   signupData.append('userprofile', userprofile);
   signupData.append('img', input_img);
 
@@ -156,6 +170,7 @@ function idPatternCheck(username) {
     $('html').animate({ scrollTop: offset.top }, 600);
     return
   }
+  return username
 };
 
 // 패스워드 검증
@@ -171,7 +186,9 @@ function pwPatternCheck(password) {
     alert("필수 정보입니다.")
     var offset = $('#email').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
+    return
   }
+  return password
 };
 
 // 카테고리 검증
@@ -181,4 +198,5 @@ function catePatternCheck(category_btn) {
     var offset = $('#header_2').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
   }
+  return category_btn
 };
