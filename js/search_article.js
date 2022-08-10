@@ -173,3 +173,4 @@ function get_article(choice) {
             }
         });
     }
+}
