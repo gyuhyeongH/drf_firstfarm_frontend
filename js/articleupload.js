@@ -1,3 +1,13 @@
+function XSSCheck(str, level) {
+  if (level == undefined || level == 0) {
+    str = str.replace(/\<|\>|\"|\'|\%|\;|\(|\)|\&|\+|\-/g, "");
+  } else if (level != undefined && level == 1) {
+    str = str.replace(/\</g, "&lt;");
+    str = str.replace(/\>/g, "&gt;");
+  }
+  return str;
+}
+
 function post_articledetail() {
   var token = localStorage.getItem("access");
 
@@ -15,13 +25,13 @@ function post_articledetail() {
   let form_data = new FormData();
 
   form_data.append("article_category", article_category);
-  form_data.append("farm_name", farm_name);
-  form_data.append("location", location);
-  form_data.append("title", title);
-  form_data.append("cost", cost);
-  form_data.append("requirement", requirement);
-  form_data.append("period", period);
-  form_data.append("desc", desc);
+  form_data.append("farm_name", XSSCheck(farm_name));
+  form_data.append("location", XSSCheck(location, 1));
+  form_data.append("title", XSSCheck(title, 1));
+  form_data.append("cost", XSSCheck(cost, 1));
+  form_data.append("requirement", XSSCheck(requirement, 1));
+  form_data.append("period", XSSCheck(period, 1));
+  form_data.append("desc", XSSCheck(desc, 1));
   form_data.append("img1", img1);
   form_data.append("img2", img2);
   form_data.append("img3", img3);
@@ -45,7 +55,7 @@ function post_articledetail() {
     },
     success: function () {
       alert("게시글이 작성되었습니다.");
-      window.location.replace(`${frontend_base_url}/search_article.html`);
+      window.location.replace("https://hwisu.shop/search_article.html");
     },
   });
 }

@@ -72,9 +72,13 @@ UI BASE3
     align-items: center;
 }
 
+.catagory_hidden_box{
+    height: 10px;
+}
+
 .category_input_box{
     width: 80%;
-    height: 100px;
+    height: 10px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -97,6 +101,8 @@ UI BASE3
 
 .category_input{
     display: none;
+    height: 10px;
+    font-size: 5px;
 }
 
 .name_box{

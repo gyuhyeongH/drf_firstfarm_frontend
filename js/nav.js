@@ -64,7 +64,6 @@ window.onload = () => {
                 }).join(''));
                 localStorage.setItem("payload", jsonPayload);
                 localStorage.setItem("refresh", refreshToken);
-                console.log("성공!! : " + accessToken);
             });
         }
     } else {
