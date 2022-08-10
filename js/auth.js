@@ -1,5 +1,7 @@
 const backend_base_url = "https://rbgud.shop";
 const frontend_base_url = "https://hwisu.shop";
+// const backend_base_url = "http://127.0.0.1:8000";
+// const frontend_base_url = "http://127.0.0.1:5500";
 
 
 // 회원가입
@@ -28,11 +30,17 @@ async function handle_signup() {
   const prefer = document.getElementById("prefer").value
 
   // 카테고리 검증
-  catePatternCheck(category_btn);
+  if (catePatternCheck(category_btn) === false) {
+    return
+  }
   // 아이디 검증
-  idPatternCheck(username);
+  else if (idPatternCheck(username) === false) {
+    return
+  }
   // 비밀번호 검증
-  pwPatternCheck(password);
+  else if (pwPatternCheck(password) === false) {
+    return
+  }
 
   // formData 입력
   const signupData = new FormData();
@@ -55,13 +63,13 @@ async function handle_signup() {
   signupData.append('username', XSSCheck(username));
   signupData.append('password', XSSCheck(password));
   signupData.append('email', XSSCheck(email));
-  signupData.append('user_category', var_user_category_value);
+  signupData.append('user_category', category_btn);
   signupData.append('userprofile', userprofile);
   signupData.append('img', input_img);
 
   const response = await fetch(`${backend_base_url}/user/`, {
     headers: {
-      Accept: "application/json",
+      'Accept': 'application/json'
     },
     method: "POST",
     body: signupData,
@@ -144,17 +152,26 @@ function XSSCheck(str, level) {
   return str;
 }
 
-
 // 아이디 검증
 function idPatternCheck(username) {
   const idPattern = /[a-zA-Z0-9]{5,20}/;
+
+  const idPattern_bad = /[!@#$%^&*()_+<>?~]/;
 
   if (!idPattern.test(username)) {
     alert("5~20자의 영문 소문자, 숫자만 사용 가능합니다.")
     var offset = $('#category_value').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
-    return
+
+    return false
+  } else if (idPattern_bad.test(username)) {
+    alert("5~20자의 영문 소문자, 숫자만 사용 가능합니다.")
+    var offset = $('#category_value').offset();
+    $('html').animate({ scrollTop: offset.top }, 600);
+
+    return false
   }
+  return true
 };
 
 // 패스워드 검증
@@ -165,19 +182,26 @@ function pwPatternCheck(password) {
     alert("비밀번호 형식이 맞지 않습니다.")
     var offset = $('#email').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
-    return
+
+    return false
   } else if (password === "") {
     alert("필수 정보입니다.")
     var offset = $('#email').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
+
+    return false
   }
+  return true
 };
 
 // 카테고리 검증
 function catePatternCheck(category_btn) {
   if (category_btn === undefined) {
-    alert("필수 정보입니다.")
+    alert("카테고리를 선택해주세요.")
     var offset = $('#header_2').offset();
     $('html').animate({ scrollTop: offset.top }, 600);
+
+    return false
   }
+  return true
 };

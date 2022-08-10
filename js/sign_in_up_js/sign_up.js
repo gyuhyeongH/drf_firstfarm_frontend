@@ -59,13 +59,17 @@ prefer.addEventListener("focusout", checkPrefer);
 
 function checkId() {
   var idPattern = /[a-zA-Z0-9]{5,20}/;
+  var idPattern_bad = /[!@#$%^&*~()_+|<>?:{}]/;
   if (id.value === "") {
     error[0].innerHTML = "필수 정보입니다.";
     error[0].style.display = "block";
     error[0].style.position = "fixed";
   } else if (!idPattern.test(id.value)) {
-    error[0].innerHTML =
-      "5~20자의 영문 소문자, 숫자만 사용 가능합니다.";
+    error[0].innerHTML = "5~20자의 영문 소문자, 숫자만 사용 가능합니다.";
+    error[0].style.display = "block";
+    error[0].style.position = "fixed";
+  } else if (idPattern_bad.test(id.value)) {
+    error[0].innerHTML = "특수문자는 사용할 수 없습니다.";
     error[0].style.display = "block";
     error[0].style.position = "fixed";
   } else {
