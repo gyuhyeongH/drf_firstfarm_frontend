@@ -58,14 +58,14 @@ prefer.addEventListener("focusout", checkPrefer);
 /*콜백 함수*/
 
 function checkId() {
-  var idPattern = /[a-zA-Z0-9_-]{5,20}/;
+  var idPattern = /[a-zA-Z0-9]{5,20}/;
   if (id.value === "") {
     error[0].innerHTML = "필수 정보입니다.";
     error[0].style.display = "block";
     error[0].style.position = "fixed";
   } else if (!idPattern.test(id.value)) {
     error[0].innerHTML =
-      "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+      "5~20자의 영문 소문자, 숫자만 사용 가능합니다.";
     error[0].style.display = "block";
     error[0].style.position = "fixed";
   } else {
@@ -92,7 +92,8 @@ function isEmailCorrect() {
 }
 
 function checkPw() {
-  var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
+  var pwPattern = /[a-zA-Z0-9!@#$%^&*]{8,16}/;
+  var pwPattern_bad = /[~()_+|<>?:{}]/;
   if (pw1.value === "") {
     error[2].innerHTML = "필수 정보입니다.";
     error[2].style.display = "block";
@@ -107,14 +108,25 @@ function checkPw() {
 
     pwMsg.style.display = "block";
     pwImg1.src = "./img/style_sign_in_up_images/m_icon_not_use.png";
-  } else {
+  } else if (pwPattern_bad.test(pw1.value)) {
+    error[2].innerHTML = "올바른 형식이 아닙니다. 다시 입력해주세요. [특수문자 : !@#$%^&*]";
+    pwMsg.innerHTML = "사용불가";
+    pwMsgArea.style.paddingRight = "93px";
+    pwMsgArea.style.color = "#C19287";
+    error[2].style.display = "block";
+    error[2].style.position = "fixed";
+
+    pwMsg.style.display = "block";
+    pwImg1.src = "./img/style_sign_in_up_images/m_icon_not_use.png";
+  }
+  else {
     error[2].style.display = "none";
     pwMsg.innerHTML = "안전";
     pwMsg.style.display = "block";
     pwMsg.style.color = "#03c75a";
     pwImg1.src = "./img/style_sign_in_up_images/m_icon_safe.png";
   }
-}
+} 
 
 function comparePw() {
   if (pw2.value === pw1.value && pw2.value != "") {
@@ -317,16 +329,20 @@ function serch_loaction() {
 }
 
 // 카테고리 토글
+const category_btn = document.getElementsByClassName("category_btn");
+
 function handleClick(event) {
-  user_category_value = event.target.value;
+  event.target.value;
   // 콘솔창을 보면 둘다 동일한 값이 나온다
   console.log(user_category_value)
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");
   } else {
-    for (var i = 0; i < category_btn.length; i++) {
-      category_btn[i].classList.remove("clicked");
-    }
+    // for (var i = 0; i < category_btn.length; i++) {
+    //   category_btn[i].classList.remove("clicked");
+    // }
+    category_btn[0].classList.remove("clicked");
+    category_btn[1].classList.remove("clicked");
 
     event.target.classList.add("clicked");
 
