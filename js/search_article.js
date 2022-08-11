@@ -72,7 +72,7 @@ function get_article(choice) {
   $.ajax({
     headers: { choice: choice, category: category },
     type: "GET",
-    url: "http://127.0.0.1:8000/article/",
+    url: "https://rbgud.shop/article/",
     beforeSend: function (xhr) {
       if (localStorage.getItem("access")) {
         xhr.setRequestHeader("Authorization", "Bearer " + token);

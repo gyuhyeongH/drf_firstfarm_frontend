@@ -60,9 +60,9 @@ async function handle_signup() {
     'prefer': XSSCheck(prefer),
   })
 
-  signupData.append('username', XSSCheck(username));
-  signupData.append('password', XSSCheck(password));
-  signupData.append('email', XSSCheck(email));
+  signupData.append('username', username);
+  signupData.append('password', password);
+  signupData.append('email', email);
   signupData.append('user_category', category_btn);
   signupData.append('userprofile', userprofile);
   signupData.append('img', input_img);
