@@ -25,13 +25,13 @@ function post_articledetail() {
   let form_data = new FormData();
 
   form_data.append("article_category", article_category);
-  form_data.append("farm_name", XSSCheck(farm_name));
-  form_data.append("location", XSSCheck(location, 1));
-  form_data.append("title", XSSCheck(title, 1));
-  form_data.append("cost", XSSCheck(cost, 1));
-  form_data.append("requirement", XSSCheck(requirement, 1));
-  form_data.append("period", XSSCheck(period, 1));
-  form_data.append("desc", XSSCheck(desc, 1));
+  form_data.append("farm_name", farm_name);
+  form_data.append("location", location);
+  form_data.append("title", title);
+  form_data.append("cost", cost);
+  form_data.append("requirement", requirement);
+  form_data.append("period", period);
+  form_data.append("desc", desc);
   form_data.append("img1", img1);
   form_data.append("img2", img2);
   form_data.append("img3", img3);

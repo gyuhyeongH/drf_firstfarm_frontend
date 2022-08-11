@@ -72,7 +72,7 @@ function get_article(choice) {
   $.ajax({
     headers: { choice: choice, category: category },
     type: "GET",
-    url: "http://127.0.0.1:8000/article/",
+    url: "https://rbgud.shop/article/",
     beforeSend: function (xhr) {
       if (localStorage.getItem("access")) {
         xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -169,15 +169,14 @@ function search_articles() {
                     ${updated_at}
                     </div>
                 </div></a>`;
-                    $("#get_article").append(temp_article);
-                }
-            },
-            error: function () {
-                $("#get_article").empty();
-                let temp_article = '<p>검색 결과 없음</p>'
-                $("#get_article").append(temp_article);
-            }
-        });
+        $("#get_article").append(temp_article);
+      }
+    },
+    error: function () {
+      $("#get_article").empty();
+      let temp_article = '<p>검색 결과 없음</p>'
+      $("#get_article").append(temp_article);
     }
+  });
 }
 
