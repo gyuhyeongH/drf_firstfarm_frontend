@@ -29,7 +29,6 @@ async function handle_signput() {
     
     $.ajax({
         type: "PUT",
-        // url: "http://127.0.0.1:8000/user/" +user_id+"/",
         url: "https://rbgud.shop/article/farmer/" + review_id,
         beforeSend: function (xhr) {
           xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -44,11 +43,9 @@ async function handle_signput() {
             if (payload != null) {
                 const user_category = payload.category;
                 if (user_category == 1) {
-                    // window.location.replace(`https://hwisu.shop/farm.html`);
-                    window.location.replace(`http://127.0.0.1:5500/farm.html`);
+                    window.location.replace(`https://hwisu.shop/farm.html`);
                 } else {
-                    // window.location.replace(`https://hwisu.shop/farmer.html`);
-                    window.location.replace(`http://127.0.0.1:5500/farmer.html`);
+                    window.location.replace(`https://hwisu.shop/farmer.html`);
                 }
             }
         },

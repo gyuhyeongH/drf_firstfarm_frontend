@@ -35,7 +35,6 @@ function get_farmer() {
     }
     $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:8000/article/farmer/",
         url: "https://rbgud.shop/article/farmer/",
         beforeSend: function (xhr) {
           xhr.setRequestHeader("Content-type", "application/json");
@@ -259,7 +258,6 @@ function get_review() {
     }
     $.ajax({
         type: "GET",
-        // url: "http://127.0.0.1:8000/article/review/",
         url: "https://rbgud.shop/article/review/",
 
         beforeSend: function (xhr) {
@@ -392,7 +390,6 @@ function post_review(article_id) {
     console.log(rate)
     $.ajax({
         type: "POST",
-        // url: "http://127.0.0.1:8000/article/"+ article_id + "/farmer",
         url: "https://rbgud.shop/article/" + article_id + "/farmer",
         beforeSend: function (xhr) {
           xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -435,7 +432,6 @@ function put_review(review_id) {
     formData.append("rate", rate);
     $.ajax({
         type: "PUT",
-        // url: "http://127.0.0.1:8000/article/farmer/" + review_id,
         url: "https://rbgud.shop/article/farmer/" + review_id,
         beforeSend: function (xhr) {
           xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -462,7 +458,6 @@ function delete_review(review_id) {
     var token = localStorage.getItem("access")
     $.ajax({
     type: "DELETE",
-    // url: "http://127.0.0.1:8000/article/farmer/"+review_id,
     url: "https://rbgud.shop/article/farmer/"+review_id,
     beforeSend: function (xhr) {
       xhr.setRequestHeader("Content-type", "application/json");

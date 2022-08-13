@@ -11,9 +11,8 @@ function get_farm() {
     $.ajax({
         type: "GET",
         url: "https://rbgud.shop/article/farm/" + article_id,
-        // url: "http://127.0.0.1:8000/article/farm/",
         beforeSend: function (xhr) {
-        //   xhr.setRequestHeader("Content-type", "application/json");
+          xhr.setRequestHeader("Content-type", "application/json");
           xhr.setRequestHeader("Authorization", "Bearer " + token);
         },
         data: {},
@@ -186,7 +185,6 @@ function get_apply(article_id) {
     $.ajax({
         type: "GET",
         url: "https://rbgud.shop/article/farm/" + article_id,
-        // url: "http://127.0.0.1:8000/article/farm/" + article_id,
         beforeSend: function (xhr) {
           xhr.setRequestHeader("Content-type", "application/json");
           xhr.setRequestHeader("Authorization", "Bearer " + token);
@@ -258,7 +256,6 @@ function put_apply(article_id,apply_id,accept) {
     $.ajax({
         type: "PUT",
         url: "https://rbgud.shop/article/farm/" + article_id + "/" + apply_id,
-        // url: "http://127.0.0.1:8000/article/farm/"+article_id+"/"+apply_id,
         data: {'accept':accept},
         success: function (response) {
             alert('신청 변경 완료');
