@@ -22,9 +22,11 @@ async function handle_enter_mypage() {
     if (payload != null) {
         const user_category = payload.category;
         if (user_category == 1) {
-            window.location.replace(`https://hwisu.shop/farm.html`);
+            window.location.replace(`http://127.0.0.1:5500/farm.html`);
+            // window.location.replace(`https://hwisu.shop/farm.html`);
         } else {
-            window.location.replace(`https://hwisu.shop/farmer.html`);
+            window.location.replace(`http://127.0.0.1:5500/farmer.html`);
+            // window.location.replace(`https://hwisu.shop/farmer.html`);
         }
     }
 }
@@ -51,6 +53,7 @@ window.onload = () => {
             };
 
             // 다시 인증 받은 accessToken을 localStorage에 저장하자.
+            // requestRefreshToken(`http://127.0.0.1:8000/user/api/token/refresh/`).then((data) => {
             requestRefreshToken(`https://rbgud.shop/user/api/token/refresh/`).then((data) => {
                 // 새롭게 발급 받은 accessToken을 localStorage에 저장
                 const accessToken = data.access;
@@ -76,5 +79,6 @@ async function handle_logout() {
     localStorage.removeItem("refresh");
     localStorage.removeItem("payload");
     alert("로그아웃 되었습니다.");
-    window.location.replace(`https://hwisu.shop/index.html`);
+    window.location.replace(`http://127.0.0.1:5500/index.html`);
+    // window.location.replace(`https://hwisu.shop/index.html`);
 }
