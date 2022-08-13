@@ -134,7 +134,7 @@ function search_articles() {
   }
   $.ajax({
     type: "GET",
-    url: "http://127.0.0.1:8000/article/search",
+    url: "https://rbgud.shop/article/search",
     data: { search_text: XSSCheck(search_text, 1) },
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function (response) {
